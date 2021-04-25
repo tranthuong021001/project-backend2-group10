@@ -14,7 +14,38 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('frontend/index');
 });
-//Route::get('/{id}','WelcomeController@index');
-Route::get('/admin/{age}','WelcomeController@admin')->middleware('checkage');
+
+Route::get('/{page}', 'welcomecontroller@page' );
+
+// Route tĩnh
+// Route::get('/gioithieu', function(){
+//     return view('gioithieu');
+// });
+// Route::get('/sanpham', function(){
+//     return view('sanpham');
+// });
+// Route::get('/lienhe', function(){
+//     return view('lienhe');
+// });
+// Route::get('/trangchu', function(){
+//     return view('trangchu');
+// });
+// Route::get('/table', function(){
+//     return view('sanpham_table');
+// });
+// Route::get('/chair', function(){
+//     return view('sanpham_chair');
+// });
+
+// Route động (có tham số)
+// Route::get('/{id}', function($id){
+//     return view("$id");
+// });
+
+//đăng ký route middleware để check login
+// Route::post('formlogin', 'WelcomeController@login')->middleware('checklogin'::class);
+
+
+
