@@ -144,8 +144,8 @@
                                                                 <div class="mega_menu jewelry">
                                                                     <div class="mega_items jewelry">
                                                                         <ul>
-                                                                            <li><a href="index.html">Home 1</a></li>
-                                                                            <li><a href="index-2.html">Home 2</a></li>
+                                                                            <li><a href="{{ url('/index') }}">Home 1</a></li>
+                                                                            <li><a href="{{ url('/master') }}">Home 2</a></li>
                                                                         </ul>
                                                                     </div>
                                                                 </div>

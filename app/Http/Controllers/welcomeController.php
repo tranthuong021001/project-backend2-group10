@@ -17,4 +17,5 @@ class WelcomeController extends Controller
     public function page($page){
         return view('frontend/'.$page);
     }
+    
 }

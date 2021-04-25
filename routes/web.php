@@ -17,7 +17,9 @@ Route::get('/', function () {
     return view('frontend/index');
 });
 
+//route động có tham số
 Route::get('/{page}', 'welcomecontroller@page' );
+
 
 // Route tĩnh
 // Route::get('/gioithieu', function(){
