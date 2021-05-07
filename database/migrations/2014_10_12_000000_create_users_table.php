@@ -1,3 +1,4 @@
+
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -24,6 +25,7 @@ class CreateUsersTable extends Migration
         });
     }
 
+     
     /**
      * Reverse the migrations.
      *
@@ -34,3 +36,15 @@ class CreateUsersTable extends Migration
         Schema::dropIfExists('users');
     }
 }
+
+// $table->increments('id');
+            // $table->foreign('id')->references('user_id')->on('typeuser');
+            // $table->string('name', 50);
+            // $table->string('email', 200)->unique();
+
+            // $table->string('username', 50);
+            // $table->string('password', 50);
+            // $table->string('phone', 10);
+
+
+            // $table->timestamps();

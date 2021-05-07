@@ -1,7 +1,11 @@
 <?php
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
+
+//khai bao model
+use App\Product;
 
 class WelcomeController extends Controller
 {
@@ -17,5 +21,19 @@ class WelcomeController extends Controller
     public function page($page){
         return view('frontend/'.$page);
     }
-    
+
+    public function getAllProduct(){
+        $product = Product::all();
+        return view('frontend.master', ['product'=>$product]);
+    }
+
+    public function getOneProduct(){
+        $product = Product::find(1);
+        return view('frontend.master', ['product'=>$product]);
+    }
+
+
+
+
+
 }

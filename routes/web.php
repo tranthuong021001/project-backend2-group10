@@ -13,11 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('frontend/index');
-});
+Route::get('/', 'welcomecontroller@getAllProduct');
 
-//route động có tham số
+
+//route động có tham số dùng để gắn các liên kết trang
 Route::get('/{page}', 'welcomecontroller@page' );
 
 

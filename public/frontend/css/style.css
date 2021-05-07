@@ -5,9 +5,9 @@
     Version: 1.0
 
 -----------------------------------------------------------------------------------
-    
-    [Table of contents] 
-	
+
+    [Table of contents]
+
     1. Template default css (assets/css/bundle.css)
     2.  header css here
         2.1 header top css here
@@ -15,7 +15,7 @@
 		2.3 header bottom css here
 		2.4 sidebar banner css here
 		2.5 categorie menu css here
-		2.6 wishlist block css here 
+		2.6 wishlist block css here
 		2.7 popular tags css here
 		2.8newsletter block css here
 		2.9 new product css here
@@ -24,13 +24,13 @@
 		2.12 footer area css here
 		2.13 mobail menu css here
 	3. shop page css here
-	4. product page css here 
-	5. product gallery css here 
+	4. product page css here
+	5. product gallery css here
 	6. portfolio page css here
 	7. cart page css here
 	8. login page css here
 	9. checkout page css here
-	10. contact page css here 
+	10. contact page css here
 	11. 404 page css here
 	12. faq page css here
 	13. about page css here
@@ -345,7 +345,7 @@
 }
 .main_menu nav > ul > li.active > a,.main_menu nav > ul > li:hover > a{
     background: #018576;
-} 
+}
 .mega_menu {
 	position: absolute;
 	width: 600px;
@@ -375,7 +375,7 @@
 	margin-bottom: 0;
 }
 .mega_items {
-	width: 30%;
+	width: 25%;
 	float: left;
 	margin-right: 22px;
 }
@@ -593,7 +593,7 @@
 }
 .sidebar_widget.catrgorie  > ul > li.has-sub.open > a::before{
     display: none;
-} 
+}
 .sidebar_widget.catrgorie  ul li a:hover,.sidebar_widget.catrgorie  > ul > li.has-sub.open > a:hover{
     color:#e84c3d;
 }
@@ -898,7 +898,7 @@
 .product_active.owl-carousel .owl-nav div:hover,.brand_active.owl-carousel .owl-nav div:hover,.single_p_active.owl-carousel .owl-nav div:hover{
     background-position: 100% 100%;
     background-color: #333333;
-    
+
 }
 .product_active.owl-carousel .owl-nav div.owl-next, .brand_active.owl-carousel .owl-nav div.owl-next, .single_p_active.owl-carousel .owl-nav div.owl-next {
 	margin-left: 5px;
@@ -1093,7 +1093,7 @@
 	border-radius: 50%;
 }
 .footer_social ul li:first-child a {
-	background: #4267B2;	
+	background: #4267B2;
 }
 .footer_social ul li:last-child a {
 	background: #F09836;
@@ -1517,7 +1517,7 @@
 	border-top: 1px solid #dbdbdb;
 	border-bottom: 1px solid #dbdbdb;
 	font-size: 16px;
-	line-height: ;
+	/* line-height: ; */
 }
 .list_title {
 	margin-bottom: 5px;
@@ -2610,7 +2610,7 @@
 	width: 100%;
 	height: 40px;
 }
-.checkout_form .nice-select.open .list {   
+.checkout_form .nice-select.open .list {
 	width: 100%;
 }
 
@@ -3822,7 +3822,7 @@
 	z-index: 9;
 }
 .modal-content button span{
-    
+
 }
 /*modal css end*/
 
