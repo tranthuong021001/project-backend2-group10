@@ -142,7 +142,7 @@
                                     <div class="main_menu d-none d-lg-block">
                                         <nav>
                                             <ul>
-                                                <li class="active"><a href="{{ url('/master') }}">Home</a>
+                                                <li class="active"><a href="{{ url('/index') }}">Home</a>
                                                     <div class="mega_menu jewelry">
                                                         <div class="mega_items jewelry">
                                                             <ul>
@@ -488,11 +488,8 @@
                         <div class="row">
                             <div class="single_p_active owl-carousel">
                             <!--demo show products -->
-                            @foreach($product as $value)
+                            @foreach($products as $value)
                                 <div class="col-lg-3">
-
-
-
 
                                     <div class="single_product">
                                         <div class="product_thumb">

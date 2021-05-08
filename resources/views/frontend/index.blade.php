@@ -143,15 +143,15 @@
                                         <nav>
                                             <ul>
                                                 <!-- Item HOME -->
-                                                <li class="active"><a href="{{ url('/master') }}">Home</a>
-                                                    <div class="mega_menu jewelry">
+                                                <li class="active"><a href="{{ url('/index') }}">Home</a>
+                                                    <!-- <div class="mega_menu jewelry">
                                                         <div class="mega_items jewelry">
                                                             <ul>
                                                                 <li><a href="{{ url('/index') }}">Home 1</a></li>
                                                                 <li><a href="{{ url('/master') }}">Home 2</a></li>
                                                             </ul>
                                                         </div>
-                                                    </div>
+                                                    </div> -->
                                                 </li>
 
                                                 <!-- Item SHOP -->
@@ -768,10 +768,13 @@
                                 </div>
                                 <div class="row">
                                     <div class="product_active owl-carousel">
+
+                                        <!--get product from database-->
+                                        @foreach($products as $value)
                                         <div class="col-lg-3">
                                             <div class="single_product">
                                                 <div class="product_thumb">
-                                                    <a href="single-product.html"><img src="assets\img\product\product1.jpg" alt=""></a>
+                                                    <a href="single-product.html"><img src="assets\img\product\{{$value['image']}}" alt=""></a>
                                                     <div class="img_icone">
                                                         <img src="assets\img\cart\span-new.png" alt="">
                                                     </div>
@@ -780,8 +783,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="product_content">
-                                                    <span class="product_price">$50.00</span>
-                                                    <h3 class="product_title"><a href="single-product.html">Curabitur sodales</a></h3>
+                                                    <span class="product_price">${{$value['price']}}</span>
+                                                    <h3 class="product_title"><a href="single-product.html">{{$value['name']}}</a></h3>
                                                 </div>
                                                 <div class="product_info">
                                                     <ul>
@@ -791,6 +794,8 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        @endforeach
+
                                         <div class="col-lg-3">
                                             <div class="single_product">
                                                 <div class="product_thumb">

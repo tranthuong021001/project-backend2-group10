@@ -24,7 +24,11 @@ class WelcomeController extends Controller
 
     public function getAllProduct(){
         $product = Product::all();
-        return view('frontend.master', ['product'=>$product]);
+        return view('frontend.master', ['products'=>$product]);
+    }
+    public function getAllProductHome(){
+        $product = Product::all();
+        return view('frontend.index', ['products'=>$product]);
     }
 
     public function getOneProduct(){
