@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,12 +13,39 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+//
+Auth::routes();
 
-Route::get('/', 'welcomecontroller@getAllProductHome');
+Route::get('/home', 'HomeController@getAllProductHome')->name('home');
+
+
+//route động có tham số dùng để chuyển đến trang Account
+Route::get('/{para}', 'HomeController@index')->name('home');
+
+
+Route::get('/', 'welcomecontroller@getAllProduct');
 Route::get('/index', 'welcomecontroller@getAllProductHome');
+Route::get('/manu', 'welcomecontroller@getAllManufactures');
+//liên kết 1-1
+// Route::get('/lienketchinhphu', function(){
+//     $products = App\Product::all();
+//     foreach($products as $product){
+//         echo $product->name . "<br>";
+//         echo $product->infos->NSX . "<br>";
+
+//     }
+// });
+
+
 
 //route động có tham số dùng để gắn các liên kết trang
 Route::get('/{page}', 'welcomecontroller@page' );
+
+
+
+
+
+
 
 
 
@@ -49,6 +77,3 @@ Route::get('/{page}', 'welcomecontroller@page' );
 
 //đăng ký route middleware để check login
 // Route::post('formlogin', 'WelcomeController@login')->middleware('checklogin'::class);
-
-
-

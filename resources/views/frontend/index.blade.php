@@ -58,7 +58,9 @@
                                         <li><a href="wishlist.html" title="wishlist">My wishlist</a></li>
                                         <li><a href="my-account.html" title="My account">My account</a></li>
                                         <li><a href="cart.html" title="My cart">My cart</a></li>
-                                        <li><a href="login.html" title="Login">Login</a></li>
+                                        <li><a href="{{ url('/home') }}" title="Login">Login</a></li>
+                                        <!--Logout-->
+                                        <li> <a class="" href="{{ url('/app')}}">Login & logout</a> </li>
                                     </ul>
                                 </div>
                             </div>
@@ -770,11 +772,17 @@
                                     <div class="product_active owl-carousel">
 
                                         <!--get product from database-->
+
+
+
+
                                         @foreach($products as $value)
                                         <div class="col-lg-3">
                                             <div class="single_product">
                                                 <div class="product_thumb">
-                                                    <a href="single-product.html"><img src="assets\img\product\{{$value['image']}}" alt=""></a>
+
+                                                    <a href="single-product.html"><img src="assets\img\product\imgFull\Nike\shoes\{{$value->image}}" alt=""></a>
+
                                                     <div class="img_icone">
                                                         <img src="assets\img\cart\span-new.png" alt="">
                                                     </div>
@@ -783,8 +791,10 @@
                                                     </div>
                                                 </div>
                                                 <div class="product_content">
-                                                    <span class="product_price">${{$value['price']}}</span>
-                                                    <h3 class="product_title"><a href="single-product.html">{{$value['name']}}</a></h3>
+                                                    <span class="product_price">${{$value->price}}</span>
+
+                                                    <h3 class="product_title"><a href="single-product.html">{{$value->name}}</a></h3>
+
                                                 </div>
                                                 <div class="product_info">
                                                     <ul>
