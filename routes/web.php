@@ -16,14 +16,17 @@ use Illuminate\Support\Facades\Auth;
 //
 Auth::routes();
 
-Route::get('/home', 'HomeController@getAllProductHome')->name('home');
+//Route::get('/home', 'HomeController@getAllProductHome')->name('home');
 
 
 //route động có tham số dùng để chuyển đến trang Account
-Route::get('/{para}', 'HomeController@index')->name('home');
+//Route::get('/{para}', 'HomeController@index')->name('home');
 
 
 Route::get('/', 'welcomecontroller@getAllProduct');
+
+//route động có tham số dùng để chuyển đến trang chi tiết sản phẩm
+Route::get('/danh-muc/{id}', 'welcomecontroller@getProductDetail')->name('protype-pro');
 Route::get('/index', 'welcomecontroller@getAllProductHome');
 Route::get('/manu', 'welcomecontroller@getAllManufactures');
 //liên kết 1-1

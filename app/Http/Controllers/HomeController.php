@@ -29,8 +29,8 @@ class HomeController extends Controller
     }
     public function getAllProductHome(){
         $product = Product::all();
-        $Product_Image = Product_Image::all();
-        return view('frontend.index', ['products'=>$product] , ['Product_Image'=>$Product_Image]);
+        //$Product_Image = Product_Image::all();
+        return view('frontend.index', compact('product'));
     }
 
     public function Acount($para){

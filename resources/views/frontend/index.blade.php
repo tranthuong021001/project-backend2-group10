@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="assets\css\bundle.css">
     <link rel="stylesheet" href="assets\css\style.css">
     <link rel="stylesheet" href="assets\css\responsive.css">
+    <link rel="stylesheet" href="assets\css\mystyle.css">
     <script src="assets\js\vendor\modernizr-2.8.3.min.js"></script>
 </head>
 
@@ -194,60 +195,21 @@
                                                 <li><a href="#">Women</a>
                                                     <div class="mega_menu">
                                                         <div class="mega_top fix">
-                                                            <div class="mega_items">
-                                                                <h3><a href="#">Nike</a></h3>
-                                                                <ul>
-                                                                    <li><a href="#">Clothing</a></li>
-                                                                    <li><a href="#">Shoes</a></li>
-                                                                    <li><a href="#">Hats</a></li>
-                                                                    <li><a href="#">Bags</a></li>
-                                                                    <li><a href="#">Sunglasses</a></li>
-                                                                </ul>
-                                                            </div>
-                                                            <div class="mega_items">
-                                                                <h3><a href="#">Adidas</a></h3>
-                                                                <ul>
-                                                                    <li><a href="#">Clothing</a></li>
-                                                                    <li><a href="#">Shoes</a></li>
-                                                                    <li><a href="#">Hats</a></li>
-                                                                    <li><a href="#">Bags</a></li>
-                                                                    <li><a href="#">Sunglasses</a></li>
 
-                                                                </ul>
-                                                            </div>
+                                                        <!--hiển thị hãng sản xuất trên thanh menu-->
+                                                        @foreach($manufacture as $value)
                                                             <div class="mega_items">
-                                                                <h3><a href="#">Puma</a></h3>
+                                                                <h3><a href="/{{$value->id}}">{{$value->manu_name}}</a></h3>
                                                                 <ul>
-                                                                    <li><a href="#">Clothing</a></li>
-                                                                    <li><a href="#">Shoes</a></li>
-                                                                    <li><a href="#">Hats</a></li>
-                                                                    <li><a href="#">Bags</a></li>
-                                                                    <li><a href="#">Sunglasses</a></li>
-
+                                                                <!--hiển thị loại sản phẩm trên thanh menu-->
+                                                                    @foreach ($protype as $protype_item)
+                                                                        <li><a href="/{{$protype_item->id}}">{{$protype_item->type_name}}</a></li>
+                                                                    @endforeach
                                                                 </ul>
                                                             </div>
-                                                            <div class="mega_items">
-                                                                <h3><a href="#">Kappa</a></h3>
-                                                                <ul>
-                                                                    <li><a href="#">Clothing</a></li>
-                                                                    <li><a href="#">Shoes</a></li>
-                                                                    <li><a href="#">Hats</a></li>
-                                                                    <li><a href="#">Bags</a></li>
-                                                                    <li><a href="#">Sunglasses</a></li>
+                                                        @endforeach
 
-                                                                </ul>
-                                                            </div>
-                                                            <div class="mega_items">
-                                                                <h3><a href="#">Fila</a></h3>
-                                                                <ul>
-                                                                    <li><a href="#">Clothing</a></li>
-                                                                    <li><a href="#">Shoes</a></li>
-                                                                    <li><a href="#">Hats</a></li>
-                                                                    <li><a href="#">Bags</a></li>
-                                                                    <li><a href="#">Sunglasses</a></li>
 
-                                                                </ul>
-                                                            </div>
                                                         </div>
                                                         <div class="mega_bottom fix">
                                                             <div class="mega_thumb">
@@ -263,56 +225,18 @@
                                                 <li><a href="#">Men</a>
                                                     <div class="mega_menu">
                                                         <div class="mega_top fix">
+                                                             <!--hiển thị hãng sản xuất trên thanh menu-->
+                                                        @foreach($manufacture as $value)
                                                             <div class="mega_items">
-                                                                <h3><a href="#">Nike</a></h3>
+                                                                <h3><a href="/{{$value->id}}">{{$value->manu_name}}</a></h3>
                                                                 <ul>
-                                                                    <li><a href="#">Clothing</a></li>
-                                                                    <li><a href="#">Shoes</a></li>
-                                                                    <li><a href="#">Hats</a></li>
-                                                                    <li><a href="#">Bags</a></li>
-                                                                    <li><a href="#">Sunglasses</a></li>
+                                                                <!--hiển thị loại sản phẩm trên thanh menu-->
+                                                                    @foreach ($protype as $protype_item)
+                                                                        <li><a href="/{{$protype_item->id}}">{{$protype_item->type_name}}</a></li>
+                                                                    @endforeach
                                                                 </ul>
                                                             </div>
-                                                            <div class="mega_items">
-                                                                <h3><a href="#">Adidas</a></h3>
-                                                                <ul>
-                                                                    <li><a href="#">Clothing</a></li>
-                                                                    <li><a href="#">Shoes</a></li>
-                                                                    <li><a href="#">Hats</a></li>
-                                                                    <li><a href="#">Bags</a></li>
-                                                                    <li><a href="#">Sunglasses</a></li>
-                                                                </ul>
-                                                            </div>
-                                                            <div class="mega_items">
-                                                                <h3><a href="#">Puma</a></h3>
-                                                                <ul>
-                                                                    <li><a href="#">Clothing</a></li>
-                                                                    <li><a href="#">Shoes</a></li>
-                                                                    <li><a href="#">Hats</a></li>
-                                                                    <li><a href="#">Bags</a></li>
-                                                                    <li><a href="#">Sunglasses</a></li>
-                                                                </ul>
-                                                            </div>
-                                                            <div class="mega_items">
-                                                                <h3><a href="#">Kappa</a></h3>
-                                                                <ul>
-                                                                    <li><a href="#">Clothing</a></li>
-                                                                    <li><a href="#">Shoes</a></li>
-                                                                    <li><a href="#">Hats</a></li>
-                                                                    <li><a href="#">Bags</a></li>
-                                                                    <li><a href="#">Sunglasses</a></li>
-                                                                </ul>
-                                                            </div>
-                                                            <div class="mega_items">
-                                                                <h3><a href="#">Fila</a></h3>
-                                                                <ul>
-                                                                    <li><a href="#">Clothing</a></li>
-                                                                    <li><a href="#">Shoes</a></li>
-                                                                    <li><a href="#">Hats</a></li>
-                                                                    <li><a href="#">Bags</a></li>
-                                                                    <li><a href="#">Sunglasses</a></li>
-                                                                </ul>
-                                                            </div>
+                                                        @endforeach
                                                         </div>
                                                         <div class="mega_bottom fix">
                                                             <div class="mega_thumb">
@@ -331,21 +255,19 @@
                                                             <div class="mega_items">
                                                                 <h3><a href="#">Men's Sale</a></h3>
                                                                 <ul>
-                                                                    <li><a href="#">Clothing</a></li>
-                                                                    <li><a href="#">Shoes</a></li>
-                                                                    <li><a href="#">Hats</a></li>
-                                                                    <li><a href="#">Bags</a></li>
-                                                                    <li><a href="#">Sunglasses</a></li>
+                                                                   <!--hiển thị loại sản phẩm trên thanh menu-->
+                                                                   @foreach ($protype as $protype_item)
+                                                                        <li><a href="/{{$protype_item->id}}">{{$protype_item->type_name}}</a></li>
+                                                                    @endforeach
                                                                 </ul>
                                                             </div>
                                                             <div class="mega_items">
                                                                 <h3><a href="#">Women's Sale</a></h3>
                                                                 <ul>
-                                                                    <li><a href="#">Clothing</a></li>
-                                                                    <li><a href="#">Shoes</a></li>
-                                                                    <li><a href="#">Hats</a></li>
-                                                                    <li><a href="#">Bags</a></li>
-                                                                    <li><a href="#">Sunglasses</a></li>
+                                                                    <!--hiển thị loại sản phẩm trên thanh menu-->
+                                                                    @foreach ($protype as $protype_item)
+                                                                        <li><a href="/{{$protype_item->id}}">{{$protype_item->type_name}}</a></li>
+                                                                    @endforeach
 
                                                                 </ul>
                                                             </div>
@@ -556,92 +478,18 @@
                             <!--sidebar banner end-->
 
                             <!--categorie menu start-->
-                            <div class="sidebar_widget catrgorie mb-35">
-                                <h3>Categories</h3>
-                                <!-- <ul>
-                                    <li>Clothing</li>
-                                    <li>Shoes</li>
-                                    <li>Hats</li>
-                                    <li>Bags</li>
-                                    <li>Sunglasses</li>
-                                </ul> -->
-                                <ul>
-                                    <li class="has-sub"><a href="#"><i class="fa fa-caret-right"></i> Clothing</a>
-                                        <!-- <ul class="categorie_sub">
-                                            <li class="has-sub"><a href="#"><i class="fa fa-caret-right"></i> Accessories</a>
-                                                <ul class="categorie_sub">
-                                                    <li><a href="#"><i class="fa fa-caret-right"></i> Accessories</a></li>
-                                                    <li><a href="#"><i class="fa fa-caret-right"></i> Dresses</a></li>
-                                                    <li><a href="#"><i class="fa fa-caret-right"></i> Tops</a></li>
-                                                    <li><a href="#"><i class="fa fa-caret-right"></i> HandBags</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="#"><i class="fa fa-caret-right"></i> Dresses</a></li>
-                                            <li><a href="#"><i class="fa fa-caret-right"></i> Hat</a></li>
-                                            <li><a href="#"><i class="fa fa-caret-right"></i> HandBags</a></li>
-                                        </ul> -->
-                                    </li>
-                                    <li class="has-sub"><a href="#"><i class="fa fa-caret-right"></i> Shoes</a>
-                                        <!-- <ul class="categorie_sub">
-                                            <li><a href="#"><i class="fa fa-caret-right"></i> Accessories</a>
-                                                <ul class="categorie_sub">
-                                                    <li><a href="#"><i class="fa fa-caret-right"></i> Accessories</a></li>
-                                                    <li><a href="#"><i class="fa fa-caret-right"></i> Dresses</a></li>
-                                                    <li><a href="#"><i class="fa fa-caret-right"></i> Tops</a></li>
-                                                    <li><a href="#"><i class="fa fa-caret-right"></i> HandBags</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="#"><i class="fa fa-caret-right"></i> Dresses</a></li>
-                                            <li><a href="#"><i class="fa fa-caret-right"></i> Tops</a></li>
-                                            <li><a href="#"><i class="fa fa-caret-right"></i> HandBags</a></li>
-                                        </ul> -->
-                                    </li>
-                                    <li class="has-sub"><a href="#"><i class="fa fa-caret-right"></i> Hats</a>
-                                        <!-- <ul class="categorie_sub">
-                                            <li><a href="#"><i class="fa fa-caret-right"></i> Accessories</a>
-                                                <ul class="categorie_sub">
-                                                    <li><a href="#"><i class="fa fa-caret-right"></i> Accessories</a></li>
-                                                    <li><a href="#"><i class="fa fa-caret-right"></i> Dresses</a></li>
-                                                    <li><a href="#"><i class="fa fa-caret-right"></i> Tops</a></li>
-                                                    <li><a href="#"><i class="fa fa-caret-right"></i> HandBags</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="#"><i class="fa fa-caret-right"></i> Dresses</a></li>
-                                            <li><a href="#"><i class="fa fa-caret-right"></i> Tops</a></li>
-                                            <li><a href="#"><i class="fa fa-caret-right"></i> HandBags</a></li>
-                                        </ul> -->
 
+                            <div class="category_item">
+                                <h3>CATEGORIES</h3>
+
+                                <ul>
+
+                                    <!-- hiển thị danh sách loại sản phẩm -->
+                                    @foreach ($protype as $value)
+                                    <li>
+                                        <a href="{{url('productdetail')}}/{{$value->id}}"> {{$value->type_name}}</a>
                                     </li>
-                                    <li class="has-sub"><a href="#"><i class="fa fa-caret-right"></i> Bags</a>
-                                        <!-- <ul class="categorie_sub">
-                                            <li><a href="#"><i class="fa fa-caret-right"></i> Accessories</a>
-                                                <ul class="categorie_sub">
-                                                    <li><a href="#"><i class="fa fa-caret-right"></i> Accessories</a></li>
-                                                    <li><a href="#"><i class="fa fa-caret-right"></i> Dresses</a></li>
-                                                    <li><a href="#"><i class="fa fa-caret-right"></i> Tops</a></li>
-                                                    <li><a href="#"><i class="fa fa-caret-right"></i> HandBags</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="#"><i class="fa fa-caret-right"></i> Dresses</a></li>
-                                            <li><a href="#"><i class="fa fa-caret-right"></i> Tops</a></li>
-                                            <li><a href="#"><i class="fa fa-caret-right"></i> HandBags</a></li>
-                                        </ul> -->
-                                    </li>
-                                    <li class="has-sub"><a href="#"><i class="fa fa-caret-right"></i> Sunglasses</a>
-                                        <!-- <ul class="categorie_sub">
-                                            <li><a href="#"><i class="fa fa-caret-right"></i> Accessories</a>
-                                                <ul class="categorie_sub">
-                                                    <li><a href="#"><i class="fa fa-caret-right"></i> Accessories</a></li>
-                                                    <li><a href="#"><i class="fa fa-caret-right"></i> Dresses</a></li>
-                                                    <li><a href="#"><i class="fa fa-caret-right"></i> Tops</a></li>
-                                                    <li><a href="#"><i class="fa fa-caret-right"></i> HandBags</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="#"><i class="fa fa-caret-right"></i> Dresses</a></li>
-                                            <li><a href="#"><i class="fa fa-caret-right"></i> Tops</a></li>
-                                            <li><a href="#"><i class="fa fa-caret-right"></i> HandBags</a></li>
-                                        </ul> -->
-                                    </li>
+                                    @endforeach
 
                                 </ul>
                             </div>
@@ -772,11 +620,7 @@
                                     <div class="product_active owl-carousel">
 
                                         <!--get product from database-->
-
-
-
-
-                                        @foreach($products as $value)
+                                        @foreach($product as $value)
                                         <div class="col-lg-3">
                                             <div class="single_product">
                                                 <div class="product_thumb">
@@ -806,7 +650,8 @@
                                         </div>
                                         @endforeach
 
-                                        <div class="col-lg-3">
+                                        <!-- sản phẩm mẫu -->
+                                        <!-- <div class="col-lg-3">
                                             <div class="single_product">
                                                 <div class="product_thumb">
                                                     <a href="single-product.html"><img src="assets\img\product\product2.jpg" alt=""></a>
@@ -897,7 +742,7 @@
                                                     </ul>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                             </div>

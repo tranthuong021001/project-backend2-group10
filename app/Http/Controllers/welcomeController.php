@@ -6,9 +6,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 //khai bao model
-use App\Manufacture;
+
 use App\Product;
 use App\Product_Image;
+use App\Protype;
+
+use App\Manufacture;
 
 class WelcomeController extends Controller
 {
@@ -30,26 +33,42 @@ class WelcomeController extends Controller
     }
 
 
+     //get detailt product
+     public function getProductDetail()
+     {
+        // $product = Product::all()->take(10);
+
+         return view('frontend.productdetail');
+     }
     //get all products
-    public function getProductByCategory()
+    public function getProductByProtype()
     {
-        $product = Product::all();
-        return view('frontend.index', ['products' => $product]);
+        $protype = Protype::all();
+        return view('frontend.index', ['protypes' => $protype]);
     }
 
-    //get all products
+    //get all products , manufacture , proytpe of products
     public function getAllProduct()
     {
-        $product = Product::all();
-        return view('frontend.index', ['products' => $product]);
+        $manufacture = Manufacture::all();
+        $protype = Protype::all();
+        $product = Product::all()->take(10);
+
+
+        //return view('frontend.index', ['manufactures' => $manufacture], ['protypes' => $protype], ['products' => $product]);
+        return view('frontend.index', compact('manufacture', 'protype', 'product'));
     }
 
     //lấy sản phẩm kết với bảng product_image( chưa xong)
     public function getAllProductHome()
     {
+        //hiển thị sản phẩm
         $product = Product::all();
         $Product_Image = Product_Image::all();
-        return view('frontend.index', ['products' => $product], ['Product_Image' => $Product_Image]);
+        //hiển thị loại sản phẩm
+        $protype = Protype::all();
+
+        return view('frontend.index', ['products' => $product], ['Product_Image' => $Product_Image], ['Protypes' => $protype]);
     }
 
     public function getAllManufactures()
