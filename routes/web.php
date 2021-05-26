@@ -1,5 +1,6 @@
 <?php
 
+use Doctrine\DBAL\Driver\Middleware;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,9 +17,22 @@ use Illuminate\Support\Facades\Auth;
 //
 Auth::routes();
 
+
+   // Route::match(['get','post'],'/admin',['as' =>'/admin','user' => 'welcomecontroller@getIndexAdmin']);
+//Route::get('/admin', 'welcomecontroller@getIndexAdmin');
+ 
 Route::get('/home', 'HomeController@getAllProductHome')->name('home');
+//product admin
+//Route::get('/addproduct', 'welcomecontroller@getIndexAddProduct');
+Route::get('/admin', 'WelcomeController@getIndexAdmin')->middleware('auth');
+Route::get('/allproducts', 'WelcomeController@getAllProductsAdmin')->middleware('auth');
+Route::get('/admin/addproduct', 'welcomecontroller@getIndexAddProduct');
+Route::post('/admin/saveproduct', 'welcomecontroller@getSaveProduct');
 
 
+
+
+//Route::match(['get','post'],'/admin/addproduct',['as' =>'/admin/addproduct','user' => 'welcomecontroller@getIndexAddProduct'])->middleware('auth') ;
 //route động có tham số dùng để chuyển đến trang Account
 Route::get('/{para}', 'HomeController@index')->name('home');
 
@@ -40,6 +54,7 @@ Route::get('/manu', 'welcomecontroller@getAllManufactures');
 
 //route động có tham số dùng để gắn các liên kết trang
 Route::get('/{page}', 'welcomecontroller@page' );
+
 
 
 

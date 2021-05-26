@@ -27,11 +27,18 @@ class HomeController extends Controller
     {
         return view('frontend.home');
     }
+   
     public function getAllProductHome(){
         $product = Product::all();
         $Product_Image = Product_Image::all();
         return view('frontend.index', ['products'=>$product] , ['Product_Image'=>$Product_Image]);
     }
+    public function getAdmin(){
+        $product = Product::all();
+        $Product_Image = Product_Image::all();
+        return view('frontend.index', ['products'=>$product] , ['Product_Image'=>$Product_Image]);
+    }
+
 
     public function Acount($para){
         return view('layouts/'.$para);

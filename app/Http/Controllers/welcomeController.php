@@ -9,6 +9,10 @@ use Illuminate\Http\Request;
 use App\Manufacture;
 use App\Product;
 use App\Product_Image;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
 
 class WelcomeController extends Controller
 {
@@ -62,6 +66,68 @@ class WelcomeController extends Controller
     {
         $Product_Image = Product_Image::all();
         return view('frontend.index', ['Product_Image' => $Product_Image]);
+    }
+    public function getIndexAdmin()
+    {
+        if (Auth::check()) {
+         return view('admin.layouts.index');
+        }
+      
+    }
+    public function getAllProductsAdmin()
+    {
+       
+        $query = DB::table("products");
+        $query = $query->orderBy("id","Desc");
+        $query = $query->select("*");
+        $data = $query->paginate(15);
+
+         return view('admin.layouts.AllProducts', $data);
+        
+      
+    }
+    public function getIndexAddProduct(Request $request)
+    {
+        $manu =  DB::table("manufactures")->orderBy("id","desc")->get();
+        $type =  DB::table("protypes")->orderBy("id","desc")->get();
+        $gender =  DB::table("genders")->orderBy("id","desc")->get();
+        
+        // $type =  DB::table("protypes");
+        // $type = $type->select("*");
+        // $datamanu = $manu->paginate(30);
+        // $datatype = $type->paginate(30);
+      
+
+             return view('admin.layouts.addProduct')-> with('manu',$manu)->with('type',$type)->with('gender',$gender);
+    }
+    public function getSaveProduct(Request $request)
+    {
+       $data = array();
+       $data['name'] = $request->name;
+       $data['price'] = $request->price;
+       $data['type_id'] = $request->type;
+       $data['manu_id'] = $request->manu;
+       $data['description'] = $request->description;
+       $data['sale'] = $request->sale;
+       $data['size'] = $request->size;
+       $data['gender'] = $request->gender;
+       
+       $get_image =$request->file('product_image');
+       
+       if($get_image){
+           $get_name = $get_image->getClientOriginalName();
+           $name_image = current(explode('.',$get_name));
+           $new_image = $name_image.rand(0,99).'.'.$get_image->getClientOriginalExtension();
+           $get_image->move('public/assets/img/product',$new_image);
+           $data['image'] = $new_image;
+        DB::table('products')->insert($data);
+        Session::put('message','Thêm sản phẩm thành công');
+        return Redirect::to('/allproducts');   
+       }
+       $data['image'] = '';
+       DB::table('products')->insert($data);
+       Session::put('message','Thêm sản phẩm thành công');
+      return Redirect::to('/allproducts');
     }
 
 
