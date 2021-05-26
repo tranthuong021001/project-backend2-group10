@@ -22,7 +22,7 @@ Auth::routes();
 //route động có tham số dùng để chuyển đến trang Account
 //Route::get('/{para}', 'HomeController@index')->name('home');
 
-
+Route::get('/productbymanufacture', 'welcomecontroller@ViewProductByManufacture');
 Route::get('/', 'welcomecontroller@getAllProduct');
 
 //route động có tham số dùng để chuyển đến trang chi tiết sản phẩm

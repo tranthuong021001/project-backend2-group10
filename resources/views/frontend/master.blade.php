@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="assets\css\bundle.css">
     <link rel="stylesheet" href="assets\css\style.css">
     <link rel="stylesheet" href="assets\css\responsive.css">
+    <link rel="stylesheet" href="assets\css\mystyle.css">
     <script src="assets\js\vendor\modernizr-2.8.3.min.js"></script>
 </head>
 
@@ -58,7 +59,9 @@
                                         <li><a href="wishlist.html" title="wishlist">My wishlist</a></li>
                                         <li><a href="my-account.html" title="My account">My account</a></li>
                                         <li><a href="cart.html" title="My cart">My cart</a></li>
-                                        <li><a href="login.html" title="Login">Login</a></li>
+                                        <li><a href="{{ url('/home') }}" title="Login">Login</a></li>
+                                        <!--Logout-->
+                                        <li> <a class="" href="{{ url('/app')}}">Login & logout</a> </li>
                                     </ul>
                                 </div>
                             </div>
@@ -142,44 +145,71 @@
                                     <div class="main_menu d-none d-lg-block">
                                         <nav>
                                             <ul>
+                                                <!-- Item HOME -->
                                                 <li class="active"><a href="{{ url('/index') }}">Home</a>
-                                                    <div class="mega_menu jewelry">
+                                                    <!-- <div class="mega_menu jewelry">
                                                         <div class="mega_items jewelry">
                                                             <ul>
                                                                 <li><a href="{{ url('/index') }}">Home 1</a></li>
                                                                 <li><a href="{{ url('/master') }}">Home 2</a></li>
                                                             </ul>
                                                         </div>
-                                                    </div>
+                                                    </div> -->
                                                 </li>
 
-                                                <li><a href="#">women</a>
+                                                <!-- Item SHOP -->
+                                                <!-- <li><a href="{{ url('/shop') }}">Shop</a>
+
+                                                                <div class="mega_menu jewelry">
+                                                                    <div class="mega_items jewelry">
+                                                                        <ul>
+                                                                            <li><a href="shop-list.html">shop list</a></li>
+                                                                            <li><a href="shop-fullwidth.html">shop Full Width Grid</a></li>
+
+                                                                            <div class="mega_items">
+                                                                            <h3><a href="#">Men's Sale</a></h3>
+                                                                            <ul>
+                                                                                <li><a href="#">Clothing</a></li>
+                                                                                <li><a href="#">Shoes</a></li>
+                                                                                <li><a href="#">Hats</a></li>
+                                                                                <li><a href="#">Bags</a></li>
+                                                                                <li><a href="#">Sunglasses</a></li>
+                                                                            </ul>
+                                                                        </div>
+                                                                        <div class="mega_items">
+                                                                            <h3><a href="#">Women's Sale</a></h3>
+                                                                            <ul>
+                                                                                <li><a href="#">Clothing</a></li>
+                                                                                <li><a href="#">Shoes</a></li>
+                                                                                <li><a href="#">Hats</a></li>
+                                                                                <li><a href="#">Bags</a></li>
+                                                                                <li><a href="#">Sunglasses</a></li>
+                                                                            </ul>
+                                                                        </div>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </li> -->
+
+                                                <!-- Item WOMEN -->
+                                                <li><a href="#">Women</a>
                                                     <div class="mega_menu">
                                                         <div class="mega_top fix">
-                                                            <div class="mega_items">
-                                                                <h3><a href="#">Accessories</a></h3>
-                                                                <ul>
-                                                                    <li><a href="#">Cocktai</a></li>
-                                                                    <li><a href="#">day</a></li>
 
+                                                        <!--hiển thị hãng sản xuất trên thanh menu-->
+                                                        @foreach($manufacture as $value)
+                                                            <div class="mega_items">
+                                                                <h3><a href="/{{$value->id}}">{{$value->manu_name}}</a></h3>
+                                                                <ul>
+                                                                <!--hiển thị loại sản phẩm trên thanh menu-->
+                                                                    @foreach ($protype as $protype_item)
+                                                                        <li><a href="/{{$protype_item->id}}">{{$protype_item->type_name}}</a></li>
+                                                                    @endforeach
                                                                 </ul>
                                                             </div>
-                                                            <div class="mega_items">
-                                                                <h3><a href="#">HandBags</a></h3>
-                                                                <ul>
-                                                                    <li><a href="#">Accessories</a></li>
-                                                                    <li><a href="#">Hats and Gloves</a></li>
+                                                        @endforeach
 
-                                                                </ul>
-                                                            </div>
-                                                            <div class="mega_items">
-                                                                <h3><a href="#">Tops</a></h3>
-                                                                <ul>
-                                                                    <li><a href="#">Evening</a></li>
-                                                                    <li><a href="#">Long Sleeved</a></li>
 
-                                                                </ul>
-                                                            </div>
                                                         </div>
                                                         <div class="mega_bottom fix">
                                                             <div class="mega_thumb">
@@ -191,48 +221,78 @@
                                                         </div>
                                                     </div>
                                                 </li>
-                                                <li><a href="#">men</a>
+                                                <!-- Item MEN -->
+                                                <li><a href="#">Men</a>
+                                                    <div class="mega_menu">
+                                                        <div class="mega_top fix">
+                                                             <!--hiển thị hãng sản xuất trên thanh menu-->
+                                                        @foreach($manufacture as $value)
+                                                            <div class="mega_items">
+                                                                <h3><a href="/{{$value->id}}">{{$value->manu_name}}</a></h3>
+                                                                <ul>
+                                                                <!--hiển thị loại sản phẩm trên thanh menu-->
+                                                                    @foreach ($protype as $protype_item)
+                                                                        <li><a href="/{{$protype_item->id}}">{{$protype_item->type_name}}</a></li>
+                                                                    @endforeach
+                                                                </ul>
+                                                            </div>
+                                                        @endforeach
+                                                        </div>
+                                                        <div class="mega_bottom fix">
+                                                            <div class="mega_thumb">
+                                                                <a href="#"><img src="assets\img\banner\banner1.jpg" alt=""></a>
+                                                            </div>
+                                                            <div class="mega_thumb">
+                                                                <a href="#"><img src="assets\img\banner\banner2.jpg" alt=""></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <!-- item SALE -->
+                                                <li><a href="#">Sale</a>
                                                     <div class="mega_menu">
                                                         <div class="mega_top fix">
                                                             <div class="mega_items">
-                                                                <h3><a href="#">Rings</a></h3>
+                                                                <h3><a href="#">Men's Sale</a></h3>
                                                                 <ul>
-                                                                    <li><a href="#">Platinum Rings</a></li>
-                                                                    <li><a href="#">Gold Ring</a></li>
-
+                                                                   <!--hiển thị loại sản phẩm trên thanh menu-->
+                                                                   @foreach ($protype as $protype_item)
+                                                                        <li><a href="/{{$protype_item->id}}">{{$protype_item->type_name}}</a></li>
+                                                                    @endforeach
                                                                 </ul>
                                                             </div>
                                                             <div class="mega_items">
-                                                                <h3><a href="#">Bands</a></h3>
+                                                                <h3><a href="#">Women's Sale</a></h3>
                                                                 <ul>
-                                                                    <li><a href="#">Platinum Bands</a></li>
-                                                                    <li><a href="#">Gold Bands</a></li>
+                                                                    <!--hiển thị loại sản phẩm trên thanh menu-->
+                                                                    @foreach ($protype as $protype_item)
+                                                                        <li><a href="/{{$protype_item->id}}">{{$protype_item->type_name}}</a></li>
+                                                                    @endforeach
 
                                                                 </ul>
                                                             </div>
-                                                            <div class="mega_items">
-                                                                <a href="#"><img src="assets\img\banner\banner3.jpg" alt=""></a>
+
+                                                        </div>
+                                                        <div class="mega_bottom fix">
+                                                            <div class="mega_thumb">
+                                                                <a href="#"><img src="assets\img\banner\banner1.jpg" alt=""></a>
+                                                            </div>
+                                                            <div class="mega_thumb">
+                                                                <a href="#"><img src="assets\img\banner\banner2.jpg" alt=""></a>
                                                             </div>
                                                         </div>
+                                                    </div>
+                                                </li>
 
-                                                    </div>
-                                                </li>
-                                                <li><a href="{{ url('/shop') }}">Shoes</a>
-                                                    <div class="mega_menu jewelry">
-                                                        <div class="mega_items jewelry">
-                                                            <ul>
-                                                                <li><a href="{{ url('/shop-list')}}">Nike</a></li>
-                                                                <li><a href="{{ url('/shop-fullwidth')}}">Adidas</a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </li>
+                                                <!-- Item CONTACT US -->
                                                 <li><a href="contact.html">contact us</a></li>
 
                                             </ul>
                                         </nav>
                                     </div>
 
+
+                                    <!-- giao diện cho mobile -->
                                     <div class="mobile-menu d-lg-none">
                                         <nav>
                                             <ul>
@@ -251,14 +311,14 @@
                                                         <div>
                                                             <ul>
                                                                 <li><a href="shop-list.html">shop list</a></li>
-                                                                <!-- <li><a href="shop-fullwidth.html">shop Full Width Grid</a></li> -->
-                                                                <!-- <li><a href="shop-fullwidth-list.html">shop Full Width list</a></li>
+                                                                <li><a href="shop-fullwidth.html">shop Full Width Grid</a></li>
+                                                                <li><a href="shop-fullwidth-list.html">shop Full Width list</a></li>
                                                                 <li><a href="shop-sidebar.html">shop Right Sidebar</a></li>
                                                                 <li><a href="shop-sidebar-list.html">shop list Right Sidebar</a></li>
                                                                 <li><a href="single-product.html">Product Details</a></li>
                                                                 <li><a href="single-product-sidebar.html">Product sidebar</a></li>
                                                                 <li><a href="single-product-video.html">Product Details video</a></li>
-                                                                <li><a href="single-product-gallery.html">Product Details Gallery</a></li> -->
+                                                                <li><a href="single-product-gallery.html">Product Details Gallery</a></li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -379,7 +439,7 @@
                                                     </div>
                                                 </li>
 
-                                                <li><a href="{{url('/blog')}}">blog</a>
+                                                <li><a href="blog.html">blog</a>
                                                     <div>
                                                         <div>
                                                             <ul>
@@ -403,379 +463,11 @@
                 <!--header end -->
 
                 <!--pos home section-->
-                <div class="pos_home_section">
-                    <div class="row">
-                        <!--banner slider start-->
-                        <div class="col-12">
-                            <div class="banner_slider slider_two">
-                                <div class="slider_active owl-carousel">
-                                    <div class="single_slider" style="background-image: url(assets/img/slider/slider_2.png)">
-                                        <div class="slider_content">
-                                            <div class="slider_content_inner">
-                                                <h1>fashion for you</h1>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. <br> Cumque eligendi quia, ratione porro, nemo non.</p>
-                                                <a href="#">shop now</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="single_slider" style="background-image: url(assets/img/slider/slide_4.png)">
-                                        <div class="slider_content">
-                                            <div class="slider_content_inner">
-                                                <h1>fashion for you</h1>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. <br> Cumque eligendi quia, ratione porro, nemo non.</p>
-                                                <a href="#">shop now</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="single_slider" style="background-image: url(assets/img/slider/slider_3.png)">
-                                        <div class="slider_content">
-                                            <div class="slider_content_inner">
-                                                <h1>fashion for you</h1>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. <br> Cumque eligendi quia, ratione porro, nemo non.</p>
-                                                <a href="#">shop now</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--banner slider start-->
-                        </div>
-                    </div>
-                    <!--new product area start-->
-                    @yield('newProduct')
-                    <!--new product area start-->
-
-                    <!--banner area start-->
-                    <div class="banner_area banner_two">
-                        <div class="row">
-                            <div class="col-lg-4 col-md-6">
-                                <div class="single_banner">
-                                    <a href="#"><img src="assets\img\banner\banner7.jpg" alt=""></a>
-                                    <div class="banner_title">
-                                        <p>Up to <span> 40%</span> off</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6">
-                                <div class="single_banner">
-                                    <a href="#"><img src="assets\img\banner\banner8.jpg" alt=""></a>
-                                    <div class="banner_title title_2">
-                                        <p>sale off <span> 30%</span></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6">
-                                <div class="single_banner">
-                                    <a href="#"><img src="assets\img\banner\banner11.jpg" alt=""></a>
-                                    <div class="banner_title title_3">
-                                        <p>sale off <span> 30%</span></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--banner area end-->
-
-                    <!--featured product area start-->
-                    <div class="new_product_area product_two">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="block_title">
-                                    <h3> featured Products</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="single_p_active owl-carousel">
-                            <!--demo show products -->
-                            @foreach($products as $value)
-                                <div class="col-lg-3">
-
-                                    <div class="single_product">
-                                        <div class="product_thumb">
-                                            <a href="single-product.html"><img src="assets\img\product\{{ $value['image']}}" alt=""></a>
-                                            <div class="img_icone">
-                                                <img src="assets\img\cart\span-new.png" alt="">
-                                            </div>
-                                            <div class="product_action">
-                                                <a href="#"> <i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                            </div>
-                                        </div>
-                                        <div class="product_content">
-                                            <span class="product_price">${{ $value['price']}}</span>
-                                            <h3 class="product_title"><a href="single-product.html">
-                                            {{ $value['name']}}
-                                                </a></h3>
-                                        </div>
-                                        <div class="product_info">
-                                            <ul>
-                                                <li><a href="#" title=" Add to Wishlist ">Add to Wishlist</a></li>
-                                                <li><a href="#" data-toggle="modal" data-target="#modal_box" title="Quick view">View Detail</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-
-
-
-
-                                    <!-- <div class="single_product">
-                                                <div class="product_thumb">
-                                                   <a href="single-product.html"><img src="assets\img\product\product7.jpg" alt=""></a>
-                                                   <div class="img_icone">
-                                                       <img src="assets\img\cart\span-new.png" alt="">
-                                                   </div>
-                                                   <div class="product_action">
-                                                       <a href="#"> <i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                                   </div>
-                                                </div>
-                                                <div class="product_content">
-                                                    <span class="product_price">$50.00</span>
-                                                    <h3 class="product_title"><a href="single-product.html">Curabitur sodales</a></h3>
-                                                </div>
-                                                <div class="product_info">
-                                                    <ul>
-                                                        <li><a href="#" title=" Add to Wishlist ">Add to Wishlist</a></li>
-                                                        <li><a href="#" data-toggle="modal" data-target="#modal_box" title="Quick view">View Detail</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div> -->
-                                </div>
-                                @endforeach
-                                <div class="col-lg-3">
-                                    <div class="single_product">
-                                        <div class="product_thumb">
-                                            <a href="single-product.html"><img src="assets\img\product\product8.jpg" alt=""></a>
-                                            <div class="hot_img">
-                                                <img src="assets\img\cart\span-hot.png" alt="">
-                                            </div>
-                                            <div class="product_action">
-                                                <a href="#"> <i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                            </div>
-                                        </div>
-                                        <div class="product_content">
-                                            <span class="product_price">$40.00</span>
-                                            <h3 class="product_title"><a href="single-product.html">Quisque ornare dui</a></h3>
-                                        </div>
-                                        <div class="product_info">
-                                            <ul>
-                                                <li><a href="#" title=" Add to Wishlist ">Add to Wishlist</a></li>
-                                                <li><a href="#" data-toggle="modal" data-target="#modal_box" title="Quick view">View Detail</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="single_product">
-                                        <div class="product_thumb">
-                                            <a href="single-product.html"><img src="assets\img\product\product9.jpg" alt=""></a>
-                                            <div class="img_icone">
-                                                <img src="assets\img\cart\span-new.png" alt="">
-                                            </div>
-                                            <div class="product_action">
-                                                <a href="#"> <i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                            </div>
-                                        </div>
-                                        <div class="product_content">
-                                            <span class="product_price">$60.00</span>
-                                            <h3 class="product_title"><a href="single-product.html">Sed non turpiss</a></h3>
-                                        </div>
-                                        <div class="product_info">
-                                            <ul>
-                                                <li><a href="#" title=" Add to Wishlist ">Add to Wishlist</a></li>
-                                                <li><a href="#" data-toggle="modal" data-target="#modal_box" title="Quick view">View Detail</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="single_product">
-                                        <div class="product_thumb">
-                                            <a href="single-product.html"><img src="assets\img\product\product3.jpg" alt=""></a>
-                                            <div class="hot_img">
-                                                <img src="assets\img\cart\span-hot.png" alt="">
-                                            </div>
-                                            <div class="product_action">
-                                                <a href="#"> <i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                            </div>
-                                        </div>
-                                        <div class="product_content">
-                                            <span class="product_price">$65.00</span>
-                                            <h3 class="product_title"><a href="single-product.html">Duis convallis</a></h3>
-                                        </div>
-                                        <div class="product_info">
-                                            <ul>
-                                                <li><a href="#" title=" Add to Wishlist ">Add to Wishlist</a></li>
-                                                <li><a href="#" data-toggle="modal" data-target="#modal_box" title="Quick view">View Detail</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="single_product">
-                                        <div class="product_thumb">
-                                            <a href="single-product.html"><img src="assets\img\product\product2.jpg" alt=""></a>
-                                            <div class="img_icone">
-                                                <img src="assets\img\cart\span-new.png" alt="">
-                                            </div>
-                                            <div class="product_action">
-                                                <a href="#"> <i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                            </div>
-                                        </div>
-                                        <div class="product_content">
-                                            <span class="product_price">$50.00</span>
-                                            <h3 class="product_title"><a href="single-product.html">Curabitur sodales</a></h3>
-                                        </div>
-                                        <div class="product_info">
-                                            <ul>
-                                                <li><a href="#" title=" Add to Wishlist ">Add to Wishlist</a></li>
-                                                <li><a href="#" data-toggle="modal" data-target="#modal_box" title="Quick view">View Detail</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--featured product area start-->
-
-                    <!--blog area start-->
-                    <div class="blog_area blog_two">
-                        <div class="row">
-                            <div class="col-lg-4 col-md-6">
-                                <div class="single_blog">
-                                    <div class="blog_thumb">
-                                        <a href="blog-details.html"><img src="assets\img\blog\blog3.jpg" alt=""></a>
-                                    </div>
-                                    <div class="blog_content">
-                                        <div class="blog_post">
-                                            <ul>
-                                                <li>
-                                                    <a href="#">Tech</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <h3><a href="blog-details.html">When an unknown took a galley of type.</a></h3>
-                                        <p>Distinctively simplify dynamic resources whereas prospective core competencies. Objectively pursue multidisciplinary human capital for interoperable.</p>
-                                        <div class="post_footer">
-                                            <div class="post_meta">
-                                                <ul>
-                                                    <li>Jun 20, 2018</li>
-                                                    <li>3 Comments</li>
-                                                </ul>
-                                            </div>
-                                            <div class="Read_more">
-                                                <a href="blog-details.html">Read more <i class="fa fa-angle-double-right"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6">
-                                <div class="single_blog">
-                                    <div class="blog_thumb">
-                                        <a href="blog-details.html"><img src="assets\img\blog\blog4.jpg" alt=""></a>
-                                    </div>
-                                    <div class="blog_content">
-                                        <div class="blog_post">
-                                            <ul>
-                                                <li>
-                                                    <a href="#">Men</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <h3><a href="blog-details.html">When an unknown took a galley of type.</a></h3>
-                                        <p>Distinctively simplify dynamic resources whereas prospective core competencies. Objectively pursue multidisciplinary human capital for interoperable.</p>
-                                        <div class="post_footer">
-                                            <div class="post_meta">
-                                                <ul>
-                                                    <li>Jun 20, 2018</li>
-                                                    <li>3 Comments</li>
-                                                </ul>
-                                            </div>
-                                            <div class="Read_more">
-                                                <a href="blog-details.html">Read more <i class="fa fa-angle-double-right"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6">
-                                <div class="single_blog">
-                                    <div class="blog_thumb">
-                                        <a href="blog-details.html"><img src="assets\img\blog\blog1.jpg" alt=""></a>
-                                    </div>
-                                    <div class="blog_content">
-                                        <div class="blog_post">
-                                            <ul>
-                                                <li>
-                                                    <a href="#">Women</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <h3><a href="blog-details.html">When an unknown took a galley of type.</a></h3>
-                                        <p>Distinctively simplify dynamic resources whereas prospective core competencies. Objectively pursue multidisciplinary human capital for interoperable.</p>
-                                        <div class="post_footer">
-                                            <div class="post_meta">
-                                                <ul>
-                                                    <li>Jun 20, 2018</li>
-                                                    <li>3 Comments</li>
-                                                </ul>
-                                            </div>
-                                            <div class="Read_more">
-                                                <a href="blog-details.html">Read more <i class="fa fa-angle-double-right"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <!--blog area end-->
-
-                    <!--brand logo strat-->
-                    <div class="brand_logo brand_two">
-                        <div class="block_title">
-                            <h3>Brands</h3>
-                        </div>
-                        <div class="row">
-                            <div class="brand_active owl-carousel">
-                                <div class="col-lg-2">
-                                    <div class="single_brand">
-                                        <a href="#"><img src="assets\img\brand\brand1.jpg" alt=""></a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-2">
-                                    <div class="single_brand">
-                                        <a href="#"><img src="assets\img\brand\brand2.jpg" alt=""></a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-2">
-                                    <div class="single_brand">
-                                        <a href="#"><img src="assets\img\brand\brand3.jpg" alt=""></a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-2">
-                                    <div class="single_brand">
-                                        <a href="#"><img src="assets\img\brand\brand4.jpg" alt=""></a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-2">
-                                    <div class="single_brand">
-                                        <a href="#"><img src="assets\img\brand\brand5.jpg" alt=""></a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-2">
-                                    <div class="single_brand">
-                                        <a href="#"><img src="assets\img\brand\brand6.jpg" alt=""></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--brand logo end-->
-                </div>
+                @yield('content')
                 <!--pos home section end-->
+
+
+
             </div>
             <!--pos page inner end-->
         </div>

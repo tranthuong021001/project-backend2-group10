@@ -32,7 +32,13 @@ class WelcomeController extends Controller
         return view('frontend/' . $page);
     }
 
+//get detailt product
+public function ViewProductByManufacture()
+{
+   // $product = Product::all()->take(10);
 
+    return view('frontend.productbymanufacture');
+}
      //get detailt product
      public function getProductDetail()
      {
@@ -50,13 +56,11 @@ class WelcomeController extends Controller
     //get all products , manufacture , proytpe of products
     public function getAllProduct()
     {
-        $manufacture = Manufacture::all();
-        $protype = Protype::all();
-        $product = Product::all()->take(10);
+        
 
 
         //return view('frontend.index', ['manufactures' => $manufacture], ['protypes' => $protype], ['products' => $product]);
-        return view('frontend.index', compact('manufacture', 'protype', 'product'));
+        return view('frontend.index');
     }
 
     //lấy sản phẩm kết với bảng product_image( chưa xong)
