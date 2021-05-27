@@ -77,12 +77,16 @@ class WelcomeController extends Controller
     public function getAllProductsAdmin()
     {
        
-        $query = DB::table("products");
-        $query = $query->orderBy("id","Desc");
-        $query = $query->select("*");
-        $data = $query->paginate(15);
+      $all_product = DB::table("products")
+         ->join('protypes','protypes.id','=','products.type_id')
+         ->join('manufactures','manufactures.id','=','products.manu_id')
+         ;
+        $all_product = $all_product->orderBy("products.id","Desc");
+        $all_product = $all_product->select("*");
+        $all_product = $all_product->paginate(15);
+        return view('admin.layouts.AllProducts')->with('allproducts',$all_product);
 
-         return view('admin.layouts.AllProducts', $data);
+        // return view('admin.layouts.AllProducts')->with('admin.layouts.AllProducts',$manager_product);;
         
       
     }
@@ -129,7 +133,19 @@ class WelcomeController extends Controller
        Session::put('message','Thêm sản phẩm thành công');
       return Redirect::to('/allproducts');
     }
+    public function EditProduct($id)
+    {
+        
+        $manu =  DB::table("manufactures")->orderBy("id","desc")->get();
+        $type =  DB::table("protypes")->orderBy("id","desc")->get();
+        $gender =  DB::table("genders")->orderBy("id","desc")->get();
+        $edit_product =  DB::table("products")->where('id',$id)->get();
+       // $manager_product = view('admin.layouts.editProduct')->with('editproduct',$edit_product);
+       
+      
 
+       return view('admin.layouts.addProduct')->with('editproduct',$edit_product)->with('manu',$manu)->with('type',$type)->with('gender',$gender);
+    }
 
     // public function getOneProduct(){
     //     $product = Product::find(1);

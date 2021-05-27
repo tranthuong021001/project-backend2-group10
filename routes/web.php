@@ -28,6 +28,7 @@ Route::get('/admin', 'WelcomeController@getIndexAdmin')->middleware('auth');
 Route::get('/allproducts', 'WelcomeController@getAllProductsAdmin')->middleware('auth');
 Route::get('/admin/addproduct', 'welcomecontroller@getIndexAddProduct');
 Route::post('/admin/saveproduct', 'welcomecontroller@getSaveProduct');
+Route::get('/admin/editproduct/{id}', 'welcomecontroller@EditProduct');
 
 
 

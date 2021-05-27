@@ -89,6 +89,7 @@
                       <thead>
                         <tr>
                         <th>Image</th>
+                        <th>id</th>
                           <th>Name</th>
                           <th>Price</th>
                           <th>Type_id</th>
@@ -106,23 +107,24 @@
 
 
                       <tbody>
-                          @foreach($data as $row)
+                          @foreach($allproducts as $pro )
                         <tr>
-                          <td><img src="public/assets/img/product/{{$row->image}}" height="100" width="100" alt=""></td>
-                          <td>{{$row->name}}</td>
-                          <td>{{$row->price}}</td>
-                          <td>{{$row->type_id}}</td>
-                          <td>{{$row->manu_id}}</td>
-                          <td>{{$row->description}}</td>
-                          <td>{{$row->sale}}</td>
-                          <td>{{$row->size}}</td>
-                          <td>{{$row->gender}}</td>
-                          <td>{{$row->created_at}}</td>
-                          <td>{{$row->updated_at}}</td>
+                          <td><img src="public/assets/img/product/{{$pro->image}}" height="100" width="100" alt=""></td>
+                          <td>{{$pro->id}}</td>
+                          <td>{{$pro->name}}</td>
+                          <td>{{$pro->price}}</td>
+                          <td>{{$pro->type_name}}</td>
+                          <td>{{$pro->manu_name}}</td>
+                          <td>{{$pro->description}}</td>
+                          <td>{{$pro->sale}}</td>
+                          <td>{{$pro->size}}</td>
+                          <td>{{$pro->gender}}</td>
+                          <td>{{$pro->created_at}}</td>
+                          <td>{{$pro->updated_at}}</td>
                           <td >
-                          <div class="fa-hover col-md-3 col-sm-4  "><a href=""><i class="fa fa-wrench"></i></a>
+                          <div class="fa-hover col-md-3 col-sm-4  "><a href="{{URL::to('/admin/editproduct/'.$pro->id)}}"><i class="fa fa-wrench"></i></a>
                             
-                              <div class="fa-hover col-md-3 col-sm-4  "><a href=""><i class="fa fa-trash"></i></a>
+                              <div class="fa-hover col-md-3 col-sm-4  "><a href="{{URL::to('/admin/editproduct/'.$pro->id)}}"><i class="fa fa-trash"></i></a>
                         </div>
                          
                         </td>
