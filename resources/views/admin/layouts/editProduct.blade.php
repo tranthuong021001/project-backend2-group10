@@ -11,25 +11,26 @@
     <title>Gentelella Alela! | </title>
 
     <!-- Bootstrap -->
-    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url('../vendors/bootstrap/dist/css/bootstrap.min.css')}}" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="{{ url('../vendors/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
     <!-- NProgress -->
-    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <link href="{{ url('../vendors/nprogress/nprogress.css')}}" rel="stylesheet">
 
     <!-- Custom Theme Style -->
-    <link href="../build/css/custom.min.css" rel="stylesheet">
+    <link href="{{ url('../build/css/custom.min.css')}}" rel="stylesheet">
 </head>
 
 <body class="nav-md">
-    
 
-            <!-- page content -->
-            <div class="right_col" role="main">
+</body>
+@include('admin.partial.header')
+        <!-- page content -->
+        <div class="right_col" role="main">
                 <div class="">
                     <div class="page-title">
                         <div class="title_left">
-                            <h3>Thêm sản phẩm</h3>
+                            <h3>Cập nhập sản phẩm</h3>
                         </div>
 
                         <div class="title_right">
@@ -49,7 +50,7 @@
                         <div class="col-md-12 col-sm-12">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2>Thêm sản phẩm  <small>sub title</small></h2>
+                                    <h2>Cập nhập sản phẩm  <small>sub title</small></h2>
                                     <ul class="nav navbar-right panel_toolbox">
                                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                         </li>
@@ -66,29 +67,35 @@
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
-                                    <form class="" action="{{URL::to('/admin/saveproduct')}}" method="post" enctype="multipart/form-data">
+                                @foreach($editproduct as $pro)
+                                    <form class="" action="{{URL::to('/admin/updateproduct/'.$pro->id)}}" method="post" enctype="multipart/form-data">
                                     @csrf
                                     <meta name="csrf-token" content="{{ csrf_token() }}">
                                         <p>For alternative validation library <code>parsleyJS</code> check out in the <a href="form.html">form page</a>
                                         </p>
                                         <span class="section">Thông tin sẩn phẩm</span>
+                                      
                                         <div class="field item form-group">
                                             <label class="col-form-label col-md-3 col-sm-3  label-align">Name<span class="required">*</span></label>
                                             <div class="col-md-6 col-sm-6">
-                                                <input class="form-control" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Giày ...." required="required" />
+                                                <input class="form-control" value="{{$pro->name}}" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Giày ...." required="required" />
                                             </div>
                                         </div>
                                         <div class="field item form-group">
                                             <label class="col-form-label col-md-3 col-sm-3  label-align">price<span class="required">*</span></label>
                                             <div class="col-md-6 col-sm-6">
-                                                <input class="form-control" class='price' name="price"  type="text" /></div>
+                                                <input class="form-control" class='price' name="price"  type="text" value="{{$pro->price}}" /></div>
                                         </div>
                                         <div class="field item form-group">
                                             <label class="col-form-label col-md-3 col-sm-3  label-align">Type name<span class="required">*</span></label>
                                             <div class="col-md-6 col-sm-6">
                                             <select class="form-control" name="type" id="cate">
                                                 @foreach($type as $data)
+                                                @if($data->id == $pro->type_id)
+                                            <option selected value="{{$data->id}}">{{$data->type_name}}</option>
+                                            @else
                                             <option value="{{$data->id}}">{{$data->type_name}}</option>
+                                            @endif
                                            @endforeach
                                             </select> *
                                         </div>
@@ -98,7 +105,11 @@
                                             <div class="col-md-6 col-sm-6">
                                             <select class="form-control" name="manu" id="cate">
                                             @foreach($manu as $data)
-                                            <option value="{{$data->id}}">{{$data->manu_name}}</option>
+                                            @if($data->id == $pro->manu_id)
+                                            <option selected value="{{$data->id}}">{{$data->manu_name}}</option>
+                                            @else
+                                            <option  value="{{$data->id}}">{{$data->manu_name}}</option>
+                                            @endif
                                            @endforeach
                                            
                                             </select> *
@@ -107,18 +118,18 @@
                                         <div class="field item form-group">
                                             <label class="col-form-label col-md-3 col-sm-3  label-align">Description <span class="required">*</span></label>
                                             <div class="col-md-6 col-sm-6">
-                                                <textarea style="resize: none;" class="form-control" type="text" class='description' name="description"  required='required'> </textarea>
+                                                <textarea style="resize: none;" class="form-control" type="text" class='description' name="description"  required='required'>{{$pro->description}} </textarea>
                                             </div>
                                         </div>
                                         <div class="field item form-group">
                                             <label class="col-form-label col-md-3 col-sm-3  label-align">Sale<span class="required">*</span></label>
                                             <div class="col-md-6 col-sm-6">
-                                                <input class="form-control" class='sale'  name="sale" ></div>
+                                                <input class="form-control" class='sale'  name="sale" value="{{$pro->sale}}" ></div>
                                         </div>
                                         <div class="field item form-group">
                                             <label class="col-form-label col-md-3 col-sm-3  label-align">Size<span class="required">*</span></label>
                                             <div class="col-md-6 col-sm-6">
-                                                <input class="form-control" class='size'  name="size" required='required'></div>
+                                                <input class="form-control" class='size'  name="size" required='required' value="{{$pro->size}}"></div>
                                         </div>
                                         
                                         <div class="field item form-group">
@@ -126,7 +137,11 @@
 											<div class="col-md-6 col-sm-6">
                                             <select class="form-control" name="gender" id="cate">
                                                 @foreach($gender as $data)
+                                                @if($data->id == $pro->gender)
+                                            <option selected value="{{$data->id}}">{{$data->gender_name}}</option>
+                                            @else
                                             <option value="{{$data->id}}">{{$data->gender_name}}</option>
+                                            @endif
                                            @endforeach
                                             </select> *
 												
@@ -137,19 +152,28 @@
                                         <div class="field item form-group">
                                             <label class="col-form-label col-md-3 col-sm-3  label-align">Image product<span class="required">*</span></label>
                                             <div class="col-md-6 col-sm-6">
-                                                <input class="form-control" type="file" name="product_image"   /></div>
+                                                <input class="form-control" type="file" name="product_image"   />
+                                                <img src="public/assets/img/product/{{$pro->image}}" height="100" width="100" alt="">
+                                            </div>
+                                            
+                                         
+                                               
+                                           
+                                           
                                         </div>
                                       
                                        
                                         <div class="ln_solid">
                                             <div class="form-group">
                                                 <div class="col-md-6 offset-md-3">
-                                                    <button type='submit'name = "add_product" class="btn btn-primary">Update</button>
+                                                    <button type='submit'name = "add_product" class="btn btn-primary">Submit</button>
                                                     <button type='reset' class="btn btn-success">Reset</button>
                                                 </div>
                                             </div>
                                         </div>
+                                      
                                     </form>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
@@ -160,34 +184,4 @@
 
          @include('admin.partial.footer')
           <!-- Javascript functions	-->
-	
-
-    <script>
-        // initialize a validator instance from the "FormValidator" constructor.
-        // A "<form>" element is optionally passed as an argument, but is not a must
-        var validator = new FormValidator({
-            "events": ['blur', 'input', 'change']
-        }, document.forms[0]);
-        // on form "submit" event
-        document.forms[0].onsubmit = function(e) {
-            var submit = true,
-                validatorResult = validator.checkAll(this);
-            console.log(validatorResult);
-            return !!validatorResult.valid;
-        };
-        // on form "reset" event
-        document.forms[0].onreset = function(e) {
-            validator.reset();
-        };
-        // stuff related ONLY for this demo page:
-        $('.toggleValidationTooltips').change(function() {
-            validator.settings.alerts = !this.checked;
-            if (this.checked)
-                $('form .alert').remove();
-        }).prop('checked', false);
-
-    </script>
-
-</body>
-
 </html>

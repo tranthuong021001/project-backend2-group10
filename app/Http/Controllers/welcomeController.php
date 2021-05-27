@@ -144,9 +144,48 @@ class WelcomeController extends Controller
        
       
 
-       return view('admin.layouts.addProduct')->with('editproduct',$edit_product)->with('manu',$manu)->with('type',$type)->with('gender',$gender);
+       return view('admin.layouts.editProduct')->with('editproduct',$edit_product)->with('manu',$manu)->with('type',$type)->with('gender',$gender);
     }
+    public function UpdateProduct(Request $request,$id)
+    {
+        $data = array();
+        $data['name'] = $request->name;
+        $data['price'] = $request->price;
+        $data['type_id'] = $request->type;
+        $data['manu_id'] = $request->manu;
+        $data['description'] = $request->description;
+        $data['sale'] = $request->sale;
+        $data['size'] = $request->size;
+        $data['gender'] = $request->gender;
+       // $manager_product = view('admin.layouts.editProduct')->with('editproduct',$edit_product);
+       
+       $get_image =$request->file('product_image');
+       if($get_image){
+        $get_name = $get_image->getClientOriginalName();
+        $name_image = current(explode('.',$get_name));
+        $new_image = $name_image.rand(0,99).'.'.$get_image->getClientOriginalExtension();
+        $get_image->move('public/assets/img/product',$new_image);
+        $data['image'] = $new_image;
+        DB::table('products')->where('id',$id)->update($data);
+        Session::put('message','Cập nhập sản phẩm thành công');
+        return Redirect::to('/allproducts');   
+       }
+      
+       DB::table('products')->where('id',$id)->update($data);
+       Session::put('message','Cập nhập sản phẩm thành công');
+      return Redirect::to('/allproducts');
+    }
+    public function DeleteProduct($id)
+    {
+        
+        DB::table('products')->where('id',$id)->delete();
+       // $manager_product = view('admin.layouts.editProduct')->with('editproduct',$edit_product);
+       Session::put('message','xóa sản phẩm thành công');
+       return Redirect::to('/allproducts');
+      
 
+       
+    }
     // public function getOneProduct(){
     //     $product = Product::find(1);
     //     return view('frontend.master', ['product'=>$product]);

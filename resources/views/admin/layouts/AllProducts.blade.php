@@ -124,7 +124,7 @@
                           <td >
                           <div class="fa-hover col-md-3 col-sm-4  "><a href="{{URL::to('/admin/editproduct/'.$pro->id)}}"><i class="fa fa-wrench"></i></a>
                             
-                              <div class="fa-hover col-md-3 col-sm-4  "><a href="{{URL::to('/admin/editproduct/'.$pro->id)}}"><i class="fa fa-trash"></i></a>
+                              <div class="fa-hover col-md-3 col-sm-4  "><a onclick="return comfirm('Bạn có chắc muốn xóa sản phẩm này không?')" href="{{URL::to('/admin/deleteproduct/'.$pro->id)}}"><i class="fa fa-trash"></i></a>
                         </div>
                          
                         </td>

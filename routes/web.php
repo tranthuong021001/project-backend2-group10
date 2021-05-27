@@ -29,6 +29,8 @@ Route::get('/allproducts', 'WelcomeController@getAllProductsAdmin')->middleware(
 Route::get('/admin/addproduct', 'welcomecontroller@getIndexAddProduct');
 Route::post('/admin/saveproduct', 'welcomecontroller@getSaveProduct');
 Route::get('/admin/editproduct/{id}', 'welcomecontroller@EditProduct');
+Route::post('/admin/updateproduct/{id}', 'welcomecontroller@UpdateProduct');
+Route::get('/admin/deleteproduct/{id}', 'welcomecontroller@DeleteProduct');
 
 
 
