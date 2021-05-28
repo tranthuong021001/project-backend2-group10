@@ -98,3 +98,49 @@
         </div>
     </body>
 </html>
+
+
+<div class="new_product_area product_page">
+    <div class="row">
+        <div class="col-12">
+            <div class="block_title">
+                <h3> Related Products</h3>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="product_active owl-carousel">
+
+            <!--get product from database-->
+            @foreach($productbymanufacture as $value)
+            <div class="col-lg-3">
+                <div class="single_product">
+                    <div class="product_thumb">
+
+                        <a href="{{route('Product_Detail', ['id'=>$value->id])}}"><img src="{{url('assets\img\product\'.$value->image.'')}}" alt=""></a>
+
+                        <div class="img_icone">
+                            <img src="{{url('assets\img\cart\span-new.png')}}" alt="">
+                        </div>
+                        <div class="product_action">
+                            <a href="#"> <i class="fa fa-shopping-cart"></i> Add to cart</a>
+                        </div>
+                    </div>
+                    <div class="product_content">
+                        <span class="product_price">${{number_format($value->price)}}</span>
+
+                        <h3 class="product_title"><a href="{{route('Product_Detail', ['id'=>$value->id])}}">{{$value->name}}</a></h3>
+
+                    </div>
+                    <div class="product_info">
+                        <ul>
+                            <li><a href="#" title=" Add to Wishlist ">Add to Wishlist</a></li>
+                            <li><a href="#" data-toggle="modal" data-target="#modal_box" title="Quick view">View Detail</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+
+            <!-- sản phẩm mẫu -->
+           

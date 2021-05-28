@@ -12,6 +12,7 @@ use App\Product_Image;
 use App\Protype;
 
 use App\Manufacture;
+use App\Category;
 
 class WelcomeController extends Controller
 {
@@ -32,19 +33,42 @@ class WelcomeController extends Controller
         return view('frontend/' . $page);
     }
 
-//get detailt product
-public function ViewProductByManufacture()
-{
-   // $product = Product::all()->take(10);
 
-    return view('frontend.productbymanufacture');
-}
-     //get detailt product
-     public function getProductDetail()
+    //hàm lấy all sản phẩm theo hãng
+    public function getProductByManufacture($id)
+    {
+        $productbymanufacture = Manufacture::find($id)->product;
+        return view('frontend.productbymanufacture', compact('productbymanufacture'));
+    }
+    //hàm lấy all sản phẩm theo loại
+    public function getProductByCategory($id)
+    {
+        $category = Protype::find($id)->product;
+        return view('frontend.productbycategory', compact('category'));
+    }
+
+     //xem chi tiet san pham
+     public function View_Product_Detail($id)
      {
-        // $product = Product::all()->take(10);
+        $singleProduct = Product::find($id);
 
-         return view('frontend.productdetail');
+        // $product_image = Product::find($id)->product_image;
+        // //lấy các sản phẩm cùng manufacture vs singleProduct
+        // $productByCategory = Protype::find($singleProduct->type_id)->product;
+
+
+        return view('frontend.index', compact('singleProduct'));
+     }
+
+     //xem chi tiet san pham View_Product_Detail
+     public function Product_Detail($id)
+     {
+        $singleProduct = Product::find($id);
+
+        $product_image = Product::find($id)->product_image;
+        //lấy các sản phẩm cùng manufacture vs singleProduct
+        $productByCategory = Protype::find($singleProduct->type_id)->product;
+        return view('frontend.productdetail', compact('singleProduct','product_image','productByCategory'));
      }
     //get all products
     public function getProductByProtype()
@@ -56,9 +80,6 @@ public function ViewProductByManufacture()
     //get all products , manufacture , proytpe of products
     public function getAllProduct()
     {
-        
-
-
         //return view('frontend.index', ['manufactures' => $manufacture], ['protypes' => $protype], ['products' => $product]);
         return view('frontend.index');
     }
@@ -98,3 +119,4 @@ public function ViewProductByManufacture()
 
 
 }
+?>

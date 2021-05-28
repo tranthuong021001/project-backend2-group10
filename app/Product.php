@@ -15,10 +15,13 @@ class Product extends Model
     // {
     //     return $this->hasOne('App\Info', 'product_id', 'id');
     // }
-    public function Product_Image()
+    public function product_image()
         {
             return $this->hasMany('App\Product_Image', 'product_id');
         }
-
+    public function protype()
+    {
+        return $this->belongsTo('App\Protype');
+    }
 
 }

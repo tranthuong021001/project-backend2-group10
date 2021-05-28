@@ -8,16 +8,16 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="assets\img\favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="{{url('assets\img\favicon.png')}}">
 
     <!-- all css here -->
-    <link rel="stylesheet" href="assets\css\bootstrap.min.css">
-    <link rel="stylesheet" href="assets\css\plugin.css">
-    <link rel="stylesheet" href="assets\css\bundle.css">
-    <link rel="stylesheet" href="assets\css\style.css">
-    <link rel="stylesheet" href="assets\css\responsive.css">
-    <link rel="stylesheet" href="assets\css\mystyle.css">
-    <script src="assets\js\vendor\modernizr-2.8.3.min.js"></script>
+    <link rel="stylesheet" href="{{url('assets\css\bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{url('assets\css\plugin.css')}}">
+    <link rel="stylesheet" href="{{url('assets\css\bundle.css')}}">
+    <link rel="stylesheet" href="{{url('assets\css\style.css')}}">
+    <link rel="stylesheet" href="{{url('assets\css\responsive.css')}}">
+    <link rel="stylesheet" href="{{url('assets\css\mystyle.css')}}">
+    <script src="{{url('assets\js\vendor\modernizr-2.8.3.min.js')}}"></script>
 </head>
 
 <body>
@@ -36,10 +36,10 @@
                             <div class="col-lg-6 col-md-6">
                                 <div class="switcher">
                                     <ul>
-                                        <li class="languages"><a href="#"><img src="assets\img\logo\fontlogo.jpg" alt=""> English <i class="fa fa-angle-down"></i></a>
+                                        <li class="languages"><a href="#"><img src="{{url('assets\img\logo\fontlogo.jpg')}}" alt=""> English <i class="fa fa-angle-down"></i></a>
                                             <ul class="dropdown_languages">
-                                                <li><a href="#"><img src="assets\img\logo\fontlogo.jpg" alt=""> English</a></li>
-                                                <li><a href="#"><img src="assets\img\logo\fontlogo2.jpg" alt=""> French </a></li>
+                                                <li><a href="#"><img src="{{url('assets\img\logo\fontlogo.jpg')}}" alt=""> English</a></li>
+                                                <li><a href="#"><img src="{{url('assets\img\logo\fontlogo2.jpg')}}" alt=""> French </a></li>
                                             </ul>
                                         </li>
 
@@ -75,7 +75,7 @@
                             <!--logo start-->
                             <div class="col-lg-3 col-md-3">
                                 <div class="logo">
-                                    <a href="index.html"><img src="assets\img\logo\logo.jpg.png" alt=""></a>
+                                    <a href="index.html"><img src="{{url('assets\img\logo\logo.jpg.png')}}" alt=""></a>
                                 </div>
                             </div>
                             <!--logo end-->
@@ -94,7 +94,7 @@
                                         <div class="mini_cart">
                                             <div class="cart_item">
                                                 <div class="cart_img">
-                                                    <a href="#"><img src="assets\img\cart\cart.jpg" alt=""></a>
+                                                    <a href="#"><img src="{{url('assets\img\cart\cart.jpg')}}" alt=""></a>
                                                 </div>
                                                 <div class="cart_info">
                                                     <a href="#">lorem ipsum dolor</a>
@@ -107,7 +107,7 @@
                                             </div>
                                             <div class="cart_item">
                                                 <div class="cart_img">
-                                                    <a href="#"><img src="assets\img\cart\cart2.jpg" alt=""></a>
+                                                    <a href="#"><img src="{{url('assets\img\cart\cart2.jpg')}}" alt=""></a>
                                                 </div>
                                                 <div class="cart_info">
                                                     <a href="#">Quisque ornare dui</a>
@@ -146,77 +146,32 @@
                                         <nav>
                                             <ul>
                                                 <!-- Item HOME -->
-                                                <li class="active"><a href="{{ url('/index') }}">Home</a>
-                                                    <!-- <div class="mega_menu jewelry">
-                                                        <div class="mega_items jewelry">
-                                                            <ul>
-                                                                <li><a href="{{ url('/index') }}">Home 1</a></li>
-                                                                <li><a href="{{ url('/master') }}">Home 2</a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div> -->
-                                                </li>
-
-                                                <!-- Item SHOP -->
-                                                <!-- <li><a href="{{ url('/shop') }}">Shop</a>
-
-                                                                <div class="mega_menu jewelry">
-                                                                    <div class="mega_items jewelry">
-                                                                        <ul>
-                                                                            <li><a href="shop-list.html">shop list</a></li>
-                                                                            <li><a href="shop-fullwidth.html">shop Full Width Grid</a></li>
-
-                                                                            <div class="mega_items">
-                                                                            <h3><a href="#">Men's Sale</a></h3>
-                                                                            <ul>
-                                                                                <li><a href="#">Clothing</a></li>
-                                                                                <li><a href="#">Shoes</a></li>
-                                                                                <li><a href="#">Hats</a></li>
-                                                                                <li><a href="#">Bags</a></li>
-                                                                                <li><a href="#">Sunglasses</a></li>
-                                                                            </ul>
-                                                                        </div>
-                                                                        <div class="mega_items">
-                                                                            <h3><a href="#">Women's Sale</a></h3>
-                                                                            <ul>
-                                                                                <li><a href="#">Clothing</a></li>
-                                                                                <li><a href="#">Shoes</a></li>
-                                                                                <li><a href="#">Hats</a></li>
-                                                                                <li><a href="#">Bags</a></li>
-                                                                                <li><a href="#">Sunglasses</a></li>
-                                                                            </ul>
-                                                                        </div>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                            </li> -->
+                                                <li class="active"><a href="{{ url('/index') }}">Home</a></li>
 
                                                 <!-- Item WOMEN -->
                                                 <li><a href="#">Women</a>
                                                     <div class="mega_menu">
                                                         <div class="mega_top fix">
 
-                                                        <!--hiển thị hãng sản xuất trên thanh menu-->
-                                                        @foreach($manufacture as $value)
+                                                            <!--hiển thị hãng sản xuất trên thanh menu-->
+                                                            @foreach($manufacture as $value)
                                                             <div class="mega_items">
-                                                                <h3><a href="/{{$value->id}}">{{$value->manu_name}}</a></h3>
+                                                                <h3><a href="{{route('productbymanufacture',['id'=>$value->id])}}">{{$value->manu_name}}</a></h3>
                                                                 <ul>
-                                                                <!--hiển thị loại sản phẩm trên thanh menu-->
+                                                                    <!--hiển thị loại sản phẩm trên thanh menu-->
                                                                     @foreach ($protype as $protype_item)
-                                                                        <li><a href="/{{$protype_item->id}}">{{$protype_item->type_name}}</a></li>
+                                                                    <li><a href="{{route('productbycategory',['id'=>$protype_item->id])}}">{{$protype_item->type_name}}</a></li>
                                                                     @endforeach
                                                                 </ul>
                                                             </div>
-                                                        @endforeach
-
-
+                                                            @endforeach
                                                         </div>
                                                         <div class="mega_bottom fix">
                                                             <div class="mega_thumb">
-                                                                <a href="#"><img src="assets\img\banner\banner1.jpg" alt=""></a>
+                                                                <a href="#"><img src="{{url('assets\img\banner\banner1.jpg')}}" alt=""></a>
                                                             </div>
                                                             <div class="mega_thumb">
-                                                                <a href="#"><img src="assets\img\banner\banner2.jpg" alt=""></a>
+                                                                <a href="#"><img src="{{url('assets\img\banner\banner2.jpg')}}" alt=""></a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -225,25 +180,25 @@
                                                 <li><a href="#">Men</a>
                                                     <div class="mega_menu">
                                                         <div class="mega_top fix">
-                                                             <!--hiển thị hãng sản xuất trên thanh menu-->
-                                                        @foreach($manufacture as $value)
+                                                            <!--hiển thị hãng sản xuất trên thanh menu-->
+                                                            @foreach($manufacture as $value)
                                                             <div class="mega_items">
-                                                                <h3><a href="/{{$value->id}}">{{$value->manu_name}}</a></h3>
+                                                                <h3><a href="{{route('productbymanufacture',['id'=>$value->id])}}">{{$value->manu_name}}</a></h3>
                                                                 <ul>
-                                                                <!--hiển thị loại sản phẩm trên thanh menu-->
+                                                                    <!--hiển thị loại sản phẩm trên thanh menu-->
                                                                     @foreach ($protype as $protype_item)
-                                                                        <li><a href="/{{$protype_item->id}}">{{$protype_item->type_name}}</a></li>
+                                                                    <li><a href="{{route('productbycategory',['id'=>$protype_item->id])}}">{{$protype_item->type_name}}</a></li>
                                                                     @endforeach
                                                                 </ul>
                                                             </div>
-                                                        @endforeach
+                                                            @endforeach
                                                         </div>
                                                         <div class="mega_bottom fix">
                                                             <div class="mega_thumb">
-                                                                <a href="#"><img src="assets\img\banner\banner1.jpg" alt=""></a>
+                                                                <a href="#"><img src="{{url('assets\img\banner\banner1.jpg')}}" alt=""></a>
                                                             </div>
                                                             <div class="mega_thumb">
-                                                                <a href="#"><img src="assets\img\banner\banner2.jpg" alt=""></a>
+                                                                <a href="#"><img src="{{url('assets\img\banner\banner2.jpg')}}" alt=""></a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -255,9 +210,9 @@
                                                             <div class="mega_items">
                                                                 <h3><a href="#">Men's Sale</a></h3>
                                                                 <ul>
-                                                                   <!--hiển thị loại sản phẩm trên thanh menu-->
-                                                                   @foreach ($protype as $protype_item)
-                                                                        <li><a href="/{{$protype_item->id}}">{{$protype_item->type_name}}</a></li>
+                                                                    <!--hiển thị loại sản phẩm trên thanh menu-->
+                                                                    @foreach ($protype as $protype_item)
+                                                                    <li><a href="/{{$protype_item->id}}">{{$protype_item->type_name}}</a></li>
                                                                     @endforeach
                                                                 </ul>
                                                             </div>
@@ -266,19 +221,18 @@
                                                                 <ul>
                                                                     <!--hiển thị loại sản phẩm trên thanh menu-->
                                                                     @foreach ($protype as $protype_item)
-                                                                        <li><a href="/{{$protype_item->id}}">{{$protype_item->type_name}}</a></li>
+                                                                    <li><a href="/{{$protype_item->id}}">{{$protype_item->type_name}}</a></li>
                                                                     @endforeach
 
                                                                 </ul>
                                                             </div>
-
                                                         </div>
                                                         <div class="mega_bottom fix">
                                                             <div class="mega_thumb">
-                                                                <a href="#"><img src="assets\img\banner\banner1.jpg" alt=""></a>
+                                                                <a href="#"><img src="{{url('assets\img\banner\banner1.jpg')}}" alt=""></a>
                                                             </div>
                                                             <div class="mega_thumb">
-                                                                <a href="#"><img src="assets\img\banner\banner2.jpg" alt=""></a>
+                                                                <a href="#"><img src="{{url('assets\img\banner\banner2.jpg')}}" alt=""></a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -293,7 +247,7 @@
 
 
                                     <!-- giao diện cho mobile -->
-                                    <div class="mobile-menu d-lg-none">
+                                    <!-- <div class="mobile-menu d-lg-none">
                                         <nav>
                                             <ul>
                                                 <li><a href="index.html">Home</a>
@@ -362,10 +316,10 @@
                                                         </div>
                                                         <div>
                                                             <div>
-                                                                <a href="#"><img src="assets\img\banner\banner1.jpg" alt=""></a>
+                                                                <a href="#"><img src="{{url('assets\img\banner\banner1.jpg')}}" alt=""></a>
                                                             </div>
                                                             <div>
-                                                                <a href="#"><img src="assets\img\banner\banner2.jpg" alt=""></a>
+                                                                <a href="#"><img src="{{url('assets\img\banner\banner2.jpg')}}" alt=""></a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -394,7 +348,7 @@
                                                                 </ul>
                                                             </div>
                                                             <div>
-                                                                <a href="#"><img src="assets\img\banner\banner3.jpg" alt=""></a>
+                                                                <a href="#"><img src="{{url('assets\img\banner\banner3.jpg')}}" alt=""></a>
                                                             </div>
                                                         </div>
 
@@ -454,7 +408,7 @@
 
                                             </ul>
                                         </nav>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
@@ -465,8 +419,6 @@
                 <!--pos home section-->
                 @yield('content')
                 <!--pos home section end-->
-
-
 
             </div>
             <!--pos page inner end-->
@@ -575,30 +527,30 @@
                                     <div class="tab-content" id="pills-tabContent">
                                         <div class="tab-pane fade show active" id="tab1" role="tabpanel">
                                             <div class="modal_tab_img">
-                                                <a href="#"><img src="assets\img\product\product13.jpg" alt=""></a>
+                                                <a href="#"><img src="{{url('assets/img/product/product13.jpg')}}" alt=""></a>
                                             </div>
                                         </div>
                                         <div class="tab-pane fade" id="tab2" role="tabpanel">
                                             <div class="modal_tab_img">
-                                                <a href="#"><img src="assets\img\product\product14.jpg" alt=""></a>
+                                                <a href="#"><img src="{{url('assets\img\product\product14.jpg')}}" alt=""></a>
                                             </div>
                                         </div>
                                         <div class="tab-pane fade" id="tab3" role="tabpanel">
                                             <div class="modal_tab_img">
-                                                <a href="#"><img src="assets\img\product\product15.jpg" alt=""></a>
+                                                <a href="#"><img src="{{url('assets\img\product\product15.jpg')}}" alt=""></a>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="modal_tab_button">
                                         <ul class="nav product_navactive" role="tablist">
                                             <li>
-                                                <a class="nav-link active" data-toggle="tab" href="#tab1" role="tab" aria-controls="tab1" aria-selected="false"><img src="assets\img\cart\cart17.jpg" alt=""></a>
+                                                <a class="nav-link active" data-toggle="tab" href="#tab1" role="tab" aria-controls="tab1" aria-selected="false"><img src="{{url('assets\img\cart\cart17.jpg')}}" alt=""></a>
                                             </li>
                                             <li>
-                                                <a class="nav-link" data-toggle="tab" href="#tab2" role="tab" aria-controls="tab2" aria-selected="false"><img src="assets\img\cart\cart18.jpg" alt=""></a>
+                                                <a class="nav-link" data-toggle="tab" href="#tab2" role="tab" aria-controls="tab2" aria-selected="false"><img src="{{url('assets\img\cart\cart18.jpg')}}" alt=""></a>
                                             </li>
                                             <li>
-                                                <a class="nav-link button_three" data-toggle="tab" href="#tab3" role="tab" aria-controls="tab3" aria-selected="false"><img src="assets\img\cart\cart19.jpg" alt=""></a>
+                                                <a class="nav-link button_three" data-toggle="tab" href="#tab3" role="tab" aria-controls="tab3" aria-selected="false"><img src="{{url('assets\img\cart\cart19.jpg')}}" alt=""></a>
                                             </li>
                                         </ul>
                                     </div>
@@ -607,10 +559,10 @@
                             <div class="col-lg-7 col-md-7 col-sm-12">
                                 <div class="modal_right">
                                     <div class="modal_title mb-10">
-                                        <h2>Handbag feugiat</h2>
+                                        <h2>tran phi</h2>
                                     </div>
                                     <div class="modal_price mb-10">
-                                        <span class="new_price">$64.99</span>
+                                        <span class="new_price">$66</span>
                                         <span class="old_price">$78.99</span>
                                     </div>
                                     <div class="modal_content mb-10">
@@ -633,7 +585,7 @@
                                         </form>
                                     </div>
                                     <div class="modal_description mb-15">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</p>
+                                        <p>lorem is spum</p>
                                     </div>
                                     <div class="modal_social">
                                         <h2>Share this product</h2>
@@ -658,14 +610,13 @@
 
 
 
-
     <!-- all js here -->
-    <script src="assets\js\vendor\jquery-1.12.0.min.js"></script>
-    <script src="assets\js\popper.js"></script>
-    <script src="assets\js\bootstrap.min.js"></script>
-    <script src="assets\js\ajax-mail.js"></script>
-    <script src="assets\js\plugins.js"></script>
-    <script src="assets\js\main.js"></script>
+    <script src="{{url('assets\js\vendor\jquery-1.12.0.min.js')}}"></script>
+    <script src="{{url('assets\js\popper.js')}}"></script>
+    <script src="{{url('assets\js\bootstrap.min.js')}}"></script>
+    <script src="{{url('assets\js\ajax-mail.js')}}"></script>
+    <script src="{{url('assets\js\plugins.js')}}"></script>
+    <script src="{{url('assets\js\main.js')}}"></script>
 </body>
 
 </html>

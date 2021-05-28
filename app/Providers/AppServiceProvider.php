@@ -35,6 +35,7 @@ class AppServiceProvider extends ServiceProvider
                 'protype'=>Protype::all(),
                 'product'=>Product::all()->take(10),
 
+
             ]);
         });
     }
