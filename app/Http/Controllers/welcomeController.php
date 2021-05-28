@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Http\UploadedFile;
 
 class WelcomeController extends Controller
 {
@@ -80,9 +81,11 @@ class WelcomeController extends Controller
       $all_product = DB::table("products")
          ->join('protypes','protypes.id','=','products.type_id')
          ->join('manufactures','manufactures.id','=','products.manu_id')
+         ->select('products.*', 'protypes.type_name', 'manufactures.manu_name')
+        
          ;
         $all_product = $all_product->orderBy("products.id","Desc");
-        $all_product = $all_product->select("*");
+     
         $all_product = $all_product->paginate(15);
         return view('admin.layouts.AllProducts')->with('allproducts',$all_product);
 
@@ -122,6 +125,7 @@ class WelcomeController extends Controller
            $get_name = $get_image->getClientOriginalName();
            $name_image = current(explode('.',$get_name));
            $new_image = $name_image.rand(0,99).'.'.$get_image->getClientOriginalExtension();
+          // $path = $request->file('product_image')->store('public/assets/img/product');
            $get_image->move('public/assets/img/product',$new_image);
            $data['image'] = $new_image;
         DB::table('products')->insert($data);
