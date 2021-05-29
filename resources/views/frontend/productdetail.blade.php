@@ -96,14 +96,18 @@
                     <span>${{number_format($singleProduct->price)}}</span>
                     <span class="old-price">$130.00</span>
                 </div>
-                <div class="box_quantity mb-20">
-                    <form action="#">
-                        <label>quantity</label>
-                        <input min="0" max="100" value="1" type="number">
-                    </form>
-                    <button type="submit"><i class="fa fa-shopping-cart"></i> add to cart</button>
-                    <a href="#" title="add to wishlist"><i class="fa fa-heart" aria-hidden="true"></i></a>
-                </div>
+                <form action="{{URL::to('/save-cart')}}" method="POST">
+                    {{csrf_field() }}
+                    <div class="box_quantity mb-20">
+
+                            <label>quantity</label>
+                            <input name="qty" min="0" max="100" value="1" type="number">
+                            <input name="productid_hidden" value="{{$singleProduct->id}}" type="hidden">
+
+                        <button type="submit"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                        <a href="#" title="add to wishlist"><i class="fa fa-heart" aria-hidden="true"></i></a>
+                    </div>
+                </form>
                 <div class="product_d_size mb-20">
                     <label for="group_1">size</label>
                     <select name="size" id="group_1">

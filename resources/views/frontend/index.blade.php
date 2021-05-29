@@ -202,7 +202,7 @@
             </div>
             <!--new product area start-->
 
-                       
+
 
 
 
@@ -214,10 +214,11 @@
                 </div>
                 <div class="row">
                     <div class="product_active owl-carousel">
+                        @foreach ($product_Feature as $value)
                         <div class="col-lg-3">
                             <div class="single_product">
                                 <div class="product_thumb">
-                                    <a href="single-product.html"><img src="{{url('assets\img\product\product7.jpg')}}" alt=""></a>
+                                    <a href="single-product.html"><img src="{{url('assets/img/product/'.$value->image.'')}}" alt=""></a>
                                     <div class="hot_img">
                                         <img src="{{url('assets\img\cart\span-hot.png')}}" alt="">
                                     </div>
@@ -227,7 +228,7 @@
                                 </div>
                                 <div class="product_content">
                                     <span class="product_price">$60.00</span>
-                                    <h3 class="product_title"><a href="single-product.html">Maecenas sit amet</a></h3>
+                                    <h3 class="product_title"><a href="single-product.html">{{$value->name}}</a></h3>
                                 </div>
                                 <div class="product_info">
                                     <ul>
@@ -237,7 +238,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3">
+                        @endforeach
+
+                        <!-- <div class="col-lg-3">
                             <div class="single_product">
                                 <div class="product_thumb">
                                     <a href="single-product.html"><img src="{{url('assets\img\product\product8.jpg')}}" alt=""></a>
@@ -259,8 +262,8 @@
                                     </ul>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-3">
+                        </div> -->
+                        <!-- <div class="col-lg-3">
                             <div class="single_product">
                                 <div class="product_thumb">
                                     <a href="single-product.html"><img src="{{url('assets\img\product\product9.jpg')}}" alt=""></a>
@@ -328,7 +331,7 @@
                                     </ul>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>

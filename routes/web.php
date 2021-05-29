@@ -47,6 +47,10 @@ Route::get('/chi-tiet-san-pham/{id}', 'welcomecontroller@Product_Detail')->name(
 //hiển thị chi tiết sản phẩm
 Route::get('/view-detail/{id}', 'welcomecontroller@View_Product_Detail')->name('View_Product_Detail');
 
+//thêm sản phẩm vào giỏ hàng
+Route::post('/save-cart', 'CartController@Save_Cart' );
+
+
 //route động có tham số dùng để gắn các liên kết trang
 Route::get('/{page}', 'welcomecontroller@page' );
 

@@ -80,8 +80,10 @@ class WelcomeController extends Controller
     //get all products , manufacture , proytpe of products
     public function getAllProduct()
     {
+        $product_Feature = Product::where('sale', '>=',1)->get();
+
         //return view('frontend.index', ['manufactures' => $manufacture], ['protypes' => $protype], ['products' => $product]);
-        return view('frontend.index');
+        return view('frontend.index', compact('product_Feature'));
     }
 
     //lấy sản phẩm kết với bảng product_image( chưa xong)
