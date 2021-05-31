@@ -49,6 +49,7 @@ Route::get('/view-detail/{id}', 'welcomecontroller@View_Product_Detail')->name('
 
 //thêm sản phẩm vào giỏ hàng
 Route::post('/save-cart', 'CartController@Save_Cart' );
+Route::get('/show-cart', 'CartController@show_cart' );
 
 
 //route động có tham số dùng để gắn các liên kết trang

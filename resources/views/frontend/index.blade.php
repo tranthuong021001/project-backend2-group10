@@ -172,7 +172,14 @@
                                         <img src="{{url('assets\img\cart\span-new.png')}}" alt="">
                                     </div>
                                     <div class="product_action">
-                                        <a href="#"> <i class="fa fa-shopping-cart"></i> Add to cart</a>
+                                        <form action="{{URL::to('/save-cart')}}" method="POST">
+                                            {{csrf_field() }}
+                                            <input type="hidden" name="qty" value="1">
+                                            <input name="productid_hidden" value="{{$value->id}}" type="hidden">
+
+                                            <button type="submit"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                                            <!-- <a href="#"> <i class="fa fa-shopping-cart"></i> Add to cart</a> -->
+                                        </form>
                                     </div>
                                 </div>
                                 <div class="product_content">
@@ -218,17 +225,25 @@
                         <div class="col-lg-3">
                             <div class="single_product">
                                 <div class="product_thumb">
-                                    <a href="single-product.html"><img src="{{url('assets/img/product/'.$value->image.'')}}" alt=""></a>
+                                    <a href="{{route('Product_Detail', ['id'=>$value->id])}}"><img src="{{url('assets/img/product/'.$value->image.'')}}" alt=""></a>
                                     <div class="hot_img">
                                         <img src="{{url('assets\img\cart\span-hot.png')}}" alt="">
                                     </div>
                                     <div class="product_action">
-                                        <a href="#"> <i class="fa fa-shopping-cart"></i> Add to cart</a>
+
+                                        <form action="{{URL::to('/save-cart')}}" method="POST">
+                                            {{csrf_field() }}
+                                            <input type="hidden" name="qty" value="1">
+                                            <input name="productid_hidden" value="{{$value->id}}" type="hidden">
+                                            <!-- <a href="#"> <i class="fa fa-shopping-cart"></i> Add to cart</a> -->
+                                            <button type="submit"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                                        </form>
+
                                     </div>
                                 </div>
                                 <div class="product_content">
                                     <span class="product_price">$60.00</span>
-                                    <h3 class="product_title"><a href="single-product.html">{{$value->name}}</a></h3>
+                                    <h3 class="product_title"><a href="{{route('Product_Detail', ['id'=>$value->id])}}">{{$value->name}}</a></h3>
                                 </div>
                                 <div class="product_info">
                                     <ul>

@@ -38,16 +38,28 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php
+                                $content = Cart::content();
+
+                                ?>
+
+                                @foreach ($content as $value)
                                 <tr>
                                     <td class="product_remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
-                                    <td class="product_thumb"><a href="#"><img src="{{url('assets/img/product/'.$data[0]->image.'')}}" alt=""></a></td>
-                                    <td class="product_name"><a href="#">{{$data[0]->name}}</a></td>
-                                    <td class="product-price">${{number_format($data[0]->price)}}</td>
-                                    <td class="product_quantity"><input min="0" max="100" value="{{$quanlity}}" type="number"></td>
-                                    <td class="product_total">£130.00</td>
+                                    <td class="product_thumb"><a href="#"><img src="{{url('assets/img/product/'.$value->options->image.'')}}" alt=""></a></td>
+                                    <td class="product_name"><a href="#">{{$value->name}}</a></td>
+                                    <td class="product-price">${{number_format($value->price)}}</td>
+                                    <td class="product_quantity"><input min="0" max="100" value="{{$value->qty}}" type="number"></td>
+                                    <td class="product_total">$
+                                    <?php
+                                        $subtotal = $value->price * $value->qty;
+                                        echo (number_format($subtotal));
+                                    ?></td>
 
 
                                 </tr>
+                                @endforeach
+
 
                                 <!-- <tr>
                                     <td class="product_remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
@@ -98,17 +110,17 @@
                         <div class="coupon_inner">
                             <div class="cart_subtotal">
                                 <p>Subtotal</p>
-                                <p class="cart_amount">£215.00</p>
+                                <p class="cart_amount"> $ {{Cart::subtotal()}}</p>
                             </div>
                             <div class="cart_subtotal ">
                                 <p>Shipping</p>
-                                <p class="cart_amount"><span>Flat Rate:</span> £255.00</p>
+                                <p class="cart_amount"><span>Flat Rate:</span> $ 0</p>
                             </div>
                             <a href="#">Calculate shipping</a>
 
                             <div class="cart_subtotal">
                                 <p>Total</p>
-                                <p class="cart_amount">£215.00</p>
+                                <p class="cart_amount"> $ {{Cart::subtotal()}}</p>
                             </div>
                             <div class="checkout_btn">
                                 <a href="#">Proceed to Checkout</a>
@@ -129,4 +141,3 @@
 </div>
 <!--pos page end-->
 @endsection
-
