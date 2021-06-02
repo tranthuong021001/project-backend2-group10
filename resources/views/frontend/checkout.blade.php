@@ -214,7 +214,8 @@
                 </form>
             </div>
             <div class="col-lg-6 col-md-6">
-                <form action="#">
+                <form action="{{url('/show-order')}}">
+                {{ csrf_field() }}
                     <h3>Your order</h3>
                     <div class="order_table table-responsive mb-30">
                         <table>
@@ -225,11 +226,22 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php
+                                    $content = Cart::content();
+                                ?>
+                                @foreach ($content as $value)
                                 <tr>
-                                    <td> Handbag fringilla <strong> × 2</strong></td>
-                                    <td> $165.00</td>
+                                    <td> {{$value->name}} <strong> × {{$value->qty}}</strong></td>
+                                    <td>
+                                    <?php
+                                        $subtotal = $value->price * $value->qty;
+                                        echo (number_format($subtotal));
+                                        ?>
+                                    </td>
                                 </tr>
-                                <tr>
+                                @endforeach
+
+                                <!-- <tr>
                                     <td> Handbag justo <strong> × 2</strong></td>
                                     <td> $50.00</td>
                                 </tr>
@@ -240,20 +252,20 @@
                                 <tr>
                                     <td> Handbag Rutrum <strong> × 1</strong></td>
                                     <td> $50.00</td>
-                                </tr>
+                                </tr> -->
                             </tbody>
                             <tfoot>
                                 <tr>
                                     <th>Cart Subtotal</th>
-                                    <td>$215.00</td>
+                                    <td>$ {{Cart::subtotal()}}</td>
                                 </tr>
                                 <tr>
                                     <th>Shipping</th>
-                                    <td><strong>$5.00</strong></td>
+                                    <td><strong>$ 0</strong></td>
                                 </tr>
                                 <tr class="order_total">
                                     <th>Order Total</th>
-                                    <td><strong>$220.00</strong></td>
+                                    <td><strong>$ {{Cart::subtotal()}}</strong></td>
                                 </tr>
                             </tfoot>
                         </table>
@@ -280,7 +292,7 @@
                             </div>
                         </div>
                         <div class="order_button">
-                            <button type="submit">Proceed to PayPal</button>
+                            <button type="submit">Payment</button>
                         </div>
                     </div>
                 </form>

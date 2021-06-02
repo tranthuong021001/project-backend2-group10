@@ -36,6 +36,7 @@ Route::get('/productbymanufacture/{id}', 'welcomecontroller@getProductByManufact
 //hiển thị chi tiết sản phẩm
 Route::get('/chi-tiet-san-pham/{id}', 'welcomecontroller@Product_Detail')->name('Product_Detail');
 
+//Cart
 //thêm sản phẩm vào giỏ hàng
 Route::post('/save-cart', 'CartController@Save_Cart' );
 Route::get('/show-cart', 'CartController@show_cart' );
@@ -43,6 +44,12 @@ Route::get('/show-cart', 'CartController@show_cart' );
 Route::get('/delete-to-cart/{rowId}', 'CartController@delete_to_cart' );
 //cap nhat so luong sản phẩm trong giỏ hàng
 Route::post('/update-cart-quantity', 'CartController@update_cart_quantity' );
+
+//Checkout register
+Route::get('/show-order', 'CheckoutController@show_order' );
+Route::get('/login-checkout', 'CheckoutController@login_checkout' );
+Route::post('/add-customer', 'CheckoutController@add_customer' );
+Route::get('/checkout', 'CheckoutController@checkout' );
 
 
 //route động có tham số dùng để gắn các liên kết trang

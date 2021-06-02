@@ -55,12 +55,13 @@
                                             <button class="update-button" type="submit">Update</button>
                                         </td>
                                     </form>
-                                    
+
                                     <td class="product_total">$
                                         <?php
                                         $subtotal = $value->price * $value->qty;
                                         echo (number_format($subtotal));
-                                        ?></td>
+                                        ?>
+                                    </td>
                                 </tr>
                                 @endforeach
 
@@ -105,7 +106,7 @@
                                 <p class="cart_amount"> $ {{Cart::subtotal()}}</p>
                             </div>
                             <div class="checkout_btn">
-                                <a href="#">Proceed to Checkout</a>
+                                <a href="{{url('/login-checkout')}}">Proceed to Checkout</a>
                             </div>
                         </div>
                     </div>
