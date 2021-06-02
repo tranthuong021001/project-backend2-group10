@@ -5,6 +5,19 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Coron - Fashion eCommerce Bootstrap4 Template</title>
+    <style>
+        .update-button {
+            background: #00bba6;
+            color: #fff;
+            margin-left: 10px;
+            border: none;
+            padding: 7px;
+            transition: all 0.3s ease-out 0s;
+        }
+        .update-button:hover {
+            background: #ea3a3c;
+        }
+    </style>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
@@ -146,7 +159,7 @@
                                         <nav>
                                             <ul>
                                                 <!-- Item HOME -->
-                                                <li class="active"><a href="{{ url('/index') }}">Home</a></li>
+                                                <li class="active"><a href="{{url('/index')}}">Home</a></li>
 
                                                 <!-- Item WOMEN -->
                                                 <li><a href="#">Women</a>
@@ -559,7 +572,7 @@
                             <div class="col-lg-7 col-md-7 col-sm-12">
                                 <div class="modal_right">
                                     <div class="modal_title mb-10">
-                                        <h2>tran phi</h2>
+                                        <h2>tran phi thuong</h2>
                                     </div>
                                     <div class="modal_price mb-10">
                                         <span class="new_price">$66</span>

@@ -47,18 +47,6 @@ class WelcomeController extends Controller
         return view('frontend.productbycategory', compact('category'));
     }
 
-     //xem chi tiet san pham
-     public function View_Product_Detail($id)
-     {
-        $singleProduct = Product::find($id);
-
-        // $product_image = Product::find($id)->product_image;
-        // //lấy các sản phẩm cùng manufacture vs singleProduct
-        // $productByCategory = Protype::find($singleProduct->type_id)->product;
-
-
-        return view('frontend.index', compact('singleProduct'));
-     }
 
      //xem chi tiet san pham View_Product_Detail
      public function Product_Detail($id)

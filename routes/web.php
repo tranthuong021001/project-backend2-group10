@@ -24,32 +24,25 @@ Route::get('/hi', 'welcomecontroller@laySanPhamTheoLoai' );
 
 Route::get('/', 'welcomecontroller@getAllProduct');
 
-//route động có tham số dùng để chuyển đến trang chi tiết sản phẩm
-Route::get('/danh-muc/{id}', 'welcomecontroller@getProductDetail')->name('protype-pro');
-Route::get('/index', 'welcomecontroller@getAllProductHome');
-Route::get('/manu', 'welcomecontroller@getAllManufactures');
-//liên kết 1-1
-// Route::get('/lienketchinhphu', function(){
-//     $products = App\Product::all();
-//     foreach($products as $product){
-//         echo $product->name . "<br>";
-//         echo $product->infos->NSX . "<br>";
 
-//     }
-// });
-//lấy sản phâm theo danh loại
+Route::get('/index', 'welcomecontroller@getAllProduct');
+Route::get('/manu', 'welcomecontroller@getAllManufactures');
+
+//lấy sản phâm theo  loại
 Route::get('/productbycategory/{id}', 'welcomecontroller@getProductByCategory')->name('productbycategory');
-//lấy sản phâm theo danh hãng sản xuất
+//lấy sản phâm theo  hãng sản xuất
 Route::get('/productbymanufacture/{id}', 'welcomecontroller@getProductByManufacture')->name('productbymanufacture');
 
 //hiển thị chi tiết sản phẩm
 Route::get('/chi-tiet-san-pham/{id}', 'welcomecontroller@Product_Detail')->name('Product_Detail');
-//hiển thị chi tiết sản phẩm
-Route::get('/view-detail/{id}', 'welcomecontroller@View_Product_Detail')->name('View_Product_Detail');
 
 //thêm sản phẩm vào giỏ hàng
 Route::post('/save-cart', 'CartController@Save_Cart' );
 Route::get('/show-cart', 'CartController@show_cart' );
+//xóa sản phẩm khỏi giỏ hàng
+Route::get('/delete-to-cart/{rowId}', 'CartController@delete_to_cart' );
+//cap nhat so luong sản phẩm trong giỏ hàng
+Route::post('/update-cart-quantity', 'CartController@update_cart_quantity' );
 
 
 //route động có tham số dùng để gắn các liên kết trang

@@ -40,24 +40,46 @@
                             <tbody>
                                 <?php
                                 $content = Cart::content();
+                                echo '<pre>';
+                                print_r($content);
+                                echo '</pre>';
 
                                 ?>
 
                                 @foreach ($content as $value)
+
                                 <tr>
-                                    <td class="product_remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
+                                    <td class="product_remove"><a href="{{URL::to('/delete-to-cart/'.$value->rowId)}}"><i class="fa fa-trash-o"></i></a></td>
                                     <td class="product_thumb"><a href="#"><img src="{{url('assets/img/product/'.$value->options->image.'')}}" alt=""></a></td>
                                     <td class="product_name"><a href="#">{{$value->name}}</a></td>
-                                    <td class="product-price">${{number_format($value->price)}}</td>
-                                    <td class="product_quantity"><input min="0" max="100" value="{{$value->qty}}" type="number"></td>
+                                    <form action="{{URL::to('/update-cart-quantity')}}" method="post">
+                                    {{csrf_field()}}
+                                        <input type="hidden" name="rowId_cart" value="{{$value->rowId}}">
+                                        <td class="product-price">${{number_format($value->price)}}</td>
+                                        <td class="product_quantity"><input min="0" max="100" name="quantity_product" value="{{$value->qty}}" type="text">
+                                            <button class="update-button" type="submit">Update</button>
+                                            <!-- <input type="submit" value="Update"> -->
+                                            <!-- <a href="{{url('/update-cart-quantity/'.$value->rowId.'/10')}}">Update</a> -->
+                                        </td>
+                                       
+                                    </form>
+
+                                    <td><input type="text" value="{{$value->qty}}"></td>
+
                                     <td class="product_total">$
-                                    <?php
+                                        <?php
                                         $subtotal = $value->price * $value->qty;
                                         echo (number_format($subtotal));
-                                    ?></td>
+                                        ?></td>
+
+
+
+
+
 
 
                                 </tr>
+
                                 @endforeach
 
 
