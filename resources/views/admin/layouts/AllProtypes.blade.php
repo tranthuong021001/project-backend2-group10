@@ -83,13 +83,13 @@
                           <div class="col-sm-12">
                             <div class="card-box table-responsive">
                     <p class="text-muted font-13 m-b-30">
-                      DataTables has most features enabled by default, so all you need to do to use it with your own tables is to call the construction function: <code>$().DataTable();</code>
+                   
                     </p>
                     <table id="datatable" class="table table-striped table-bordered" style="width:100%">
                       <thead>
                         <tr>
                      
-                        <th>id</th>
+                     
                           <th>Name</th>
 
                           <th style="width:50px;"></th>
@@ -99,10 +99,13 @@
 
 
                       <tbody>
+                      <?php
+                        $stt = 1;
+                      ?>
                           @foreach($allprotypes as $type )
                         <tr>
                           
-                          <td>{{$type->id}}</td>
+                         
                           <td>{{$type->type_name}}</td>
                           
                           <td >
@@ -113,9 +116,13 @@
                          
                         </td>
                         </tr>
+                        <?php
+        $stt++;
+        ?>
                         @endforeach
                       </tbody>
                     </table>
+                    {{ $allprotypes->links() }}
                   </div>
                   </div>
               </div>

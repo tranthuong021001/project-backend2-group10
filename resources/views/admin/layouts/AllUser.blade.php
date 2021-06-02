@@ -41,7 +41,7 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Quản lí sản phẩm <small>    </small></h3>
+                <h3>Quản lí người dùng <small>    </small></h3>
               </div>
 
               <div class="title_right">
@@ -62,7 +62,7 @@
               <div class="col-md-12 col-sm-12 ">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Danh sách sản phẩm </h2>
+                    <h2>Danh sách người dùng </h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -83,23 +83,19 @@
                           <div class="col-sm-12">
                             <div class="card-box table-responsive">
                     <p class="text-muted font-13 m-b-30">
-                   
+                     
                     </p>
                     <table id="datatable" class="table table-striped table-bordered" style="width:100%">
                       <thead>
                         <tr>
-                        <th>Image</th>
+                     
                        
+                          <th>UserName</th>
+                          <th>Password</th>
                           <th>Name</th>
-                          <th>Price</th>
-                          <th>Type_id</th>
-                          <th>Manu_id</th>
-                          <th>Description</th>
-                          <th>Sale</th>
-                          <th>Size</th>
-                          <th>Gender</th>
-                          <th>Created_at</th>
-                          <th>Updated_at</th>
+                          <th>Email</th>
+                          <th>Phone</th>
+                         
                           <th style="width:50px;"></th>
                           
                         </tr>
@@ -110,25 +106,21 @@
                       <?php
                         $stt = 1;
                       ?>
-                          @foreach($allproducts as $pro )
+                          @foreach($allusers as $user )
                         <tr>
-                        <!-- <td>{{ $loop->index + 1 }}</td> -->
-                          <td><img src="assets/img/product/{{$pro->image}}" height="100" width="100" alt=""></td>
-                       
-                          <td>{{$pro->name}}</td>
-                          <td>{{$pro->price}}</td>
-                          <td>{{$pro->type_name}}</td>
-                          <td>{{$pro->manu_name}}</td>
-                          <td>{{$pro->description}}</td>
-                          <td>{{$pro->sale}}</td>
-                          <td>{{$pro->size}}</td>
-                          <td>{{$pro->gender}}</td>
-                          <td>{{$pro->created_at}}</td>
-                          <td>{{$pro->updated_at}}</td>
+                          
+                        
+                          <td>{{$user->username}}</td>
+                          <td>{{$user->password}}</td>
+                          <td>{{$user->name}}</td>
+                          <td>{{$user->email}}</td>
+                          <td>{{$user->phone}}</td>
+                         
+                         
                           <td >
-                          <div class="fa-hover col-md-3 col-sm-4  "><a href="{{URL::to('/admin/editproduct/'.$pro->id)}}"><i class="fa fa-wrench"></i></a>
+                          <div class="fa-hover col-md-3 col-sm-4  "><a href="{{URL::to('/admin/edituser/'.$user->id)}}"><i class="fa fa-wrench"></i></a>
                             
-                              <div class="fa-hover col-md-3 col-sm-4  "><a onclick="return comfirm('Bạn có chắc muốn xóa sản phẩm này không?')" href="{{URL::to('/admin/deleteproduct/'.$pro->id)}}"><i class="fa fa-trash"></i></a>
+                              <div class="fa-hover col-md-3 col-sm-4  "><a onclick="return comfirm('Bạn có chắc muốn xóa hiệu sản xuất này không?')" href="{{URL::to('/admin/deleteuser/'.$user->id)}}"><i class="fa fa-trash"></i></a>
                         </div>
                          
                         </td>
@@ -139,7 +131,7 @@
                         @endforeach
                       </tbody>
                     </table>
-                    {{ $allproducts->links() }}
+                    {{ $allusers->links() }}
                   </div>
                   </div>
               </div>

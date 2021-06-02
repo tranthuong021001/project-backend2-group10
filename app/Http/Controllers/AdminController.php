@@ -14,7 +14,8 @@ class AdminController extends Controller
     public function getIndexAdmin()
     {
         if (Auth::check()) {
-         return view('admin.layouts.index');
+            $user = Auth::user();
+         return view('admin.layouts.index',$user);
         }
       
     }
@@ -75,7 +76,7 @@ class AdminController extends Controller
            $name_image = current(explode('.',$get_name));
            $new_image = $name_image.rand(0,99).'.'.$get_image->getClientOriginalExtension();
           // $path = $request->file('product_image')->store('public/assets/img/product');
-           $get_image->move('public/assets/img/product',$new_image);
+           $get_image->move('assets/img/product/',$new_image);
            $data['image'] = $new_image;
         DB::table('products')->insert($data);
         Session::put('message','Thêm sản phẩm thành công');
@@ -214,5 +215,20 @@ class AdminController extends Controller
          DB::table('protypes')->where('id',$id)->delete();
         Session::put('message','xóa loại sản phẩm thành công');
         return Redirect::to('/allprotypes');
+     }
+     //user in admin getAllUserInAdmin
+     public function getAllUserInAdmin()
+     {
+       $all_user = DB::table("users")
+          ->select('users.*');
+         $all_user = $all_user->orderBy("users.id","Desc");
+         $all_user = $all_user->paginate(15);
+         return view('admin.layouts.AllUser')->with('allusers',$all_user);     
+     }
+     public function DeleteUser($id)
+     {
+         DB::table('users')->where('id',$id)->delete();
+        Session::put('message','xóa người dùng '."users.id".' thành công');
+        return Redirect::to('/allusers');
      }
 }

@@ -83,13 +83,13 @@
                           <div class="col-sm-12">
                             <div class="card-box table-responsive">
                     <p class="text-muted font-13 m-b-30">
-                      DataTables has most features enabled by default, so all you need to do to use it with your own tables is to call the construction function: <code>$().DataTable();</code>
+                     
                     </p>
                     <table id="datatable" class="table table-striped table-bordered" style="width:100%">
                       <thead>
                         <tr>
                      
-                        <th>id</th>
+                     
                           <th>Name</th>
 
                           <th>Created_at</th>
@@ -101,10 +101,13 @@
 
 
                       <tbody>
+                      <?php
+                        $stt = 1;
+                      ?>
                           @foreach($allmanufactures as $manu )
                         <tr>
                           
-                          <td>{{$manu->id}}</td>
+                         
                           <td>{{$manu->manu_name}}</td>
                           <td>{{$manu->created_at}}</td>
                           <td>{{$manu->updated_at}}</td>
@@ -116,9 +119,13 @@
                          
                         </td>
                         </tr>
+                        <?php
+        $stt++;
+        ?>
                         @endforeach
                       </tbody>
                     </table>
+                    {{ $allmanufactures->links() }}
                   </div>
                   </div>
               </div>
