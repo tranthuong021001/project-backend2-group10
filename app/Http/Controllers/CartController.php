@@ -12,14 +12,11 @@ session_start();
 
 class CartController extends Controller
 {
+    //hàm thêm sản phẩm vào giỏ hàng
     public function Save_Cart(Request $request){
         $productid = $request->productid_hidden;
         $quanlity = $request->qty;
-
         $product_info = DB::table('products')->where('id', $productid)->first();
-
-        //Cart::add('293ad', 'Product 1', 1, 9.99, 550);
-        // Cart::destroy();
         $data['id'] = $product_info->id;
         $data['qty'] = $quanlity;
         $data['name'] = $product_info->name;
@@ -33,14 +30,10 @@ class CartController extends Controller
         echo $data['name'].'<br>';
         echo $data['price'].'<br>';
         return Redirect::to('/show-cart');
-      // return view('frontend.cart.showcart', compact('product_info','quanlity'));
-
-
     }
 
-
+    //hàm hiển thị trang giỏ hàng
     public function show_cart(){
-
         return view('frontend.cart.showcart');
     }
 
@@ -57,6 +50,6 @@ class CartController extends Controller
         echo $rowId.'<br>';
         echo $qty;
         Cart::update($rowId, $qty);
-        //return Redirect::to('/show-cart');
+        return Redirect::to('/show-cart');
     }
 }
