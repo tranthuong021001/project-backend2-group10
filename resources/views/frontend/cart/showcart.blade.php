@@ -55,7 +55,7 @@
                                             <button class="update-button" type="submit">Update</button>
                                         </td>
                                     </form>
-                                    <td><input type="text" value="{{$value->qty}}"></td>
+                                    
                                     <td class="product_total">$
                                         <?php
                                         $subtotal = $value->price * $value->qty;
