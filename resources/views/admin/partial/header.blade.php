@@ -3,7 +3,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Pos Coron!</span></a>
+              <a href="{{asset('allproducts')}}" class="site_title"><i class="fa fa-paw"></i> <span>Pos Coron!</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -29,7 +29,7 @@
                 <ul class="nav side-menu">
                   <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="index.html">Dashboard</a></li>
+                      <li><a href="{{asset('allproducts')}}">Dashboard</a></li>
                      
                     </ul>
                   </li>
@@ -37,6 +37,10 @@
                     <ul class="nav child_menu">
                     <li><a href="{{asset('allproducts')}}">Xem tất cả sản phẩm</a></li>
                       <li><a href="{{url('admin/addproduct')}}">Thêm mặt hàng</a></li>
+                      <li><a href="{{asset('allmanufactures')}}">Xem tất cả nhà sản xuất</a></li>
+                      <li><a href="{{url('admin/addmanufactures')}}">Thêm hiệu sản xuất</a></li>
+                      <li><a href="{{asset('allprotypes')}}">Xem tất cả loại hàng</a></li>
+                      <li><a href="{{url('admin/addprotypes')}}">Thêm loại hàng</a></li>
                     
                       
                     </ul>
@@ -128,7 +132,7 @@
                         <span>Settings</span>
                       </a>
                   <a class="dropdown-item"  href="javascript:;">Help</a>
-                    <a class="dropdown-item"  href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+                    <a class="dropdown-item"  href="{{url('/logout')}}"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
                   </div>
                 </li>
 

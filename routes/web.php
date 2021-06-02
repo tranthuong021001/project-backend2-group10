@@ -24,15 +24,28 @@ Auth::routes();
 Route::get('/home', 'HomeController@getAllProductHome')->name('home');
 //product admin
 //Route::get('/addproduct', 'welcomecontroller@getIndexAddProduct');
-Route::get('/admin', 'WelcomeController@getIndexAdmin')->middleware('auth');
-Route::get('/allproducts', 'WelcomeController@getAllProductsAdmin')->middleware('auth');
-Route::get('/admin/addproduct', 'welcomecontroller@getIndexAddProduct');
-Route::post('/admin/saveproduct', 'welcomecontroller@getSaveProduct');
-Route::get('/admin/editproduct/{id}', 'welcomecontroller@EditProduct');
-Route::post('/admin/updateproduct/{id}', 'welcomecontroller@UpdateProduct');
-Route::get('/admin/deleteproduct/{id}', 'welcomecontroller@DeleteProduct');
-
-
+Route::get('/admin', 'AdminController@getIndexAdmin')->middleware('auth');
+Route::get('/logout', 'AdminController@LogoutAdmin')->middleware('auth');
+Route::get('/allproducts', 'AdminController@getAllProductsAdmin')->middleware('auth');
+Route::get('/admin/addproduct', 'AdminController@getIndexAddProduct');
+Route::post('/admin/saveproduct', 'AdminController@getSaveProduct');
+Route::get('/admin/editproduct/{id}', 'AdminController@EditProduct');
+Route::post('/admin/updateproduct/{id}', 'AdminController@UpdateProduct');
+Route::get('/admin/deleteproduct/{id}', 'AdminController@DeleteProduct');
+//manufacture admin
+Route::get('/allmanufactures', 'AdminController@getAllManufacturesAdmin')->middleware('auth');
+Route::get('/admin/addmanufactures', 'AdminController@getIndexAddManufactures');
+Route::post('/admin/savemanufactures', 'AdminController@getSaveManufactures');
+Route::get('/admin/editmanu/{id}', 'AdminController@EditManu');
+Route::post('/admin/updatemanu/{id}', 'AdminController@UpdateManu');
+Route::get('/admin/deletemanu/{id}', 'AdminController@DeleteManu');
+//protypes
+Route::get('/allprotypes', 'AdminController@getAllProtypesAdmin')->middleware('auth');
+Route::get('/admin/addprotypes', 'AdminController@getIndexAddProtypes');
+Route::post('/admin/saveprotypes', 'AdminController@getSaveProtypes');
+Route::get('/admin/editprotype/{id}', 'AdminController@EditProtypes');
+Route::post('/admin/updateprotype/{id}', 'AdminController@UpdateProtypes');
+Route::get('/admin/deleteprotype/{id}', 'AdminController@DeleteProtypes');
 
 
 //Route::match(['get','post'],'/admin/addproduct',['as' =>'/admin/addproduct','user' => 'welcomecontroller@getIndexAddProduct'])->middleware('auth') ;
