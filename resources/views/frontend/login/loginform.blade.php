@@ -24,14 +24,15 @@
         <div class="col-lg-6 col-md-6">
             <div class="account_form">
                 <h2>login</h2>
-                <form action="#">
+                <form action="{{url('/login-account')}}" method="post">
+                {{csrf_field()}}
                     <p>
                         <label>Username or email <span>*</span></label>
-                        <input type="text">
+                        <input type="text" name="email_account">
                     </p>
                     <p>
                         <label>Passwords <span>*</span></label>
-                        <input type="password">
+                        <input type="password" name="password">
                     </p>
                     <div class="login_submit">
                         <button type="submit">login</button>

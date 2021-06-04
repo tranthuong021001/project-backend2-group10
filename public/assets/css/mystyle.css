@@ -24,3 +24,7 @@
 	border-bottom: 1px solid #01ab98;
 	position: relative;
 }
+
+.user-actions h3 {
+    text-align: center;
+}

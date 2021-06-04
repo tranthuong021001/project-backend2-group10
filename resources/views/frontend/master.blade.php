@@ -14,6 +14,7 @@
             padding: 7px;
             transition: all 0.3s ease-out 0s;
         }
+
         .update-button:hover {
             background: #ea3a3c;
         }
@@ -72,9 +73,25 @@
                                         <li><a href="wishlist.html" title="wishlist">My wishlist</a></li>
                                         <li><a href="my-account.html" title="My account">My account</a></li>
                                         <li><a href="cart.html" title="My cart">My cart</a></li>
-                                        <li><a href="{{ url('/home') }}" title="Login">Login</a></li>
+                                        <!-- <li><a href="{{ url('/home') }}" title="Login">Login</a></li> -->
+                                        <?php
+                                            $customer_id = Session::get('id');
+                                            if ($customer_id != null) {
+                                        ?>
+                                            <li> <a class="" href="{{ url('/logout-checkout')}}">Logout on youtube</a> </li>
+
+                                        <?php
+                                            }
+                                            else {
+                                        ?>
+                                            <li> <a class="" href="{{ url('/login-checkout')}}">Login on youtube</a> </li>
+                                        <?php
+                                            }
+                                        ?>
                                         <!--Logout-->
-                                        <li> <a class="" href="{{ url('/app')}}">Login & logout</a> </li>
+                                        <!-- <li> <a class="" href="{{ url('/app')}}">Login & logout</a> </li> -->
+
+
                                     </ul>
                                 </div>
                             </div>
@@ -101,10 +118,10 @@
                                         </form>
                                     </div>
                                     <div class="shopping_cart">
-                                        <a href="#"><i class="fa fa-shopping-cart"></i> 2Items - $209.44 <i class="fa fa-angle-down"></i></a>
+                                        <a href="{{url('/show-cart')}}"><i class="fa fa-shopping-cart"></i>  </a>
 
                                         <!--mini cart-->
-                                        <div class="mini_cart">
+                                        <!-- <div class="mini_cart">
                                             <div class="cart_item">
                                                 <div class="cart_img">
                                                     <a href="#"><img src="{{url('assets\img\cart\cart.jpg')}}" alt=""></a>
@@ -142,7 +159,7 @@
                                             <div class="cart_button">
                                                 <a href="checkout.html"> Check out</a>
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <!--mini cart end-->
                                     </div>
 

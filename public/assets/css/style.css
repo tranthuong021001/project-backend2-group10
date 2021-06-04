@@ -2520,6 +2520,7 @@
 	padding: 15px 10px;
 	border-top: 3px solid #00bba6;
 	margin-bottom: 0;
+    text-align: center;
 }
 .user-actions h3 a{
     color: #e84c3d;

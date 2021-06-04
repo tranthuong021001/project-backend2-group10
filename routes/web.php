@@ -48,8 +48,15 @@ Route::post('/update-cart-quantity', 'CartController@update_cart_quantity' );
 //Checkout register
 Route::get('/show-order', 'CheckoutController@show_order' );
 Route::get('/login-checkout', 'CheckoutController@login_checkout' );
+Route::get('/logout-checkout', 'CheckoutController@logout_checkout' );
 Route::post('/add-customer', 'CheckoutController@add_customer' );
-Route::get('/checkout', 'CheckoutController@checkout' );
+Route::post('/login-account', 'CheckoutController@login_account' );
+//order success
+Route::get('/order-success', 'CheckoutController@order_success' );
+
+//Bill
+Route::post('/order', 'CheckoutController@order' );
+
 
 
 //route động có tham số dùng để gắn các liên kết trang
