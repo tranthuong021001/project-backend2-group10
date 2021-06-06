@@ -1,7 +1,7 @@
  @extends('frontend.master')
  @section('content')
 
- 
+
  <!--breadcrumbs area start-->
  <div class="breadcrumbs_area">
      <div class="row">
@@ -91,7 +91,7 @@
                          <div class="row">
                              <!-- hien thi san pham theo danh muc category -->
 
-                             @foreach ($category as $value)
+                             @foreach ($gender as $value)
 
                              <div class="col-lg-3 col-md-4 col-sm-6">
                                  <div class="single_product">

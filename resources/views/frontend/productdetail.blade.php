@@ -93,16 +93,34 @@
                 </div>
 
                 <div class="content_price mb-15">
+
+                    <?php
+
+                    if ($singleProduct->sale > 0) {
+                        $rate = (100 - $singleProduct->sale) / 100;
+                        $lastPrice = $rate * $singleProduct->price;
+
+
+                    ?>
+                        <span>${{number_format($lastPrice)}}</span>
+                        <span class="old-price">${{number_format($singleProduct->price)}}</span>
+                    <?php
+                    } else {
+
+
+                    ?>
                     <span>${{number_format($singleProduct->price)}}</span>
-                    <span class="old-price">$130.00</span>
+                    <?php
+                    }
+                    ?>
                 </div>
                 <form action="{{URL::to('/save-cart')}}" method="POST">
                     {{csrf_field() }}
                     <div class="box_quantity mb-20">
 
-                            <label>quantity</label>
-                            <input name="qty" min="0" max="100" value="1" type="number">
-                            <input name="productid_hidden" value="{{$singleProduct->id}}" type="hidden">
+                        <label>quantity</label>
+                        <input name="qty" min="0" max="100" value="1" type="number">
+                        <input name="productid_hidden" value="{{$singleProduct->id}}" type="hidden">
 
                         <button type="submit"><i class="fa fa-shopping-cart"></i> add to cart</button>
                         <a href="#" title="add to wishlist"><i class="fa fa-heart" aria-hidden="true"></i></a>
@@ -280,7 +298,15 @@
                             <img src="{{url('assets\img\cart\span-new.png')}}" alt="">
                         </div>
                         <div class="product_action">
-                            <a href="#"> <i class="fa fa-shopping-cart"></i> Add to cart</a>
+                            <form action="{{URL::to('/save-cart')}}" method="POST">
+                                {{csrf_field() }}
+                                <input type="hidden" name="qty" value="1">
+                                <input name="productid_hidden" value="{{$value->id}}" type="hidden">
+
+                                <button type="submit"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                                <!-- <a href="#"> <i class="fa fa-shopping-cart"></i> Add to cart</a> -->
+                            </form>
+                            <!-- <a href="#"> <i class="fa fa-shopping-cart"></i> Add to cart</a> -->
                         </div>
                     </div>
                     <div class="product_content">

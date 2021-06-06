@@ -1,5 +1,11 @@
 @extends('frontend.master')
 @section('content')
+<?php
+$total_money = Cart::subtotal(0,0,'');
+echo $total_money;
+
+DB::update('update bills set total_money = ' .$total_money. ' where id = ?', [8]);
+?>
 <!--pos home section-->
 <div class=" pos_home_section">
     <div class="row pos_home">
@@ -242,7 +248,7 @@
                                     </div>
                                 </div>
                                 <div class="product_content">
-                                    <span class="product_price">$60.00</span>
+                                    <span class="product_price">${{$value->price}}</span>
                                     <h3 class="product_title"><a href="{{route('Product_Detail', ['id'=>$value->id])}}">{{$value->name}}</a></h3>
                                 </div>
                                 <div class="product_info">

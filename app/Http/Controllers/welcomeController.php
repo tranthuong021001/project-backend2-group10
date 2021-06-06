@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use App\Product;
 use App\Product_Image;
 use App\Protype;
+use App\Bill;
+use App\Gender;
 
 use App\Manufacture;
 use App\Category;
@@ -44,10 +46,19 @@ class WelcomeController extends Controller
     public function getProductByCategory($id)
     {
         $category = Protype::find($id)->product;
+        // $bill = Bill::find(11)->bill__details->toArray();
+        // dd($bill);
         return view('frontend.productbycategory', compact('category'));
     }
 
-
+    //hàm lấy all sản phẩm theo giới tinhs
+    public function getProductByGender($id)
+    {
+        $gender = Gender::find($id)->product;
+        // $bill = Bill::find(11)->bill__details->toArray();
+         //dd($gender);
+        return view('frontend.productbygender', compact('gender'));
+    }
      //xem chi tiet san pham View_Product_Detail
      public function Product_Detail($id)
      {
@@ -66,7 +77,7 @@ class WelcomeController extends Controller
     }
 
     //get all products , manufacture , proytpe of products
-    public function getAllProduct()
+    public function getAllProductSale()
     {
         $product_Feature = Product::where('sale', '>=',1)->get();
 

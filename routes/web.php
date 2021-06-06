@@ -22,16 +22,18 @@ Route::get('/hi', 'welcomecontroller@laySanPhamTheoLoai' );
 //route động có tham số dùng để chuyển đến trang Account
 //Route::get('/{para}', 'HomeController@index')->name('home');
 
-Route::get('/', 'welcomecontroller@getAllProduct');
+Route::get('/', 'welcomecontroller@getAllProductSale');
 
 
-Route::get('/index', 'welcomecontroller@getAllProduct');
+Route::get('/index', 'welcomecontroller@getAllProductSale');
 Route::get('/manu', 'welcomecontroller@getAllManufactures');
 
 //lấy sản phâm theo  loại
 Route::get('/productbycategory/{id}', 'welcomecontroller@getProductByCategory')->name('productbycategory');
 //lấy sản phâm theo  hãng sản xuất
 Route::get('/productbymanufacture/{id}', 'welcomecontroller@getProductByManufacture')->name('productbymanufacture');
+//lấy sản phâm theo giới tính
+Route::get('/productbygender/{id}', 'welcomecontroller@getProductByGender')->name('productbygender');
 
 //hiển thị chi tiết sản phẩm
 Route::get('/chi-tiet-san-pham/{id}', 'welcomecontroller@Product_Detail')->name('Product_Detail');

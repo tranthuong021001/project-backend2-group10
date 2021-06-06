@@ -73,25 +73,20 @@
                                         <li><a href="wishlist.html" title="wishlist">My wishlist</a></li>
                                         <li><a href="my-account.html" title="My account">My account</a></li>
                                         <li><a href="cart.html" title="My cart">My cart</a></li>
-                                        <!-- <li><a href="{{ url('/home') }}" title="Login">Login</a></li> -->
+
                                         <?php
                                             $customer_id = Session::get('id');
                                             if ($customer_id != null) {
                                         ?>
-                                            <li> <a class="" href="{{ url('/logout-checkout')}}">Logout on youtube</a> </li>
-
+                                            <li> <a class="" href="{{ url('/logout-checkout')}}">Logout</a> </li>
                                         <?php
                                             }
                                             else {
                                         ?>
-                                            <li> <a class="" href="{{ url('/login-checkout')}}">Login on youtube</a> </li>
+                                            <li> <a class="" href="{{ url('/login-checkout')}}">Login</a> </li>
                                         <?php
                                             }
                                         ?>
-                                        <!--Logout-->
-                                        <!-- <li> <a class="" href="{{ url('/app')}}">Login & logout</a> </li> -->
-
-
                                     </ul>
                                 </div>
                             </div>
@@ -179,7 +174,7 @@
                                                 <li class="active"><a href="{{url('/index')}}">Home</a></li>
 
                                                 <!-- Item WOMEN -->
-                                                <li><a href="#">Women</a>
+                                                <li><a href="{{route('productbygender',['id'=>2])}}">Women</a>
                                                     <div class="mega_menu">
                                                         <div class="mega_top fix">
 
@@ -207,7 +202,7 @@
                                                     </div>
                                                 </li>
                                                 <!-- Item MEN -->
-                                                <li><a href="#">Men</a>
+                                                <li><a href="{{route('productbygender',['id'=>1])}}">Men</a>
                                                     <div class="mega_menu">
                                                         <div class="mega_top fix">
                                                             <!--hiển thị hãng sản xuất trên thanh menu-->

@@ -50,7 +50,7 @@
                                         @csrf
                                         <input type="hidden" name="rowId_cart" value="{{$value->rowId}}">
                                         <td class="product-price">${{number_format($value->price)}}</td>
-                                        <td class="product_quantity"><input min="0" max="100" name="quantity_product" value="{{$value->qty}}" type="text">
+                                        <td class="product_quantity"><input min="0" max="100" name="quantity_product" value="{{$value->qty}}" type="number">
                                             <button class="update-button" type="submit">Update</button>
                                         </td>
                                     </form>
@@ -66,9 +66,6 @@
 
                             </tbody>
                         </table>
-                    </div>
-                    <div class="cart_submit">
-                        <button type="submit">update cart</button>
                     </div>
                 </div>
             </div>

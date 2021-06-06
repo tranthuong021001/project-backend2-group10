@@ -69,14 +69,35 @@ class CheckoutController extends Controller
             $shipping_id = DB::table('shipping__infos')->insertGetId($data);
             Session::put('shipping_id', $shipping_id);
 
-        //sau khi đặt hàng xong thì xóa sản phẩm trong giỏ hàng
-        $content = Cart::content();
-        foreach($content as $value){
-            Cart::update($value->rowId, 0);
-        }
+            $content = Cart::content();
+            //tạo bill sau khi đặt hàng
+            $bill = array();
+            $bill['user_id'] = Session::get('id');
+            $bill['shipping_id'] = $shipping_id;
+            $id = DB::table('bills')->insertGetId($bill);
+
+            //tạo bill details
+            foreach ($content as $value) {
+                $subtotal = $value->price * $value->qty;
+                $billDetail = array();
+                $billDetail['bill_id'] = $id;
+                $billDetail['product_id'] = $value->id;
+                $billDetail['amount'] = $value->qty;
+                $billDetail['total_money'] = $subtotal;
+                DB::table('bill__details')->insertGetId($billDetail);
+            }
+
+            //cập nhật tổng tiền bảng bills
+            $total_money = Cart::subtotal(0, 0, '');
+            DB::update('update bills set total_money = ' . $total_money . ' where id = ?', [$id]);
+            //sau khi đặt hàng xong thì xóa sản phẩm trong giỏ hàng
+            $content = Cart::content();
+            foreach($content as $value){
+                Cart::update($value->rowId, 0);
+            }
+
             return Redirect('/order-success');
-        }
-        else{
+        } else {
             return Redirect('/');
         }
 
@@ -88,15 +109,12 @@ class CheckoutController extends Controller
     public function show(Request $request)
     {
         $content = Cart::content();
-        var_dump($content);
-        //tạo bill
-        $data = array();
-        $data['user_id'] = 1;
-        $id = DB::table('bills')->insertGetId($data);
-        echo 'id của bảng bill ' . $id;
-        Session::put('id', $id);
-        Session::put('user_id', 1);
 
+        //tạo bill
+        $bill = array();
+        $bill['user_id'] = Session::get('id');
+        $id = DB::table('bills')->insertGetId($bill);
+        // echo 'id của bảng bill ' . $id;
 
         foreach ($content as $value) {
             //  echo $value->id . '<br>';
@@ -106,15 +124,15 @@ class CheckoutController extends Controller
             //echo $subtotal;
 
 
-            $data = array();
-            $data['bill_id'] = $id;
-            $data['product_id'] = $value->id;
-            $data['amount'] = $value->qty;
-            $data['total_money'] = $subtotal;
-            $id_bill_details = DB::table('bill_details')->insertGetId($data);
+            $billDetail = array();
+            $billDetail['bill_id'] = $id;
+            $billDetail['product_id'] = $value->id;
+            $billDetail['amount'] = $value->qty;
+            $billDetail['total_money'] = $subtotal;
+            $id_bill_details = DB::table('bill_details')->insertGetId($billDetail);
 
-            Session::put('id', $id_bill_details);
-            Session::put('bill_id', $id);
+            // Session::put('id', $id_bill_details);
+            // Session::put('bill_id', $id);
         }
 
 
@@ -122,13 +140,13 @@ class CheckoutController extends Controller
         $updated = DB::update('update bills set total_money = ' . Cart::subtotal() . ' where id = ?', $id);
 
 
-        foreach ($content as $value) {
-            echo $value->id . '<br>';
-            echo $value->name . '<br>';
-            echo $value->price . '<br>';
-            $subtotal = $value->price * $value->qty;
-            echo $subtotal;
-        }
+        // foreach ($content as $value) {
+        //     echo $value->id . '<br>';
+        //     echo $value->name . '<br>';
+        //     echo $value->price . '<br>';
+        //     $subtotal = $value->price * $value->qty;
+        //     echo $subtotal;
+        // }
         // foreach ($content as $value) {
         //     echo 'bill';
         //     echo $content->lenght.'<br';
