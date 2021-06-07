@@ -57,7 +57,13 @@
                      
                       </li>
                   </ul>
-                </li>                  
+                </li>   
+                <li><a><i class="fa fa-sitemap"></i> Quản lí mua hàng <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu">
+                  <li><a href="{{asset('allbills')}}">Danh sách đơn hàng</a></li>
+                    
+                     
+                      </li>               
               
            
                 

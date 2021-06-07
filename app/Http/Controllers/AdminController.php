@@ -231,4 +231,22 @@ class AdminController extends Controller
         Session::put('message','xóa người dùng '."users.id".' thành công');
         return Redirect::to('/allusers');
      }
+     // admin bill 
+     public function getAllBillInAdmin()
+     {
+       $allBill = DB::table("bill__details")
+       ->join('bills','bills.id','=','bill__details.bill_id')
+       ->join('users','users.id','=','bills.user_id')
+      // ->join('shipping_infos','shipping_infos.id','=','bills.shipping_id')
+          ->select('bill__details.*','bills.user_id','bills.shipping_id','users.name');
+         $allBill = $allBill->orderBy("bill__details.id","Desc");
+         $allBill = $allBill->paginate(15);
+         return view('admin.layouts.AllBills')->with('allBill',$allBill);     
+     }
+     public function DeleteBill($id)
+     {
+         DB::table('bill__details')->where('id',$id)->delete();
+        Session::put('message','xóa người dùng '."bill__details.id".' thành công');
+        return Redirect::to('/allbills');
+     }
 }

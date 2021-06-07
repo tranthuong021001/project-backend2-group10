@@ -39,7 +39,7 @@ Route::post('/admin/savemanufactures', 'AdminController@getSaveManufactures')->m
 Route::get('/admin/editmanu/{id}', 'AdminController@EditManu')->middleware('auth');;
 Route::post('/admin/updatemanu/{id}', 'AdminController@UpdateManu')->middleware('auth');;
 Route::get('/admin/deletemanu/{id}', 'AdminController@DeleteManu')->middleware('auth');;
-//protypes
+//protypes admin
 Route::get('/allprotypes', 'AdminController@getAllProtypesAdmin')->middleware('auth');
 Route::get('/admin/addprotypes', 'AdminController@getIndexAddProtypes')->middleware('auth');;
 Route::post('/admin/saveprotypes', 'AdminController@getSaveProtypes')->middleware('auth');;
@@ -49,7 +49,15 @@ Route::get('/admin/deleteprotype/{id}', 'AdminController@DeleteProtypes')->middl
 
 //user admin
 Route::get('/allusers', 'AdminController@getAllUserInAdmin')->middleware('auth');
-Route::get('/admin/deleteuser/{id}', 'AdminController@DeleteUser')->middleware('auth');;
+Route::get('/admin/deleteuser/{id}', 'AdminController@DeleteUser')->middleware('auth');
+
+//bill admin
+Route::get('/allbills', 'AdminController@getAllBillInAdmin')->middleware('auth');
+Route::get('/admin/deletebill/{id}', 'AdminController@DeleteBill')->middleware('auth');;
+
+
+
+
 
 //Route::match(['get','post'],'/admin/addproduct',['as' =>'/admin/addproduct','user' => 'welcomecontroller@getIndexAddProduct'])->middleware('auth') ;
 //route động có tham số dùng để chuyển đến trang Account
