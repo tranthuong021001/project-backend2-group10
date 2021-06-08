@@ -234,19 +234,38 @@ class AdminController extends Controller
      // admin bill 
      public function getAllBillInAdmin()
      {
-       $allBill = DB::table("bill__details")
-       ->join('bills','bills.id','=','bill__details.bill_id')
+       $allBill = DB::table("bills")
+    //    ->join('bill__details','bill__details.id','=','bills.bill_id')
        ->join('users','users.id','=','bills.user_id')
+   
       // ->join('shipping_infos','shipping_infos.id','=','bills.shipping_id')
-          ->select('bill__details.*','bills.user_id','bills.shipping_id','users.name');
-         $allBill = $allBill->orderBy("bill__details.id","Desc");
+          ->select('bills.*','users.name');
+         $allBill = $allBill->orderBy("bills.id","Desc");
          $allBill = $allBill->paginate(15);
          return view('admin.layouts.AllBills')->with('allBill',$allBill);     
      }
      public function DeleteBill($id)
      {
-         DB::table('bill__details')->where('id',$id)->delete();
-        Session::put('message','xóa người dùng '."bill__details.id".' thành công');
+         DB::table('bills')->where('id',$id)->delete();
+        Session::put('message','xóa người dùng '."bills.id".' thành công');
         return Redirect::to('/allbills');
+     }
+     public function DetailBill($id)
+     {
+        $detailbill = DB::table("bills")
+        ->join('bill__details','bill__details.bill_id','=','bills.id')
+        ->join('products','products.id','=','bill__details.product_id')
+        ->join('shipping__infos','shipping__infos.shipping_id','=','bills.shipping_id')
+        ->join('users','users.id','=','bills.user_id')
+        ->where('bills.id',$id)
+       // ->join('shipping_infos','shipping_infos.id','=','bills.shipping_id')
+           ->select('bills.*',
+           'bill__details.bill_id','bill__details.product_id','bill__details.amount','bill__details.total_money',
+           'products.product_name', 'products.price',
+           'shipping__infos.shipping_name', 'shipping__infos.shipping_email','shipping__infos.shipping_address','shipping__infos.shipping_phone','shipping__infos.shipping_note',
+           'users.name','users.email','users.phone')->first();
+           print_r($detailbill);
+       
+        return view('admin.layouts.DetailBill')->with('detailbill',$detailbill);
      }
 }

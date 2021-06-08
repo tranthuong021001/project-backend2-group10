@@ -119,13 +119,10 @@
                          
                           
                           <td >
-                          <div class="fa-hover col-md-3 col-sm-4  "><a href="{{URL::to('/admin/editproduct/'.$bill->id)}}">Hiển thị chi tiết đơn hàng</a>  
+                          <div ><a href="{{URL::to('/admin/billdetail/'.$bill->id)}}">Chi tiết</a>  
                         </div>
                         </td>
-                        <td >
-                          <div class="fa-hover col-md-3 col-sm-4  "><a href="{{URL::to('/admin/editproduct/'.$bill->id)}}">Hiển thị chi tiết vận chuyển</a>  
-                        </div>
-                        </td>
+                     
                         <td>
                         <div>
                          <div class="fa-hover col-md-3 col-sm-4  "><a onclick="return comfirm('Bạn có chắc muốn xóa sản phẩm này không?')" href="{{URL::to('/admin/deletebill/'.$bill->id)}}"><i class="fa fa-trash"></i></a>

@@ -54,7 +54,7 @@ Route::get('/admin/deleteuser/{id}', 'AdminController@DeleteUser')->middleware('
 //bill admin
 Route::get('/allbills', 'AdminController@getAllBillInAdmin')->middleware('auth');
 Route::get('/admin/deletebill/{id}', 'AdminController@DeleteBill')->middleware('auth');;
-
+Route::get('/admin/billdetail/{id}', 'AdminController@DetailBill')->middleware('auth');
 
 
 
