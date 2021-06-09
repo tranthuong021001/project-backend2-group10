@@ -24,7 +24,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@getAllProductHome')->name('home');
 //product admin
 //Route::get('/addproduct', 'welcomecontroller@getIndexAddProduct');
-Route::get('/admin', 'AdminController@getIndexAdmin')->middleware('auth');
+Route::get('/admin/tc', 'AdminController@getIndexAdmin')->middleware('auth');
 Route::get('/logout', 'AdminController@LogoutAdmin')->middleware('auth');
 Route::get('/allproducts', 'AdminController@getAllProductsAdmin')->middleware('auth');
 Route::get('/admin/addproduct', 'AdminController@getIndexAddProduct')->middleware('auth');;
