@@ -14,7 +14,7 @@
                 <img src="images/img.jpg" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
-                <span>Welcome,</span>
+                <span>Welcome</span>
                
                 <h2></h2>
               
@@ -53,12 +53,13 @@
                 <li><a><i class="fa fa-sitemap"></i> Quản lí người dùng <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
                   <li><a href="{{asset('allusers')}}">Danh sách người dùng</a></li>
+                  <li><a href="{{asset('adduser')}}">Thêm người dùng</a></li>
                     
                      
                       </li>
                   </ul>
                 </li>   
-                <li><a><i class="fa fa-sitemap"></i> Quản lí mua hàng <span class="fa fa-chevron-down"></span></a>
+                <li><a><i class="fa fa-book"></i> Quản lí mua hàng <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
                   <li><a href="{{asset('allbills')}}">Danh sách đơn hàng</a></li>
                     

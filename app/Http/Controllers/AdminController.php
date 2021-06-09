@@ -231,6 +231,40 @@ class AdminController extends Controller
         Session::put('message','xóa người dùng '."users.id".' thành công');
         return Redirect::to('/allusers');
      }
+     public function AddUser(Request $request)
+   {     
+            return view('admin.layouts.addUser');
+   }
+   public function SaveUser(Request $request)
+   {
+      $data = array();
+      $data['username'] = $request->username;
+      $data['password'] = $request->password;
+      $data['name'] = $request->name;
+      $data['email'] = $request->email;
+      $data['phone'] = $request->phone;
+      DB::table('users')->insert($data);
+      Session::put('message','Thêm người dùng thành công');
+     return Redirect::to('/allusers');
+   }
+   public function EditUser($id)
+   {
+       $edit_user =  DB::table("users")->where('id',$id)->get(); 
+      return view('admin.layouts.editUser')->with('edituser',$edit_user);
+   }
+    public function UpdateUser(Request $request,$id)
+   {
+    $data = array();
+    $data['username'] = $request->username;
+    $data['password'] = $request->password;
+    $data['name'] = $request->name;
+    $data['email'] = $request->email;
+    $data['phone'] = $request->phone;
+    
+      DB::table('users')->where('id',$id)->update($data);
+      Session::put('message','Cập nhập người dùng thành công');
+     return Redirect::to('/allusers');
+   }
      // admin bill 
      public function getAllBillInAdmin()
      {

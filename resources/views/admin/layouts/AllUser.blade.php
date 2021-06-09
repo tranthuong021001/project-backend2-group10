@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>DataTables | Gentelella</title>
+    <title>Người dùng | Pos Coron!</title>
 
     <!-- Bootstrap -->
     <link href="{{ url('cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css')}}">
@@ -118,7 +118,7 @@
                          
                          
                           <td >
-                          <div class="fa-hover col-md-3 col-sm-4  "><a href="{{URL::to('/admin/edituser/'.$user->id)}}"><i class="fa fa-wrench"></i></a>
+                          <div class="fa-hover col-md-3 col-sm-4  "><a href="{{URL::to('/edituser/'.$user->id)}}"><i class="fa fa-wrench"></i></a>
                             
                               <div class="fa-hover col-md-3 col-sm-4  "><a onclick="return comfirm('Bạn có chắc muốn xóa hiệu sản xuất này không?')" href="{{URL::to('/admin/deleteuser/'.$user->id)}}"><i class="fa fa-trash"></i></a>
                         </div>

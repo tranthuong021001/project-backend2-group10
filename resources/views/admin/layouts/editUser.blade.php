@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Thêm Hiệu sản xuất | Pos Coron! </title>
+    <title>Sửa người dùng | Pos Coron! </title>
 
     <!-- Bootstrap -->
     <link href="{{ url('../vendors/bootstrap/dist/css/bootstrap.min.css')}}" rel="stylesheet">
@@ -29,7 +29,7 @@
                 <div class="">
                     <div class="page-title">
                         <div class="title_left">
-                            <h3>Thêm hiệu sản xuất</h3>
+                            <h3>Thêm Người dùng</h3>
                         </div>
 
                         <div class="title_right">
@@ -49,7 +49,7 @@
                         <div class="col-md-12 col-sm-12">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2>Thêm hiệu sản xuất  <small>sub title</small></h2>
+                                
                                     <ul class="nav navbar-right panel_toolbox">
                                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                         </li>
@@ -66,30 +66,60 @@
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
-                                    <form class="" action="{{URL::to('/admin/savemanufactures')}}" method="post" enctype="multipart/form-data">
+                                    @foreach($edituser as $user)
+                                    <form class="" action="{{URL::to('/updateuser/'.$user->id)}}" method="post" enctype="multipart/form-data">
                                     @csrf
                                     <meta name="csrf-token" content="{{ csrf_token() }}">
-                                        <p>For alternative validation library <code>parsleyJS</code> check out in the <a href="form.html">form page</a>
-                                        </p>
-                                        <span class="section">Thông tin hiệu sẩn xuất</span>
+                                       
+                                        <span class="section">Thông tin người dùng</span>
                                         <div class="field item form-group">
-                                            <label class="col-form-label col-md-3 col-sm-3  label-align">Name<span class="required">*</span></label>
+                                            <label class="col-form-label col-md-3 col-sm-3  label-align">UserName<span class="required">*</span></label>
                                             <div class="col-md-6 col-sm-6">
-                                                <input class="form-control" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Tên nhà sản xuất" required="required" />
+                                                <input class="form-control" value="{{$user->username}}" name="username" placeholder="" required="required" />
                                             </div>
                                         </div>
-                                 
-                                      
-                                       
+                                        <div class="field item form-group">
+											<label class="col-form-label col-md-3 col-sm-3  label-align">Password<span class="required">*</span></label>
+											<div class="col-md-6 col-sm-6">
+												<input class="form-control" value="{{$user->password}}" type="password" id="password1" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{6,}" title="Minimum 6 Characters Including An Upper And Lower Case Letter, A Number And A Unique Character" required />
+												
+												<span style="position: absolute;right:15px;top:7px;" onclick="hideshow()" >
+													<i id="slash" class="fa fa-eye-slash"></i>
+													<i id="eye" class="fa fa-eye"></i>
+												</span>
+											</div>
+										</div>
+                                        <div class="field item form-group">
+                                            <label class="col-form-label col-md-3 col-sm-3  label-align">Repeat password<span class="required">*</span></label>
+                                            <div class="col-md-6 col-sm-6">
+                                                <input class="form-control" value="{{$user->password}}" type="password" name="password2" data-validate-linked='password' required='required' /></div>
+                                        </div>
+                                        <div class="field item form-group">
+                                            <label class="col-form-label col-md-3 col-sm-3  label-align">Tên người dùng<span class="required">*</span></label>
+                                            <div class="col-md-6 col-sm-6">
+                                                <input class="form-control" value="{{$user->name}}" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="" required="required" />
+                                            </div>
+                                        </div>
+                                        <div class="field item form-group">
+                                            <label class="col-form-label col-md-3 col-sm-3  label-align">Email<span class="required">*</span></label>
+                                            <div class="col-md-6 col-sm-6">
+                                                <input class="form-control" value="{{$user->email}}" name="email" class='email' required="required" type="email" /></div>
+                                        </div>                                      
+                                          <div class="field item form-group">
+                                            <label class="col-form-label col-md-3 col-sm-3  label-align">Số điện thoại<span class="required">*</span></label>
+                                            <div class="col-md-6 col-sm-6">
+                                                <input class="form-control" value="{{$user->phone}}" type="tel" class='tel' name="phone" required='required' data-validate-length-range="8,20" /></div>
+                                        </div>                                  
                                         <div class="ln_solid">
                                             <div class="form-group">
                                                 <div class="col-md-6 offset-md-3">
-                                                    <button type='submit'name = "add_manu" class="btn btn-primary">Submit</button>
+                                                    <button type='submit'name = "" class="btn btn-primary">Submit</button>
                                                     <button type='reset' class="btn btn-success">Reset</button>
                                                 </div>
                                             </div>
                                         </div>
                                     </form>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
@@ -100,9 +130,30 @@
 
          @include('admin.partial.footer')
           <!-- Javascript functions	-->
-	
+          <script src="{{ url('https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js')}}"></script>
+    <script src="{{ url('../vendors/validator/multifield.js')}}"></script>
+    <script src="{{ url('../vendors/validator/validator.js')}}"></script>
+          <script>
+		function hideshow(){
+			var password = document.getElementById("password1");
+			var slash = document.getElementById("slash");
+			var eye = document.getElementById("eye");
+			
+			if(password.type === 'password'){
+				password.type = "text";
+				slash.style.display = "block";
+				eye.style.display = "none";
+			}
+			else{
+				password.type = "password";
+				slash.style.display = "none";
+				eye.style.display = "block";
+			}
 
-    <script>
+		}
+	</script>
+
+<script>
         // initialize a validator instance from the "FormValidator" constructor.
         // A "<form>" element is optionally passed as an argument, but is not a must
         var validator = new FormValidator({

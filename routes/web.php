@@ -50,12 +50,14 @@ Route::get('/admin/deleteprotype/{id}', 'AdminController@DeleteProtypes')->middl
 //user admin
 Route::get('/allusers', 'AdminController@getAllUserInAdmin')->middleware('auth');
 Route::get('/admin/deleteuser/{id}', 'AdminController@DeleteUser')->middleware('auth');
-
+Route::get('/adduser', 'AdminController@AddUser')->middleware('auth');
+Route::post('/saveuser', 'AdminController@SaveUser')->middleware('auth');;
+Route::get('/edituser/{id}', 'AdminController@EditUser')->middleware('auth');;
+Route::post('/updateuser/{id}', 'AdminController@UpdateUser')->middleware('auth');;
 //bill admin
 Route::get('/allbills', 'AdminController@getAllBillInAdmin')->middleware('auth');
 Route::get('/admin/deletebill/{id}', 'AdminController@DeleteBill')->middleware('auth');;
 Route::get('/admin/billdetail/{id}', 'AdminController@DetailBill')->middleware('auth');
-
 
 
 
