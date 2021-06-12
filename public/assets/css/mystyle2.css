@@ -1,0 +1,84 @@
+/* 2.5 categorie menu css here */
+
+.category_item  {
+	padding: 10px;
+	background: #00bba6;
+	border: 5px solid #89e8dd;
+}
+
+.category_item h3 {
+	padding-right: 10px;
+	text-transform: uppercase;
+	font-weight: 500;
+	color: #fff;
+	border-bottom: 1px solid #009483;
+	font-size: 18px;
+	padding-bottom: 10px;
+}
+
+.category_item ul li a {
+	display: block;
+	padding: 7px 11px 5px 0px;
+	color: #fff;
+	text-transform: capitalize;
+	border-bottom: 1px solid #01ab98;
+	position: relative;
+}
+
+.user-actions h3 {
+    text-align: center;
+}
+.mb-35{
+    margin-top: 35px;
+}
+
+.evaluate-product{
+    padding-bottom: 20px;
+}
+
+.product-row {
+    position: relative;
+}
+
+.image_product {
+    padding-left: 22px;
+}
+
+.image_product a img {
+    width: 100px;
+    height: 100px;
+}
+.name_product {
+    position: absolute;
+    left: 29%;
+    margin-top: 30px;
+	color: #333;
+    text-transform: capitalize;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.product_button {
+    position: absolute;
+    left: 82%;
+    margin-top: 22px;
+}
+
+.product_comment {
+    position: absolute;
+    left: 46%;
+    margin-top: 5px;
+}
+
+.product_comment textarea {
+    width: 370px;
+    background: #fff;
+    border: 2px solid #00bba6;
+}
+
+.rating{
+    color: #009483;
+    /* position: absolute;
+    left: 71%;
+    padding-top: 27px; */
+}

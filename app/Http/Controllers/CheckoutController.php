@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use DB;
 use Session;
 use App\Http\Requests;
+use App\User;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Contracts\Session\Session as SessionSession;
 use Illuminate\Support\Facades\Redirect;
@@ -90,78 +91,18 @@ class CheckoutController extends Controller
             //cập nhật tổng tiền bảng bills
             $total_money = Cart::subtotal(0, 0, '');
             DB::update('update bills set total_money = ' . $total_money . ' where id = ?', [$id]);
+
             //sau khi đặt hàng xong thì xóa sản phẩm trong giỏ hàng
-            $content = Cart::content();
-            foreach($content as $value){
-                Cart::update($value->rowId, 0);
-            }
+            // $content = Cart::content();
+            // foreach($content as $value){
+            //     Cart::update($value->rowId, 0);
+            // }
 
             return Redirect('/order-success');
         } else {
             return Redirect('/');
         }
-
-        // $updated = DB::update('update bills set total_money = ' . 100 . ' where id = ?', [1]);
     }
-
-
-    //hàm tạo bill
-    public function show(Request $request)
-    {
-        $content = Cart::content();
-
-        //tạo bill
-        $bill = array();
-        $bill['user_id'] = Session::get('id');
-        $id = DB::table('bills')->insertGetId($bill);
-        // echo 'id của bảng bill ' . $id;
-
-        foreach ($content as $value) {
-            //  echo $value->id . '<br>';
-            // echo $value->name . '<br>';
-            // echo $value->price . '<br>';
-            $subtotal = $value->price * $value->qty;
-            //echo $subtotal;
-
-
-            $billDetail = array();
-            $billDetail['bill_id'] = $id;
-            $billDetail['product_id'] = $value->id;
-            $billDetail['amount'] = $value->qty;
-            $billDetail['total_money'] = $subtotal;
-            $id_bill_details = DB::table('bill_details')->insertGetId($billDetail);
-
-            // Session::put('id', $id_bill_details);
-            // Session::put('bill_id', $id);
-        }
-
-
-        //cập nhật tổng tiền bảng bills
-        $updated = DB::update('update bills set total_money = ' . Cart::subtotal() . ' where id = ?', $id);
-
-
-        // foreach ($content as $value) {
-        //     echo $value->id . '<br>';
-        //     echo $value->name . '<br>';
-        //     echo $value->price . '<br>';
-        //     $subtotal = $value->price * $value->qty;
-        //     echo $subtotal;
-        // }
-        // foreach ($content as $value) {
-        //     echo 'bill';
-        //     echo $content->lenght.'<br';
-        //     echo $value->name.'<br';
-
-        //     echo $value->price.'<br';
-        //     $subtotal = $value->price * $value->qty;
-        //     echo $subtotal;
-
-        // }
-
-
-    }
-
-
 
     //hàm đăng xuất
     public function logout_checkout()
@@ -176,10 +117,29 @@ class CheckoutController extends Controller
         $password = md5($request->password);
         $result = DB::table('users')->where('email', $email)->where('password', $password)->first();
         if ($result) {
+            //lưu id người dùng vào session
             Session::put('id', $result->id);
             return Redirect::to('/');
         } else {
             return Redirect::to('/login-checkout');
         }
+    }
+
+    //hàm đánh giá sản phẩm
+    public function rating_product(Request $request){
+        //lấy tên người đánh giá
+        $rating_name = User::find(Session::get('id'));
+        echo $rating_name->name;
+
+        $rating_product = array();
+        $rating_product['product_id'] = $request->product_id;
+        $rating_product['user_id'] = Session::get('id');
+        $rating_product['rating_comment'] = $request->product_comment;
+        $rating_product['rating_name'] = $rating_name->name;
+        DB::table('ratings')->insert($rating_product);
+        //đánh giá sản phẩm xong thì xóa sp khỏi giỏi hàng
+        $rowId = $request->product_rowId;
+        Cart::update($rowId, 0);
+        return Redirect('/order-success');
     }
 }

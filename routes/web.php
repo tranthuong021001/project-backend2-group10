@@ -59,7 +59,8 @@ Route::get('/order-success', 'CheckoutController@order_success' );
 //Bill
 Route::post('/order', 'CheckoutController@order' );
 
-
+//Rating product
+Route::post('/rating-product', 'CheckoutController@rating_product' );
 
 //route động có tham số dùng để gắn các liên kết trang
 Route::get('/{page}', 'welcomecontroller@page' );

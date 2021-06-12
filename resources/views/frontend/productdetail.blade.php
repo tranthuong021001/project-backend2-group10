@@ -93,21 +93,16 @@
                 </div>
 
                 <div class="content_price mb-15">
-
+                    <!-- hiển thị giá khuyến mãi -->
                     <?php
-
                     if ($singleProduct->sale > 0) {
                         $rate = (100 - $singleProduct->sale) / 100;
                         $lastPrice = $rate * $singleProduct->price;
-
-
                     ?>
                         <span>${{number_format($lastPrice)}}</span>
                         <span class="old-price">${{number_format($singleProduct->price)}}</span>
                     <?php
                     } else {
-
-
                     ?>
                     <span>${{number_format($singleProduct->price)}}</span>
                     <?php
@@ -221,6 +216,9 @@
                         <div class="product_info_content">
                             <p>Fashion has been creating well-designed collections since 2010. The brand offers feminine designs delivering stylish separates and statement dresses which have since evolved into a full ready-to-wear collection in which every item is a vital part of a woman's wardrobe. The result? Cool, easy, chic looks with youthful elegance and unmistakable signature style. All the beautiful pieces are made in Italy and manufactured with the greatest attention. Now Fashion extends to a range of accessories including shoes, hats, belts and more!</p>
                         </div>
+                        <!-- in ra danh gia san pham -->
+                        @foreach ($ratings as $value)
+
                         <div class="product_info_inner">
                             <div class="product_ratting mb-10">
                                 <ul>
@@ -234,12 +232,14 @@
                                 <p>09/07/2018</p>
                             </div>
                             <div class="product_demo">
-                                <strong>demo</strong>
-                                <p>That's OK!</p>
+                                <strong>{{$value->rating_name}}</strong>
+                                <p>{{$value->rating_comment}}</p>
                             </div>
                         </div>
+                        @endforeach
+
                         <div class="product_review_form">
-                            <form action="#">
+                            <!-- <form action="#">
                                 <h2>Add a review </h2>
                                 <p>Your email address will not be published. Required fields are marked </p>
                                 <div class="row">
@@ -258,7 +258,7 @@
                                     </div>
                                 </div>
                                 <button type="submit">Submit</button>
-                            </form>
+                            </form> -->
                         </div>
                     </div>
                 </div>

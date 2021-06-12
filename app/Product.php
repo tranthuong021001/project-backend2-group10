@@ -18,5 +18,12 @@ class Product extends Model
     {
         return $this->belongsTo('App\Protype');
     }
+    // public function rating()
+    // {
+    //     return $this->belongsTo('App\Rating', 'product_id');
+    // }
+    public function rating(){
+        return $this->hasMany('App\Rating', 'product_id');
+    }
 
 }

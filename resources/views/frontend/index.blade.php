@@ -1,11 +1,6 @@
 @extends('frontend.master')
 @section('content')
-<?php
-$total_money = Cart::subtotal(0,0,'');
-echo $total_money;
 
-DB::update('update bills set total_money = ' .$total_money. ' where id = ?', [8]);
-?>
 <!--pos home section-->
 <div class=" pos_home_section">
     <div class="row pos_home">
@@ -40,7 +35,7 @@ DB::update('update bills set total_money = ' .$total_money. ' where id = ?', [8]
             <!--categorie menu end-->
 
             <!--wishlist block start-->
-            <div class="sidebar_widget wishlist mb-35">
+            <!-- <div class="sidebar_widget wishlist mb-35">
                 <div class="block_title">
                     <h3><a href="#">Wishlist</a></h3>
                 </div>
@@ -74,7 +69,7 @@ DB::update('update bills set total_money = ' .$total_money. ' where id = ?', [8]
                     <p>2 products</p>
                     <a href="#">» My wishlists</a>
                 </div>
-            </div>
+            </div> -->
             <!--wishlist block end-->
 
             <!--popular tags area-->
@@ -189,7 +184,7 @@ DB::update('update bills set total_money = ' .$total_money. ' where id = ?', [8]
                                     </div>
                                 </div>
                                 <div class="product_content">
-                                    <span class="product_price">${{number_format($value->price)}}</span>
+                                    <span class="product_price">$ {{number_format($value->price)}}</span>
 
                                     <h3 class="product_title"><a href="{{route('Product_Detail', ['id'=>$value->id])}}">{{$value->name}}</a></h3>
 
@@ -248,7 +243,7 @@ DB::update('update bills set total_money = ' .$total_money. ' where id = ?', [8]
                                     </div>
                                 </div>
                                 <div class="product_content">
-                                    <span class="product_price">${{$value->price}}</span>
+                                    <span class="product_price">$ {{number_format($value->price)}}</span>
                                     <h3 class="product_title"><a href="{{route('Product_Detail', ['id'=>$value->id])}}">{{$value->name}}</a></h3>
                                 </div>
                                 <div class="product_info">

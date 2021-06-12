@@ -8,7 +8,7 @@
 [  Table of contents  ]
 ================================================
 01. General
-02. Page section margin padding 
+02. Page section margin padding
 05. button
 06. button small
 09. Input
@@ -17,7 +17,7 @@
 13. Box Layout
 14. Back to top
 15. Basic margin padding
- 
+
 ======================================
 [ End table content ]
 ======================================*/
@@ -97,10 +97,10 @@ input {
 input:focus,select:focus,textarea:focus{
 	outline: none;
 }
-.uppercase { 
+.uppercase {
     text-transform: uppercase
 }
-.capitalize { 
+.capitalize {
     text-transform: capitalize
 }
 h1,
@@ -109,7 +109,7 @@ h3,
 h4,
 h5,
 h6 {
-   
+
     font-weight: normal;
     color: #444444;
     margin-top: 0px;
@@ -121,8 +121,8 @@ h2 a,
 h3 a,
 h4 a,
 h5 a,
-h6 a { 
-    color: inherit 
+h6 a {
+    color: inherit
 }
 h1 {
     font-size: 46px;
@@ -319,8 +319,8 @@ input:focus {
 }
 textarea {
     resize: vertical;
-    background: #eceff8;
-    border: 2px solid #eceff8;
+    background: #ffffff;
+    border: 2px solid #00bcd4;
     padding: 10px;
     width: 100%;
     font-size: 14px;
@@ -433,7 +433,10 @@ textarea:focus {
 .mb-20 { margin-bottom: 20px }
 .mb-25 { margin-bottom: 25px }
 .mb-30 { margin-bottom: 30px }
-.mb-35 { margin-bottom: 35px }
+.mb-35 {
+    margin-bottom: 35px;
+    margin-top: 35px;
+}
 .mb-40 { margin-bottom: 40px }
 .mb-45 { margin-bottom: 45px }
 .mb-50 { margin-bottom: 50px }
@@ -507,7 +510,7 @@ textarea:focus {
 .pt-180 { padding-top: 180px }
 .pt-205 { padding-top: 205px }
 .pt-365 { padding-top: 365px }
-.pt-370 { padding-top: 370px }   
+.pt-370 { padding-top: 370px }
 .pt-380 { padding-top: 380px }
 /*************************
         Padding right
@@ -599,7 +602,7 @@ textarea:focus {
 
 
 /***************************
-    Page section padding 
+    Page section padding
 ****************************/
 .ptb-0 { padding: 0 }
 .ptb-10 { padding: 10px 0 }
@@ -633,7 +636,7 @@ textarea:focus {
 .ptb-310 { padding: 310px 0 }
 
 /***************************
-    Page section margin 
+    Page section margin
 ****************************/
 .mtb-0 { margin: 0 }
 .mtb-10 { margin: 10px 0 }
@@ -697,7 +700,7 @@ textarea:focus {
     width: 100%;
 }
  /*************************************
-    Background variation set 
+    Background variation set
  **************************************/
 /*colored background*/
  .white-bg { background: #fff; }
@@ -712,7 +715,7 @@ textarea:focus {
 /* black overlay */
 [data-overlay] {
   position: relative;
-} 
+}
 [data-overlay]::before {
   background: #252525 none repeat scroll 0 0;
   content: "";
@@ -748,7 +751,7 @@ textarea:focus {
 /* white overlay */
 [white-overlay] {
   position: relative;
-} 
+}
 [white-overlay]::before {
   background: #fff none repeat scroll 0 0;
   content: "";
