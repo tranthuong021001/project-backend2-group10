@@ -145,11 +145,11 @@
                       <thead>
                         <tr>
                                  
-                          <th>Tên Shiper</th>
+                          <th>Tên người nhận</th>
                           <th>Email</th>
                           <th>Địa chỉ </th>
                           <th>Số điện thoai</th>
-                          <th>Nội dung yêu cầu</th>
+                          <th>Ghi chú</th>
                                               
                         </tr>
                       </thead>

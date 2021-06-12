@@ -316,7 +316,7 @@ class AdminController extends Controller
     //        'shipping__infos.shipping_name', 'shipping__infos.shipping_email','shipping__infos.shipping_address','shipping__infos.shipping_phone','shipping__infos.shipping_note',
     //        'users.name','users.email','users.phone')->first();
 
-       
+        //var_dump($order_detail);  
            // print_r($order_detail);
        
         return view('admin.layouts.DetailBill')->with(compact('order_detail' ,'user','shipping','order_detail' ));
