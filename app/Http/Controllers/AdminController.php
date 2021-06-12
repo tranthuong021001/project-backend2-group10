@@ -2,12 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Bill;
+use App\Bill_Detail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\UploadedFile;
+use App\shipping;
+use App\Product;
+use App\User;
+
 
 class AdminController extends Controller
 {
@@ -268,15 +274,16 @@ class AdminController extends Controller
      // admin bill 
      public function getAllBillInAdmin()
      {
-       $allBill = DB::table("bills")
-    //    ->join('bill__details','bill__details.id','=','bills.bill_id')
-       ->join('users','users.id','=','bills.user_id')
+         $order = Bill::orderby('created_at','Desc')->get();
+    //    $allBill = DB::table("bills")
+    // //    ->join('bill__details','bill__details.id','=','bills.bill_id')
+    //    ->join('users','users.id','=','bills.user_id')
    
-      // ->join('shipping_infos','shipping_infos.id','=','bills.shipping_id')
-          ->select('bills.*','users.name');
-         $allBill = $allBill->orderBy("bills.id","Desc");
-         $allBill = $allBill->paginate(15);
-         return view('admin.layouts.AllBills')->with('allBill',$allBill);     
+    //   // ->join('shipping_infos','shipping_infos.id','=','bills.shipping_id')
+    //       ->select('bills.*','users.name');
+    //      $allBill = $allBill->orderBy("bills.id","Desc");
+    //      $allBill = $allBill->paginate(15);
+         return view('admin.layouts.AllBills')->with(compact('order'));     
      }
      public function DeleteBill($id)
      {
@@ -286,20 +293,33 @@ class AdminController extends Controller
      }
      public function DetailBill($id)
      {
-        $detailbill = DB::table("bills")
-        ->join('bill__details','bill__details.bill_id','=','bills.id')
-        ->join('products','products.id','=','bill__details.product_id')
-        ->join('shipping__infos','shipping__infos.shipping_id','=','bills.shipping_id')
-        ->join('users','users.id','=','bills.user_id')
-        ->where('bills.id',$id)
-       // ->join('shipping_infos','shipping_infos.id','=','bills.shipping_id')
-           ->select('bills.*',
-           'bill__details.bill_id','bill__details.product_id','bill__details.amount','bill__details.total_money',
-           'products.product_name', 'products.price',
-           'shipping__infos.shipping_name', 'shipping__infos.shipping_email','shipping__infos.shipping_address','shipping__infos.shipping_phone','shipping__infos.shipping_note',
-           'users.name','users.email','users.phone')->first();
-         //  print_r($detailbill);
+        $order_detail = Bill_Detail::where('bill_id',$id)->get();
+        $order = Bill::where('id',$id)->get();
+        foreach($order as $key)
+        {
+            $user_id = $key->user_id;
+            $shipping_id = $key->shipping_id;   
+        }
+        $user = User::where('id',$user_id)->first();
+        $shipping = shipping::where('shipping_id',$shipping_id)->first();
+        $order_detail = Bill_Detail::with('Product')->where('bill_id',$id)->get();
+    //     $detailbill = DB::table("bills")
+    //     ->join('bill__details','bill__details.bill_id','=','bills.id')
+    //     ->join('products','products.id','=','bill__details.product_id')
+    //     ->join('shipping__infos','shipping__infos.shipping_id','=','bills.shipping_id')
+    //     ->join('users','users.id','=','bills.user_id')
+    //     ->where('bills.id',$id)
+    //    // ->join('shipping_infos','shipping_infos.id','=','bills.shipping_id')
+    //        ->select('bills.*',
+    //        'bill__details.bill_id','bill__details.product_id','bill__details.amount','bill__details.total_money',
+    //        'products.product_name', 'products.price',
+    //        'shipping__infos.shipping_name', 'shipping__infos.shipping_email','shipping__infos.shipping_address','shipping__infos.shipping_phone','shipping__infos.shipping_note',
+    //        'users.name','users.email','users.phone')->first();
+
        
-        return view('admin.layouts.DetailBill')->with('detailbill',$detailbill);
+           // print_r($order_detail);
+       
+        return view('admin.layouts.DetailBill')->with(compact('order_detail' ,'user','shipping','order_detail' ));
      }
+     
 }

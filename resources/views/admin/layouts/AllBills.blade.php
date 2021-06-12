@@ -108,12 +108,12 @@
                       <?php
                         $stt = 1;
                       ?>
-                          @foreach($allBill as $bill )
+                          @foreach($order as $bill )
                         <tr>
                         <!-- <td>{{ $loop->index + 1 }}</td> -->
                         
                        
-                          <td>{{$bill->name}}</td>
+                          <td>{{$bill->user_id}}</td>
                           <td>{{$bill->total_money}}</td>
                           
                          
@@ -135,7 +135,7 @@
                         @endforeach
                       </tbody>
                     </table>
-                    {{ $allBill->links() }}
+                   
                   </div>
                   </div>
               </div>

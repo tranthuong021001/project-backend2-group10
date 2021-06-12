@@ -97,18 +97,17 @@
                       </thead>
                       <tbody>
                      
-                    
+                  
                         <tr>
                       
                         
-                          <td>{{$detailbill->name}}</td>
-                          <td>{{$detailbill->email}}</td>
-                          <td>{{$detailbill->phone}}</td>
+                          <td>{{$user->name}}</td>
+                          <td>{{$user->email}}</td>
+                          <td>{{$user->phone}}</td>
                           
                           
                         </tr>
-                       
-                
+           
                       </tbody>
                     </table>
                  
@@ -156,19 +155,19 @@
                       </thead>
                       <tbody>
                      
-                   
+                 
                         <tr>
                       
                         
-                          <td>{{$detailbill->shipping_name}}</td>
-                          <td>{{$detailbill->shipping_email}}</td>
-                          <td>{{$detailbill->shipping_address}}</td>
-                          <td>{{$detailbill->shipping_phone}}</td>
-                          <td>{{$detailbill->shipping_note}}</td>
+                          <td>{{$shipping->shipping_name}}</td>
+                          <td>{{$shipping->shipping_email}}</td>
+                          <td>{{$shipping->shipping_address}}</td>
+                          <td>{{$shipping->shipping_phone}}</td>
+                          <td>{{$shipping->shipping_note}}</td>
                          
                          
                         </tr>
-                       
+                     
                   
                       </tbody>
                     </table>
@@ -217,19 +216,17 @@
                       </thead>
                       <tbody>
                      
-                  
+                     @foreach($order_detail as $ord)
                         <tr>
-                        
-                     
-                        @if($detailbill->bill_id == $detailbill->id)
-                          <td>{{$detailbill->product_name}}</td>
-                          <td>{{$detailbill->amount}}</td>
-                          <td>{{$detailbill->price}}</td>
-                          <td>{{$detailbill->total_money}}</td>
-                        @endif
+
+                          <td>{{$ord->product_name}}</td>
+                          <td>{{$ord->amount}}</td>
+                          <td>{{$ord->price}}</td>
+                          <td>{{$ord->price* $ord->amount}}</td>
+                    
                          
                         </tr>
-                   
+                    @endforeach
                       </tbody>
                     </table>
                  
