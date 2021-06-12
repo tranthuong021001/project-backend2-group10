@@ -16,24 +16,25 @@ use Illuminate\Support\Facades\Auth;
 //
 Auth::routes();
 
-//Route::get('/home', 'HomeController@getAllProductHome')->name('home');
+Route::get('/', 'welcomecontroller@getProductSale');
 
-Route::get('/hi', 'welcomecontroller@laySanPhamTheoLoai' );
-//route động có tham số dùng để chuyển đến trang Account
-//Route::get('/{para}', 'HomeController@index')->name('home');
-
-Route::get('/', 'welcomecontroller@getAllProductSale');
-
-
-Route::get('/index', 'welcomecontroller@getAllProductSale');
+// Route::get('/index', 'welcomecontroller@getProductSale');
 Route::get('/manu', 'welcomecontroller@getAllManufactures');
 
 //lấy sản phâm theo  loại
 Route::get('/productbycategory/{id}', 'welcomecontroller@getProductByCategory')->name('productbycategory');
+Route::get('/productbycategorymen/{id}/{manu_id}', 'welcomecontroller@getProductByCategoryMen')->name('productbycategorymen');
+Route::get('/productbycategorywomen/{id}/{manu_id}', 'welcomecontroller@getProductByCategoryWomen')->name('productbycategorywomen');
+//lấy sản phâm đang sale
+Route::get('/productmensale', 'welcomecontroller@getProductMenSale');
+Route::get('/productwomensale', 'welcomecontroller@getProductWomenSale');
+
 //lấy sản phâm theo  hãng sản xuất
 Route::get('/productbymanufacture/{id}', 'welcomecontroller@getProductByManufacture')->name('productbymanufacture');
+Route::get('/productbymanufacturegenderwomen/{id}/{gender}', 'welcomecontroller@getProductByManufactureWomen')->name('productbymanufacturegenderwomen');
+Route::get('/productbymanufacturegendermen/{id}/{gender}', 'welcomecontroller@getProductByManufactureMen')->name('productbymanufacturegendermen');
 //lấy sản phâm theo giới tính
-Route::get('/productbygender/{id}', 'welcomecontroller@getProductByGender')->name('productbygender');
+// Route::get('/productbygender/{id}', 'welcomecontroller@getProductByGender')->name('productbygender');
 
 //hiển thị chi tiết sản phẩm
 Route::get('/chi-tiet-san-pham/{id}', 'welcomecontroller@Product_Detail')->name('Product_Detail');
@@ -62,16 +63,5 @@ Route::post('/order', 'CheckoutController@order' );
 //Rating product
 Route::post('/rating-product', 'CheckoutController@rating_product' );
 
-//route động có tham số dùng để gắn các liên kết trang
 Route::get('/{page}', 'welcomecontroller@page' );
 
-
-
-
-
-
-
-
-
-//đăng ký route middleware để check login
-// Route::post('formlogin', 'WelcomeController@login')->middleware('checklogin'::class);

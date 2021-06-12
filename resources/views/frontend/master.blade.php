@@ -71,10 +71,8 @@
                             <div class="col-lg-6 col-md-6">
                                 <div class="header_links">
                                     <ul>
-                                        <li><a href="contact.html" title="Contact">Contact</a></li>
-                                        <li><a href="wishlist.html" title="wishlist">My wishlist</a></li>
-                                        <li><a href="my-account.html" title="My account">My account</a></li>
-                                        <li><a href="cart.html" title="My cart">My cart</a></li>
+                                        <li><a href="{{url('/contact')}}" title="Contact">Contact</a></li>
+                                        <li><a href="{{url('/show-cart')}}" title="My cart">My cart</a></li>
 
                                         <?php
                                             $customer_id = Session::get('id');
@@ -116,50 +114,7 @@
                                     </div>
                                     <div class="shopping_cart">
                                         <a href="{{url('/show-cart')}}"><i class="fa fa-shopping-cart"></i>  </a>
-
-                                        <!--mini cart-->
-                                        <!-- <div class="mini_cart">
-                                            <div class="cart_item">
-                                                <div class="cart_img">
-                                                    <a href="#"><img src="{{url('assets\img\cart\cart.jpg')}}" alt=""></a>
-                                                </div>
-                                                <div class="cart_info">
-                                                    <a href="#">lorem ipsum dolor</a>
-                                                    <span class="cart_price">$115.00</span>
-                                                    <span class="quantity">Qty: 1</span>
-                                                </div>
-                                                <div class="cart_remove">
-                                                    <a title="Remove this item" href="#"><i class="fa fa-times-circle"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="cart_item">
-                                                <div class="cart_img">
-                                                    <a href="#"><img src="{{url('assets\img\cart\cart2.jpg')}}" alt=""></a>
-                                                </div>
-                                                <div class="cart_info">
-                                                    <a href="#">Quisque ornare dui</a>
-                                                    <span class="cart_price">$105.00</span>
-                                                    <span class="quantity">Qty: 1</span>
-                                                </div>
-                                                <div class="cart_remove">
-                                                    <a title="Remove this item" href="#"><i class="fa fa-times-circle"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="shipping_price">
-                                                <span> Shipping </span>
-                                                <span> $7.00 </span>
-                                            </div>
-                                            <div class="total_price">
-                                                <span> total </span>
-                                                <span class="prices"> $227.00 </span>
-                                            </div>
-                                            <div class="cart_button">
-                                                <a href="checkout.html"> Check out</a>
-                                            </div>
-                                        </div> -->
-                                        <!--mini cart end-->
                                     </div>
-
                                 </div>
                             </div>
                         </div>
@@ -173,21 +128,24 @@
                                         <nav>
                                             <ul>
                                                 <!-- Item HOME -->
-                                                <li class="active"><a href="{{url('/index')}}">Home</a></li>
+                                                <li class="active"><a href="{{url('/')}}">Home</a></li>
 
                                                 <!-- Item WOMEN -->
-                                                <li><a href="{{route('productbygender',['id'=>2])}}">Women</a>
+                                                <li><a href="#">Women</a>
+
                                                     <div class="mega_menu">
                                                         <div class="mega_top fix">
 
                                                             <!--hiển thị hãng sản xuất trên thanh menu-->
                                                             @foreach($manufacture as $value)
                                                             <div class="mega_items">
-                                                                <h3><a href="{{route('productbymanufacture',['id'=>$value->id])}}">{{$value->manu_name}}</a></h3>
+                                                                <!-- <h3><a href="{{route('productbymanufacture',['id'=>$value->id])}}">{{$value->manu_name}}</a></h3> -->
+                                                                <h3><a href="{{route('productbymanufacturegenderwomen',['id'=>$value->id, 'gender'=>2])}}">{{$value->manu_name}}</a></h3>
+
                                                                 <ul>
                                                                     <!--hiển thị loại sản phẩm trên thanh menu-->
                                                                     @foreach ($protype as $protype_item)
-                                                                    <li><a href="{{route('productbycategory',['id'=>$protype_item->id])}}">{{$protype_item->type_name}}</a></li>
+                                                                    <li><a href="{{route('productbycategorywomen',['id'=>$protype_item->id, 'manu_id'=>$value->id])}}">{{$protype_item->type_name}}</a></li>
                                                                     @endforeach
                                                                 </ul>
                                                             </div>
@@ -204,17 +162,19 @@
                                                     </div>
                                                 </li>
                                                 <!-- Item MEN -->
-                                                <li><a href="{{route('productbygender',['id'=>1])}}">Men</a>
+                                                <li><a href="#">Men</a>
+
                                                     <div class="mega_menu">
                                                         <div class="mega_top fix">
                                                             <!--hiển thị hãng sản xuất trên thanh menu-->
                                                             @foreach($manufacture as $value)
                                                             <div class="mega_items">
-                                                                <h3><a href="{{route('productbymanufacture',['id'=>$value->id])}}">{{$value->manu_name}}</a></h3>
+                                                                <!-- <h3><a href="{{route('productbymanufacture',['id'=>$value->id])}}">{{$value->manu_name}}</a></h3> -->
+                                                                <h3><a href="{{route('productbymanufacturegendermen',['id'=>$value->id, 'gender'=>1])}}">{{$value->manu_name}}</a></h3>
                                                                 <ul>
                                                                     <!--hiển thị loại sản phẩm trên thanh menu-->
                                                                     @foreach ($protype as $protype_item)
-                                                                    <li><a href="{{route('productbycategory',['id'=>$protype_item->id])}}">{{$protype_item->type_name}}</a></li>
+                                                                    <li><a href="{{route('productbycategorymen',['id'=>$protype_item->id, 'manu_id'=>$value->id])}}">{{$protype_item->type_name}}</a></li>
                                                                     @endforeach
                                                                 </ul>
                                                             </div>
@@ -235,7 +195,7 @@
                                                     <div class="mega_menu">
                                                         <div class="mega_top fix">
                                                             <div class="mega_items">
-                                                                <h3><a href="#">Men's Sale</a></h3>
+                                                                <h3><a href="{{url('/productmensale')}}">Men's Sale</a></h3>
                                                                 <ul>
                                                                     <!--hiển thị loại sản phẩm trên thanh menu-->
                                                                     @foreach ($protype as $protype_item)
@@ -244,7 +204,7 @@
                                                                 </ul>
                                                             </div>
                                                             <div class="mega_items">
-                                                                <h3><a href="#">Women's Sale</a></h3>
+                                                                <h3><a href="{{url('/productwomensale')}}">Women's Sale</a></h3>
                                                                 <ul>
                                                                     <!--hiển thị loại sản phẩm trên thanh menu-->
                                                                     @foreach ($protype as $protype_item)
@@ -266,7 +226,7 @@
                                                 </li>
 
                                                 <!-- Item CONTACT US -->
-                                                <li><a href="contact.html">contact us</a></li>
+                                                <li><a href="{{url('/contact')}}">contact us</a></li>
 
                                             </ul>
                                         </nav>
