@@ -31,7 +31,7 @@
     <link rel="stylesheet" href="{{url('assets\css\style.css')}}">
     <link rel="stylesheet" href="{{url('assets\css\responsive.css')}}">
     <link rel="stylesheet" href="{{url('assets\css\mystyle2.css')}}">
-    <link rel="stylesheet" href="{{url('assets\css\mystyle.css')}}">
+    <link rel="stylesheet" href="{{url('assets\css\mystyle1.css')}}">
     <link rel="stylesheet" href="{{url('assets\css\responsive.css')}}">
     <script src="{{url('assets\js\vendor\modernizr-2.8.3.min.js')}}"></script>
 </head>
@@ -107,8 +107,9 @@
                             <div class="col-lg-9 col-md-9">
                                 <div class="header_right_info">
                                     <div class="search_bar">
-                                        <form action="#">
-                                            <input placeholder="Search..." type="text">
+                                        <form action="{{url('/seachproduct')}}" method="POST">
+                                        {{csrf_field()}}
+                                            <input placeholder="Search..." type="text" name="keyword_product">
                                             <button type="submit"><i class="fa fa-search"></i></button>
                                         </form>
                                     </div>
@@ -200,7 +201,7 @@
                                                             </div>
                                                             <div class="mega_items">
                                                                 <h3><a href="{{url('/productwomensale')}}">Women's Sale</a></h3>
-                                                               
+
                                                             </div>
                                                         </div>
                                                         <div class="mega_bottom fix">

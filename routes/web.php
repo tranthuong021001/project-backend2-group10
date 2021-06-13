@@ -18,12 +18,13 @@ Auth::routes();
 
 Route::get('/', 'welcomecontroller@getProductSale');
 
-// Route::get('/index', 'welcomecontroller@getProductSale');
 Route::get('/manu', 'welcomecontroller@getAllManufactures');
 
 //lấy sản phâm theo  loại
 Route::get('/productbycategory/{id}', 'welcomecontroller@getProductByCategory')->name('productbycategory');
+//lấy sản phâm theo loại và hãng nam
 Route::get('/productbycategorymen/{id}/{manu_id}', 'welcomecontroller@getProductByCategoryMen')->name('productbycategorymen');
+//lấy sản phâm theo loại và hãng nữ
 Route::get('/productbycategorywomen/{id}/{manu_id}', 'welcomecontroller@getProductByCategoryWomen')->name('productbycategorywomen');
 //lấy sản phâm đang sale
 Route::get('/productmensale', 'welcomecontroller@getProductMenSale');
@@ -33,8 +34,6 @@ Route::get('/productwomensale', 'welcomecontroller@getProductWomenSale');
 Route::get('/productbymanufacture/{id}', 'welcomecontroller@getProductByManufacture')->name('productbymanufacture');
 Route::get('/productbymanufacturegenderwomen/{id}/{gender}', 'welcomecontroller@getProductByManufactureWomen')->name('productbymanufacturegenderwomen');
 Route::get('/productbymanufacturegendermen/{id}/{gender}', 'welcomecontroller@getProductByManufactureMen')->name('productbymanufacturegendermen');
-//lấy sản phâm theo giới tính
-// Route::get('/productbygender/{id}', 'welcomecontroller@getProductByGender')->name('productbygender');
 
 //hiển thị chi tiết sản phẩm
 Route::get('/chi-tiet-san-pham/{id}', 'welcomecontroller@Product_Detail')->name('Product_Detail');
@@ -64,4 +63,6 @@ Route::post('/order', 'CheckoutController@order' );
 Route::post('/rating-product', 'CheckoutController@rating_product' );
 
 Route::get('/{page}', 'welcomecontroller@page' );
+//tim kiem san pham
+Route::post('/seachproduct', 'welcomecontroller@Seach_Product');
 

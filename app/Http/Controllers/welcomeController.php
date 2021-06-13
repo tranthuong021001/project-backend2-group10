@@ -9,7 +9,7 @@ use App\Protype;
 use App\Bill;
 use App\Gender;
 use App\Manufacture;
-use App\Category;
+
 use App\Rating;
 use App\User;
 
@@ -20,51 +20,37 @@ class WelcomeController extends Controller
     {
         return view('frontend/' . $page);
     }
-    //hàm lấy all sản phẩm theo hãng nam
+    //hàm lấy all sản phẩm theo hãng nữ
     public function getProductByManufactureWomen($id)
     {
         $productbymanufacture = DB::table('products')->where('manu_id', '=', $id)->where('gender', '=', 2)->get();
          return view('frontend.productbymanufacture', compact('productbymanufacture'));
     }
-    //hàm lấy all sản phẩm theo hãng nữ
+    //hàm lấy all sản phẩm theo hãng nam
     public function getProductByManufactureMen($id)
     {
         $productbymanufacture = DB::table('products')->where('manu_id', '=', $id)->where('gender', '=', 1)->get();
          return view('frontend.productbymanufacture', compact('productbymanufacture'));
     }
-     //hàm lấy all sản phẩm theo loại
+     //hàm lấy all sản phẩm theo loại phaan trang
      public function getProductByCategory($id)
      {
-
-         // $category = Protype::find($id)->product;
-         $category = DB::table('products')->where('type_id', '=', $id)->get();
-        // dd($category);
+        $category = DB::table('products')->where('type_id', '=', $id)->paginate(8);
          return view('frontend.productbycategory', compact('category'));
      }
-    //hàm lấy all sản phẩm theo loại
+    //hàm lấy all sản phẩm theo loại nu
     public function getProductByCategoryWomen($id, $manu_id)
     {
-        //echo $manu_id;
-        // $category = Protype::find($id)->product;
-        $category = DB::table('products')->where('type_id', '=', $id)->where('gender', '=', 2)->where('manu_id', '=', $manu_id)->get();
-        //dd($category);
+        $category = DB::table('products')->where('type_id', '=', $id)->where('gender', '=', 2)->where('manu_id', '=', $manu_id)->paginate(8);
         return view('frontend.productbycategory', compact('category'));
     }
-    //hàm lấy all sản phẩm theo loại
+    //hàm lấy all sản phẩm theo loại nam
     public function getProductByCategoryMen($id, $manu_id)
     {
-
-        // $category = Protype::find($id)->product;
-        $category = DB::table('products')->where('type_id', '=', $id)->where('gender', '=', 1)->where('manu_id', '=', $manu_id)->get();
-        //dd($category);
+        $category = DB::table('products')->where('type_id', '=', $id)->where('gender', '=', 1)->where('manu_id', '=', $manu_id)->paginate(8);
         return view('frontend.productbycategory', compact('category'));
     }
-    //hàm lấy all sản phẩm theo giới tinhs
-    public function getProductByGender($id)
-    {
-        $gender = Gender::find($id)->product;
-        return view('frontend.productbygender', compact('gender'));
-    }
+
      //xem chi tiet san pham View_Product_Detail
      public function Product_Detail($id)
      {
@@ -113,16 +99,20 @@ class WelcomeController extends Controller
         return view('frontend.index', ['products' => $product], ['Product_Image' => $Product_Image], ['Protypes' => $protype]);
     }
 
-    // public function getAllManufactures()
-    // {
-    //     $Manufactures = Manufacture::all();
-    //     return view('frontend.index', ['Manufactures' => $Manufactures]);
-    // }
     //hàm lấy ảnh sản phẩm chi tiết
     public function getAllProduct_Image()
     {
         $Product_Image = Product_Image::all();
         return view('frontend.index', ['Product_Image' => $Product_Image]);
+    }
+
+    //ham tim kiem san pham theo tu khoa
+    public function Seach_Product(Request $request){
+        $keyWord = $request->keyword_product;
+        $seachProduct = DB::table('products')->where('name', 'like', '%'.$keyWord.'%')->get();
+        //dd($seachProduct);
+        return view('frontend.seachproduct', compact('seachProduct'));
+
     }
 }
 ?>

@@ -239,26 +239,7 @@
                         @endforeach
 
                         <div class="product_review_form">
-                            <!-- <form action="#">
-                                <h2>Add a review </h2>
-                                <p>Your email address will not be published. Required fields are marked </p>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <label for="review_comment">Your review </label>
-                                        <textarea name="comment" id="review_comment"></textarea>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6">
-                                        <label for="author">Name</label>
-                                        <input id="author" type="text">
 
-                                    </div>
-                                    <div class="col-lg-6 col-md-6">
-                                        <label for="email">Email </label>
-                                        <input id="email" type="text">
-                                    </div>
-                                </div>
-                                <button type="submit">Submit</button>
-                            </form> -->
                         </div>
                     </div>
                 </div>
