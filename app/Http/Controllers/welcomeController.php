@@ -56,8 +56,8 @@ class WelcomeController extends Controller
 
         // $category = Protype::find($id)->product;
         $category = DB::table('products')->where('type_id', '=', $id)->where('gender', '=', 1)->where('manu_id', '=', $manu_id)->get();
-        dd($category);
-        //return view('frontend.productbycategory', compact('category'));
+        //dd($category);
+        return view('frontend.productbycategory', compact('category'));
     }
     //hàm lấy all sản phẩm theo giới tinhs
     public function getProductByGender($id)

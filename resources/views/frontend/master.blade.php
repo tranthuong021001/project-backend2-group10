@@ -196,22 +196,11 @@
                                                         <div class="mega_top fix">
                                                             <div class="mega_items">
                                                                 <h3><a href="{{url('/productmensale')}}">Men's Sale</a></h3>
-                                                                <ul>
-                                                                    <!--hiển thị loại sản phẩm trên thanh menu-->
-                                                                    @foreach ($protype as $protype_item)
-                                                                    <li><a href="/{{$protype_item->id}}">{{$protype_item->type_name}}</a></li>
-                                                                    @endforeach
-                                                                </ul>
+
                                                             </div>
                                                             <div class="mega_items">
                                                                 <h3><a href="{{url('/productwomensale')}}">Women's Sale</a></h3>
-                                                                <ul>
-                                                                    <!--hiển thị loại sản phẩm trên thanh menu-->
-                                                                    @foreach ($protype as $protype_item)
-                                                                    <li><a href="/{{$protype_item->id}}">{{$protype_item->type_name}}</a></li>
-                                                                    @endforeach
-
-                                                                </ul>
+                                                               
                                                             </div>
                                                         </div>
                                                         <div class="mega_bottom fix">
