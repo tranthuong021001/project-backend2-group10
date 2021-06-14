@@ -28,8 +28,6 @@ class CheckoutController extends Controller
         return view('frontend.login.loginform');
     }
 
-
-
     //hàm đăng kí tài khoảng mới
     public function add_customer(Request $request)
     {
@@ -46,16 +44,11 @@ class CheckoutController extends Controller
         Session::put('name', $request->name);
         return Redirect('/');
     }
-
-    public function checkout()
-    {
-        return Redirect('/');
+    //hàm trả về trang checkout.blade.php
+    public function return_checkout_file(){
+        return view('frontend.checkout');
     }
 
-    public function order_success()
-    {
-        return Redirect('/checkout');
-    }
     //hàm đặt hàng
     public function order(Request $request)
     {
@@ -92,13 +85,7 @@ class CheckoutController extends Controller
             $total_money = Cart::subtotal(0, 0, '');
             DB::update('update bills set total_money = ' . $total_money . ' where id = ?', [$id]);
 
-            //sau khi đặt hàng xong thì xóa sản phẩm trong giỏ hàng
-            // $content = Cart::content();
-            // foreach($content as $value){
-            //     Cart::update($value->rowId, 0);
-            // }
-
-            return Redirect('/order-success');
+            return Redirect('/checkout');
         } else {
             return Redirect('/');
         }
@@ -140,6 +127,7 @@ class CheckoutController extends Controller
         //đánh giá sản phẩm xong thì xóa sp khỏi giỏi hàng
         $rowId = $request->product_rowId;
         Cart::update($rowId, 0);
-        return Redirect('/order-success');
+
+        return Redirect('/checkout');
     }
 }

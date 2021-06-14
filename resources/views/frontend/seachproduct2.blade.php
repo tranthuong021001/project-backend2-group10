@@ -1,14 +1,16 @@
  @extends('frontend.master')
  @section('content')
+
+
  <!--breadcrumbs area start-->
  <div class="breadcrumbs_area">
      <div class="row">
          <div class="col-12">
              <div class="breadcrumb_content">
                  <ul>
-                     <li><a href="index.html">home</a></li>
+                     <li><a href="#">home</a></li>
                      <li><i class="fa fa-angle-right"></i></li>
-                     <li>shop fullwidth</li>
+                     <li>seach product</li>
                  </ul>
              </div>
          </div>
@@ -18,15 +20,7 @@
 
  <!--pos home section-->
  <div class=" pos_home_section shop_section shop_fullwidth">
-     <!-- <div class="row">
-                                <div class="col-12"> -->
-     <!--banner slider start-->
-     <!-- <div class="banner_slider fullwidht  mb-35">
-                                        <img src="{{url('')}}assets\img\banner\bannner10.jpg" alt="">
-                                    </div> -->
-     <!--banner slider start-->
-     <!-- </div>
-                            </div> -->
+
      <div class="row">
          <div class="col-3">
              <div class="category_item">
@@ -38,7 +32,6 @@
                          <a href="{{route('productbycategory',['id'=>$value->id])}}"> {{$value->type_name}}</a>
                      </li>
                      @endforeach
-
                  </ul>
              </div>
          </div>
@@ -87,43 +80,13 @@
                  <div class="tab-content" id="myTabContent">
                      <div class="tab-pane fade show active" id="large" role="tabpanel">
                          <div class="row">
-                             <!-- hien thi san pham theo danh muc category -->
+                             <!-- hien thi san pham da tim duoc -->
 
-                             @foreach ($productbymanufacture as $value)
-
-                             <div class="col-lg-3 col-md-4 col-sm-6">
-                                 <div class="single_product">
-                                     <div class="product_thumb">
-                                         <a href="{{route('Product_Detail', ['id'=>$value->id])}}"><img src="{{url('assets/img/product/'.$value->image.'')}}" alt=""></a>
-                                         <div class="img_icone">
-                                             <img src="{{url('assets\img\cart\span-new.png')}}" alt="">
-                                         </div>
-                                         <div class="product_action">
-                                             <form action="{{URL::to('/save-cart')}}" method="POST">
-                                                 {{csrf_field() }}
-                                                 <input type="hidden" name="qty" value="1">
-                                                 <input name="productid_hidden" value="{{$value->id}}" type="hidden">
-
-                                                 <button type="submit"><i class="fa fa-shopping-cart"></i> add to cart</button>
-                                             </form>
-
-                                         </div>
-                                     </div>
-                                     <div class="product_content">
-                                         <span class="product_price">{{number_format($value->price)}}</span>
-                                         <h3 class="product_title"><a href="{{route('Product_Detail', ['id'=>$value->id])}}">{{$value->name}}</a></h3>
-                                     </div>
-                                     <div class="product_info">
-                                         <ul>
-                                             <li><a href="#" title=" Add to Wishlist ">Add to Wishlist</a></li>
-                                             <li><a href="#" data-toggle="modal" data-target="#modal_box" title="Quick view">View Detail</a></li>
-                                         </ul>
-                                     </div>
-                                 </div>
-                             </div>
-                             @endforeach
+                             
                          </div>
                      </div>
+
+
 
                  </div>
              </div>
@@ -141,9 +104,9 @@
              <form action="#">
                  <label for="page_select">show</label>
                  <select id="page_select">
-                     <option value="1">9</option>
-                     <option value="2">10</option>
-                     <option value="3">11</option>
+                     <option value="1">8</option>
+                     <!-- <option value="2">10</option>
+                     <option value="3">11</option> -->
                  </select>
                  <span>Products by page</span>
              </form>
@@ -156,8 +119,9 @@
                  <li><a href="#">2</a></li>
                  <li>»</li>
              </ul> -->
-             <span>{{ $productbymanufacture->links() }}</span>
+
          </div>
+
      </div>
      <!--pagination style end-->
  </div>

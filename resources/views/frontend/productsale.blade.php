@@ -89,7 +89,7 @@
                          <div class="row">
                              <!-- hien thi san pham theo danh muc category -->
 
-                             @foreach ($productbymanufacture as $value)
+                             @foreach ($producSale as $value)
 
                              <div class="col-lg-3 col-md-4 col-sm-6">
                                  <div class="single_product">
@@ -124,7 +124,7 @@
                              @endforeach
                          </div>
                      </div>
-                    
+
 
                  </div>
              </div>
@@ -150,13 +150,14 @@
              </form>
          </div>
          <div class="page_number">
-             <span>Pages: </span>
+             <!-- <span>Pages: </span>
              <ul>
                  <li>«</li>
                  <li class="current_number">1</li>
                  <li><a href="#">2</a></li>
                  <li>»</li>
-             </ul>
+             </ul> -->
+             <span>{{ $producSale->links() }}</span>
          </div>
      </div>
      <!--pagination style end-->

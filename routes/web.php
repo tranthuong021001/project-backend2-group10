@@ -53,16 +53,18 @@ Route::get('/login-checkout', 'CheckoutController@login_checkout' );
 Route::get('/logout-checkout', 'CheckoutController@logout_checkout' );
 Route::post('/add-customer', 'CheckoutController@add_customer' );
 Route::post('/login-account', 'CheckoutController@login_account' );
-//order success
-Route::get('/order-success', 'CheckoutController@order_success' );
+
 
 //Bill
 Route::post('/order', 'CheckoutController@order' );
 
+Route::get('/checkout', 'CheckoutController@return_checkout_file');
+
+
 //Rating product
 Route::post('/rating-product', 'CheckoutController@rating_product' );
 
-Route::get('/{page}', 'welcomecontroller@page' );
 //tim kiem san pham
-Route::post('/seachproduct', 'welcomecontroller@Seach_Product');
+Route::get('/seachproduct', 'welcomecontroller@Seach_Product');
 
+Route::get('/contact', 'welcomecontroller@Contact');

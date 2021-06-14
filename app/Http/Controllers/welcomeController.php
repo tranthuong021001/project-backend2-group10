@@ -9,27 +9,22 @@ use App\Protype;
 use App\Bill;
 use App\Gender;
 use App\Manufacture;
-
 use App\Rating;
 use App\User;
 
 
 class WelcomeController extends Controller
 {
-    public function page($page)
-    {
-        return view('frontend/' . $page);
-    }
     //hàm lấy all sản phẩm theo hãng nữ
     public function getProductByManufactureWomen($id)
     {
-        $productbymanufacture = DB::table('products')->where('manu_id', '=', $id)->where('gender', '=', 2)->get();
+        $productbymanufacture = DB::table('products')->where('manu_id', '=', $id)->where('gender', '=', 2)->paginate(8);
          return view('frontend.productbymanufacture', compact('productbymanufacture'));
     }
     //hàm lấy all sản phẩm theo hãng nam
     public function getProductByManufactureMen($id)
     {
-        $productbymanufacture = DB::table('products')->where('manu_id', '=', $id)->where('gender', '=', 1)->get();
+        $productbymanufacture = DB::table('products')->where('manu_id', '=', $id)->where('gender', '=', 1)->paginate(8);
          return view('frontend.productbymanufacture', compact('productbymanufacture'));
     }
      //hàm lấy all sản phẩm theo loại phaan trang
@@ -63,7 +58,7 @@ class WelcomeController extends Controller
           $ratings = Product::find($id)->rating;
         return view('frontend.productdetail', compact('singleProduct','product_image','productByCategory','ratings'));
      }
-    //get all products
+    //lấy thông tin từ bảng protypes
     public function getProductByProtype()
     {
         $protype = Protype::all();
@@ -72,14 +67,14 @@ class WelcomeController extends Controller
     //get all products , manufacture , proytpe of products
     public function getProductMenSale()
     {
-        $productbymanufacture = Product::where('sale', '>=',1)->where('gender', '=', 1)->get();
-        return view('frontend.productsale', compact('productbymanufacture'));
+        $producSale = Product::where('sale', '>=',1)->where('gender', '=', 1)->paginate(8);
+        return view('frontend.productsale', compact('producSale'));
     }
     //get all products , manufacture , proytpe of products
     public function getProductWomenSale()
     {
-        $productbymanufacture = Product::where('sale', '>=',1)->where('gender', '=', 2)->get();
-        return view('frontend.productsale', compact('productbymanufacture'));
+        $producSale = Product::where('sale', '>=',1)->where('gender', '=', 2)->paginate(8);
+        return view('frontend.productsale', compact('producSale'));
     }
 
     //get all products , manufacture , proytpe of products
@@ -106,13 +101,15 @@ class WelcomeController extends Controller
         return view('frontend.index', ['Product_Image' => $Product_Image]);
     }
 
-    //ham tim kiem san pham theo tu khoa
+    //ham tim kiem san pham theo tu khoa và phân trang
     public function Seach_Product(Request $request){
-        $keyWord = $request->keyword_product;
-        $seachProduct = DB::table('products')->where('name', 'like', '%'.$keyWord.'%')->get();
-        //dd($seachProduct);
+        $keyWord = $request->keyword;
+        $seachProduct = DB::table('products')->where('name', 'like', '%'.$keyWord.'%')->paginate(8);
         return view('frontend.seachproduct', compact('seachProduct'));
+    }
 
+    public function Contact(){
+        return view('frontend.contact');
     }
 }
 ?>

@@ -161,69 +161,6 @@
                                 <button type="submit">Confirm</button>
                             </div>
                         </div>
-                        <!-- <div class="col-12 mb-30">
-                            <input id="address" type="checkbox" data-target="createp_account">
-                            <label class="righ_0" for="address" data-toggle="collapse" data-target="#collapsetwo" aria-controls="collapseOne">Ship to a different address?</label>
-
-                            <div id="collapsetwo" class="collapse one" data-parent="#accordion">
-                                <div class="row">
-                                    <div class="col-lg-6 mb-30">
-                                        <label>First Name <span>*</span></label>
-                                        <input type="text">
-                                    </div>
-                                    <div class="col-lg-6 mb-30">
-                                        <label>Last Name <span>*</span></label>
-                                        <input type="text">
-                                    </div>
-                                    <div class="col-12 mb-30">
-                                        <label>Company Name</label>
-                                        <input type="text">
-                                    </div>
-                                    <div class="col-12 mb-30">
-                                        <div class="select_form_select">
-                                            <label for="countru_name">country <span>*</span></label>
-                                            <select name="cuntry" id="countru_name">
-                                                <option value="2">bangladesh</option>
-                                                <option value="3">Algeria</option>
-                                                <option value="4">Afghanistan</option>
-                                                <option value="5">Ghana</option>
-                                                <option value="6">Albania</option>
-                                                <option value="7">Bahrain</option>
-                                                <option value="8">Colombia</option>
-                                                <option value="9">Dominican Republic</option>
-
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-12 mb-30">
-                                        <label>Street address <span>*</span></label>
-                                        <input placeholder="House number and street name" type="text">
-                                    </div>
-                                    <div class="col-12 mb-30">
-                                        <input placeholder="Apartment, suite, unit etc. (optional)" type="text">
-                                    </div>
-                                    <div class="col-12 mb-30">
-                                        <label>Town / City <span>*</span></label>
-                                        <input type="text">
-                                    </div>
-                                    <div class="col-12 mb-30">
-                                        <label>State / County <span>*</span></label>
-                                        <input type="text">
-                                    </div>
-                                    <div class="col-lg-6 mb-30">
-                                        <label>Phone<span>*</span></label>
-                                        <input type="text">
-
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <label> Email Address <span>*</span></label>
-                                        <input type="text">
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
                     </div>
                 </form>
             </div>
@@ -256,18 +193,6 @@
                             </tr>
                             @endforeach
 
-                            <!-- <tr>
-                                    <td> Handbag justo <strong> × 2</strong></td>
-                                    <td> $50.00</td>
-                                </tr>
-                                <tr>
-                                    <td> Handbag elit <strong> × 2</strong></td>
-                                    <td> $50.00</td>
-                                </tr>
-                                <tr>
-                                    <td> Handbag Rutrum <strong> × 1</strong></td>
-                                    <td> $50.00</td>
-                                </tr> -->
                         </tbody>
                         <tfoot>
                             <tr>

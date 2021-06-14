@@ -151,7 +151,7 @@
                  <li><a href="#">2</a></li>
                  <li>»</li>
              </ul> -->
-         
+            <span>{{$seachProduct->links()}}</span>
          </div>
 
      </div>
