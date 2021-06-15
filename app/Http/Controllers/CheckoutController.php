@@ -7,6 +7,7 @@ use DB;
 use Session;
 use App\Http\Requests;
 use App\User;
+use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Contracts\Session\Session as SessionSession;
 use Illuminate\Support\Facades\Redirect;
@@ -123,6 +124,7 @@ class CheckoutController extends Controller
         $rating_product['user_id'] = Session::get('id');
         $rating_product['rating_comment'] = $request->product_comment;
         $rating_product['rating_name'] = $rating_name->name;
+        $rating_product['created_at'] = Carbon::now()->toDateString();
         DB::table('ratings')->insert($rating_product);
         //đánh giá sản phẩm xong thì xóa sp khỏi giỏi hàng
         $rowId = $request->product_rowId;

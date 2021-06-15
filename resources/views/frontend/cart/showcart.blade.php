@@ -49,16 +49,16 @@
                                     <form action="{{URL::to('/update-cart-quantity')}}" method="post">
                                         @csrf
                                         <input type="hidden" name="rowId_cart" value="{{$value->rowId}}">
-                                        <td class="product-price">${{number_format($value->price)}}</td>
+                                        <td class="product-price">{{number_format($value->price)}} VNĐ</td>
                                         <td class="product_quantity"><input min="1" max="100" name="quantity_product" value="{{$value->qty}}" type="number">
                                             <button class="update-button" type="submit">Update</button>
                                         </td>
                                     </form>
 
-                                    <td class="product_total">$
+                                    <td class="product_total">
                                         <?php
                                         $subtotal = $value->price * $value->qty;
-                                        echo (number_format($subtotal));
+                                        echo number_format($subtotal).' VNĐ';
                                         ?>
                                     </td>
                                 </tr>
@@ -70,46 +70,6 @@
                 </div>
             </div>
         </div>
-        <!--coupon code area start-->
-        <!-- <div class="coupon_area">
-            <div class="row">
-                <div class="col-lg-6 col-md-6">
-                    <div class="coupon_code">
-                        <h3>Coupon</h3>
-                        <div class="coupon_inner">
-                            <p>Enter your coupon code if you have one.</p>
-                            <input placeholder="Coupon code" type="text">
-                            <button type="submit">Apply coupon</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6">
-                    <div class="coupon_code">
-                        <h3>Cart Totals</h3>
-                        <div class="coupon_inner">
-                            <div class="cart_subtotal">
-                                <p>Subtotal</p>
-                                <p class="cart_amount"> $ {{Cart::subtotal()}}</p>
-                            </div>
-                            <div class="cart_subtotal ">
-                                <p>Shipping</p>
-                                <p class="cart_amount"><span>Flat Rate:</span> $ 0</p>
-                            </div>
-                            <a href="#">Calculate shipping</a>
-
-                            <div class="cart_subtotal">
-                                <p>Total</p>
-                                <p class="cart_amount"> $ {{Cart::subtotal()}}</p>
-                            </div>
-                            <div class="checkout_btn">
-                                <a href="{{url('/login-checkout')}}">Next</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-        <!--coupon code area end-->
 
 </div>
 <!--shopping cart area end -->
@@ -187,7 +147,7 @@
                                 <td>
                                     <?php
                                     $subtotal = $value->price * $value->qty;
-                                    echo (number_format($subtotal));
+                                    echo (number_format($subtotal)).' VNĐ';
                                     ?>
                                 </td>
                             </tr>
@@ -197,15 +157,15 @@
                         <tfoot>
                             <tr>
                                 <th>Cart Subtotal</th>
-                                <td>$ {{Cart::subtotal()}}</td>
+                                <td>{{Cart::subtotal()}} VNĐ</td>
                             </tr>
                             <tr>
                                 <th>Shipping</th>
-                                <td><strong>$ 0</strong></td>
+                                <td><strong>0 VNĐ</strong></td>
                             </tr>
                             <tr class="order_total">
                                 <th>Order Total</th>
-                                <td><strong>$ {{Cart::subtotal()}}</strong></td>
+                                <td><strong>{{Cart::subtotal()}} VNĐ</strong></td>
                             </tr>
                         </tfoot>
                     </table>
