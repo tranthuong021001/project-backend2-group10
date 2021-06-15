@@ -1,7 +1,5 @@
  @extends('frontend.master')
  @section('content')
-
-
  <!--breadcrumbs area start-->
  <div class="breadcrumbs_area">
      <div class="row">
@@ -23,7 +21,7 @@
 
      <div class="row">
          <div class="col-3">
-             <div class="category_item">
+             <div class="category_item category_item2">
                  <h3>CATEGORIES</h3>
                  <ul>
                      <!-- hiển thị danh sách loại sản phẩm -->
@@ -70,9 +68,6 @@
                  </div>
              </div>
 
-
-
-
              <!--shop toolbar end-->
 
              <!--shop tab product-->
@@ -97,9 +92,8 @@
                                                  <input type="hidden" name="qty" value="1">
                                                  <input name="productid_hidden" value="{{$value->id}}" type="hidden">
 
-                                                 <button type="submit"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                                                 <button class="btn-add-product" type="submit"><i class="fa fa-shopping-cart"></i> add to cart</button>
                                              </form>
-
                                          </div>
                                      </div>
                                      <div class="product_content">
@@ -118,17 +112,12 @@
                          </div>
                      </div>
 
-
-
                  </div>
              </div>
              <!--shop tab product end-->
 
-
          </div>
      </div>
-
-
 
      <!--pagination style start-->
      <div class="pagination_style shop_page">
@@ -144,14 +133,7 @@
              </form>
          </div>
          <div class="page_number">
-             <!-- <span>Pages: </span>
-             <ul>
-                 <li>«</li>
-                 <li class="current_number">1</li>
-                 <li><a href="#">2</a></li>
-                 <li>»</li>
-             </ul> -->
-            <span>{{$seachProduct->links()}}</span>
+            <span>{{$seachProduct->appends(request()->all())}}</span>
          </div>
 
      </div>

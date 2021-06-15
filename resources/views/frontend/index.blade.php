@@ -34,46 +34,8 @@
             </div>
             <!--categorie menu end-->
 
-            <!--wishlist block start-->
-            <!-- <div class="sidebar_widget wishlist mb-35">
-                <div class="block_title">
-                    <h3><a href="#">Wishlist</a></h3>
-                </div>
-                <div class="cart_item">
-                    <div class="cart_img">
-                        <a href="#"><img src="{{url('assets\img\cart\cart.jpg')}}" alt=""></a>
-                    </div>
-                    <div class="cart_info">
-                        <a href="#">lorem ipsum dolor</a>
-                        <span class="cart_price">$115.00</span>
-                        <span class="quantity">Qty: 1</span>
-                    </div>
-                    <div class="cart_remove">
-                        <a title="Remove this item" href="#"><i class="fa fa-times-circle"></i></a>
-                    </div>
-                </div>
-                <div class="cart_item">
-                    <div class="cart_img">
-                        <a href="#"><img src="{{url('assets\img\cart\cart2.jpg')}}" alt=""></a>
-                    </div>
-                    <div class="cart_info">
-                        <a href="#">Quisque ornare dui</a>
-                        <span class="cart_price">$105.00</span>
-                        <span class="quantity">Qty: 1</span>
-                    </div>
-                    <div class="cart_remove">
-                        <a title="Remove this item" href="#"><i class="fa fa-times-circle"></i></a>
-                    </div>
-                </div>
-                <div class="block_content">
-                    <p>2 products</p>
-                    <a href="#">» My wishlists</a>
-                </div>
-            </div> -->
-            <!--wishlist block end-->
-
             <!--popular tags area-->
-            <div class="sidebar_widget tags mb-35">
+            <div class="sidebar_widget tags mb-35 popular-tags">
                 <div class="block_title">
                     <h3>popular tags</h3>
                 </div>
@@ -159,7 +121,7 @@
                     <div class="product_active owl-carousel">
 
                         <!--get product from database-->
-                        @foreach($product as $value)
+                        @foreach($Product_Female as $value)
 
 
 
@@ -178,7 +140,7 @@
                                             <input type="hidden" name="qty" value="1">
                                             <input name="productid_hidden" value="{{$value->id}}" type="hidden">
 
-                                            <button type="submit"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                                            <button class="btn-add-product" type="submit"><i class="fa fa-shopping-cart"></i> add to cart</button>
                                             <!-- <a href="#"> <i class="fa fa-shopping-cart"></i> Add to cart</a> -->
                                         </form>
                                     </div>
@@ -222,7 +184,7 @@
                 </div>
                 <div class="row">
                     <div class="product_active owl-carousel">
-                        @foreach ($product_Feature as $value)
+                        @foreach ($product as $value)
                         <div class="col-lg-3">
                             <div class="single_product">
                                 <div class="product_thumb">
@@ -237,7 +199,7 @@
                                             <input type="hidden" name="qty" value="1">
                                             <input name="productid_hidden" value="{{$value->id}}" type="hidden">
                                             <!-- <a href="#"> <i class="fa fa-shopping-cart"></i> Add to cart</a> -->
-                                            <button type="submit"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                                            <button class="btn-add-product" type="submit"><i class="fa fa-shopping-cart"></i> add to cart</button>
                                         </form>
 
                                     </div>
@@ -256,98 +218,6 @@
                         </div>
                         @endforeach
 
-                        <!-- <div class="col-lg-3">
-                            <div class="single_product">
-                                <div class="product_thumb">
-                                    <a href="single-product.html"><img src="{{url('assets\img\product\product8.jpg')}}" alt=""></a>
-                                    <div class="img_icone">
-                                        <img src="{{url('assets\img\cart\span-new.png')}}" alt="">
-                                    </div>
-                                    <div class="product_action">
-                                        <a href="#"> <i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                    </div>
-                                </div>
-                                <div class="product_content">
-                                    <span class="product_price">$50.00</span>
-                                    <h3 class="product_title"><a href="single-product.html">Sed non turpis</a></h3>
-                                </div>
-                                <div class="product_info">
-                                    <ul>
-                                        <li><a href="#" title=" Add to Wishlist ">Add to Wishlist</a></li>
-                                        <li><a href="#" data-toggle="modal" data-target="#modal_box" title="Quick view">View Detail</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div> -->
-                        <!-- <div class="col-lg-3">
-                            <div class="single_product">
-                                <div class="product_thumb">
-                                    <a href="single-product.html"><img src="{{url('assets\img\product\product9.jpg')}}" alt=""></a>
-                                    <div class="img_icone">
-                                        <img src="{{url('assets\img\cart\span-new.png')}}" alt="">
-                                    </div>
-                                    <div class="product_action">
-                                        <a href="#"> <i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                    </div>
-                                </div>
-                                <div class="product_content">
-                                    <span class="product_price">$70.00</span>
-                                    <h3 class="product_title"><a href="single-product.html">Donec ac congue</a></h3>
-                                </div>
-                                <div class="product_info">
-                                    <ul>
-                                        <li><a href="#" title=" Add to Wishlist ">Add to Wishlist</a></li>
-                                        <li><a href="#" data-toggle="modal" data-target="#modal_box" title="Quick view">View Detail</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="single_product">
-                                <div class="product_thumb">
-                                    <a href="single-product.html"><img src="{{url('assets\img\product\product3.jpg')}}" alt=""></a>
-                                    <div class="hot_img">
-                                        <img src="{{url('assets\img\cart\span-hot.png')}}" alt="">
-                                    </div>
-                                    <div class="product_action">
-                                        <a href="#"> <i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                    </div>
-                                </div>
-                                <div class="product_content">
-                                    <span class="product_price">$60.00</span>
-                                    <h3 class="product_title"><a href="single-product.html">Curabitur sodales</a></h3>
-                                </div>
-                                <div class="product_info">
-                                    <ul>
-                                        <li><a href="#" title=" Add to Wishlist ">Add to Wishlist</a></li>
-                                        <li><a href="#" data-toggle="modal" data-target="#modal_box" title="Quick view">View Detail</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="single_product">
-                                <div class="product_thumb">
-                                    <a href="single-product.html"><img src="{{url('assets\img\product\product2.jpg')}}" alt=""></a>
-                                    <div class="img_icone">
-                                        <img src="{{url('assets\img\cart\span-new.png')}}" alt="">
-                                    </div>
-                                    <div class="product_action">
-                                        <a href="#"> <i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                    </div>
-                                </div>
-                                <div class="product_content">
-                                    <span class="product_price">$50.00</span>
-                                    <h3 class="product_title"><a href="single-product.html">Phasellus a arcu</a></h3>
-                                </div>
-                                <div class="product_info">
-                                    <ul>
-                                        <li><a href="#" title=" Add to Wishlist ">Add to Wishlist</a></li>
-                                        <li><a href="#" data-toggle="modal" data-target="#modal_box" title="Quick view">View Detail</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div> -->
                     </div>
                 </div>
             </div>

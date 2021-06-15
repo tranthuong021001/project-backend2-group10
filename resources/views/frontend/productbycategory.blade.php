@@ -23,7 +23,7 @@
 
      <div class="row">
          <div class="col-3">
-             <div class="category_item">
+             <div class="category_item category_item2">
                  <h3>CATEGORIES</h3>
                  <ul>
                      <!-- hiển thị danh sách loại sản phẩm -->
@@ -97,7 +97,7 @@
                                                  <input type="hidden" name="qty" value="1">
                                                  <input name="productid_hidden" value="{{$value->id}}" type="hidden">
 
-                                                 <button type="submit"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                                                 <button class="btn-add-product" type="submit"><i class="fa fa-shopping-cart"></i> add to cart</button>
                                              </form>
 
                                          </div>

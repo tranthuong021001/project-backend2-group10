@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Auth;
 //
 Auth::routes();
 
-Route::get('/', 'welcomecontroller@getProductSale');
+Route::get('/', 'welcomecontroller@getProductClothingFemale');
 
 Route::get('/manu', 'welcomecontroller@getAllManufactures');
 

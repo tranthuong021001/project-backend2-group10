@@ -30,8 +30,8 @@
     <link rel="stylesheet" href="{{url('assets\css\bundle.css')}}">
     <link rel="stylesheet" href="{{url('assets\css\style.css')}}">
     <link rel="stylesheet" href="{{url('assets\css\responsive.css')}}">
-    <link rel="stylesheet" href="{{url('assets\css\mystyle2.css')}}">
-    <link rel="stylesheet" href="{{url('assets\css\mystyle1.css')}}">
+    <link rel="stylesheet" href="{{url('assets/css/mystylenew.css')}}">
+    <link rel="stylesheet" href="{{url('assets/css/mystyle.css')}}">
     <link rel="stylesheet" href="{{url('assets\css\responsive.css')}}">
     <script src="{{url('assets\js\vendor\modernizr-2.8.3.min.js')}}"></script>
 </head>

@@ -53,7 +53,6 @@ class WelcomeController extends Controller
         $product_image = Product::find($id)->product_image;
         //lấy các sản phẩm cùng hang san xuat vs singleProduct
         $productByCategory = Protype::find($singleProduct->type_id)->product;
-
         //lấy các đánh giá của sản phẩm
           $ratings = Product::find($id)->rating;
         return view('frontend.productdetail', compact('singleProduct','product_image','productByCategory','ratings'));
@@ -64,41 +63,24 @@ class WelcomeController extends Controller
         $protype = Protype::all();
         return view('frontend.index', ['protypes' => $protype]);
     }
-    //get all products , manufacture , proytpe of products
+   //lấy sản phẩm nam đang sale
     public function getProductMenSale()
     {
         $producSale = Product::where('sale', '>=',1)->where('gender', '=', 1)->paginate(8);
         return view('frontend.productsale', compact('producSale'));
     }
-    //get all products , manufacture , proytpe of products
+    //lấy sản phẩm nữ đang sale
     public function getProductWomenSale()
     {
         $producSale = Product::where('sale', '>=',1)->where('gender', '=', 2)->paginate(8);
         return view('frontend.productsale', compact('producSale'));
     }
 
-    //get all products , manufacture , proytpe of products
-    public function getProductSale()
+    //láy sản phẩm quần áo nữ
+    public function getProductClothingFemale()
     {
-        $product_Feature = Product::where('sale', '>=',1)->get();
-        return view('frontend.index', compact('product_Feature'));
-    }
-    //lấy sản phẩm kết với bảng product_image( chưa xong)
-    public function getAllProductHome()
-    {
-        //hiển thị sản phẩm
-        $product = Product::all();
-        $Product_Image = Product_Image::all();
-        //hiển thị loại sản phẩm
-        $protype = Protype::all();
-        return view('frontend.index', ['products' => $product], ['Product_Image' => $Product_Image], ['Protypes' => $protype]);
-    }
-
-    //hàm lấy ảnh sản phẩm chi tiết
-    public function getAllProduct_Image()
-    {
-        $Product_Image = Product_Image::all();
-        return view('frontend.index', ['Product_Image' => $Product_Image]);
+        $Product_Female = Product::where('gender', '=',2)->where('type_id', '=', 1)->get();
+        return view('frontend.index', compact('Product_Female'));
     }
 
     //ham tim kiem san pham theo tu khoa và phân trang
