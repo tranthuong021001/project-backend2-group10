@@ -143,32 +143,22 @@
                     </p>
                     <table id="datatable" class="table table-striped table-bordered" style="width:100%">
                       <thead>
-                        <tr>
-                                 
+                        <tr>     
                           <th>Tên người nhận</th>
                           <th>Email</th>
                           <th>Địa chỉ </th>
                           <th>Số điện thoai</th>
-                          <th>Ghi chú</th>
-                                              
+                          <th>Ghi chú</th>                 
                         </tr>
                       </thead>
                       <tbody>
-                     
-                 
                         <tr>
-                      
-                        
                           <td>{{$shipping->shipping_name}}</td>
                           <td>{{$shipping->shipping_email}}</td>
                           <td>{{$shipping->shipping_address}}</td>
                           <td>{{$shipping->shipping_phone}}</td>
                           <td>{{$shipping->shipping_note}}</td>
-                         
-                         
                         </tr>
-                     
-                  
                       </tbody>
                     </table>
                  
@@ -206,8 +196,7 @@
                     </p>
                     <table id="datatable" class="table table-striped table-bordered" style="width:100%">
                       <thead>
-                        <tr>
-                                    
+                        <tr>          
                           <th>Tên sản phẩm</th>
                           <th>Số lượng</th>
                           <th>Giá</th>
@@ -216,9 +205,8 @@
                       </thead>
                       <tbody>
                      
-                     @foreach($order_detail as $ord)
-                        <tr>
-
+                     @foreach($order_detail as $ord)                  
+                        <tr>   
                           <td>{{$ord->product_name}}</td>
                           <td>{{$ord->amount}}</td>
                           <td>{{$ord->price}}</td>

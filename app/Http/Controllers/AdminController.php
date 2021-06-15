@@ -13,7 +13,7 @@ use Illuminate\Http\UploadedFile;
 use App\shipping;
 use App\Product;
 use App\User;
-
+use Illuminate\Support\Facades\App;
 
 class AdminController extends Controller
 {
@@ -23,45 +23,30 @@ class AdminController extends Controller
             $user = Auth::user();
          return view('admin.layouts.index',$user);
         }
-      
     }
     public function LogoutAdmin()
     {
         Auth::logout();
     return redirect()->route('login');
     }
-   
     public function getAllProductsAdmin()
-    {
-       
+    {      
       $all_product = DB::table("products")
          ->join('protypes','protypes.id','=','products.type_id')
          ->join('manufactures','manufactures.id','=','products.manu_id')
          ->select('products.*', 'protypes.type_name', 'manufactures.manu_name')
-        
          ;
         $all_product = $all_product->orderBy("products.id","Desc");
      
         $all_product = $all_product->paginate(15);
         return view('admin.layouts.AllProducts')->with('allproducts',$all_product);
-
-        // return view('admin.layouts.AllProducts')->with('admin.layouts.AllProducts',$manager_product);;
-        
-      
     }
     public function getIndexAddProduct(Request $request)
     {
         $manu =  DB::table("manufactures")->orderBy("id","desc")->get();
         $type =  DB::table("protypes")->orderBy("id","desc")->get();
         $gender =  DB::table("genders")->orderBy("id","desc")->get();
-        
-        // $type =  DB::table("protypes");
-        // $type = $type->select("*");
-        // $datamanu = $manu->paginate(30);
-        // $datatype = $type->paginate(30);
-      
-
-             return view('admin.layouts.addProduct')-> with('manu',$manu)->with('type',$type)->with('gender',$gender);
+        return view('admin.layouts.addProduct')-> with('manu',$manu)->with('type',$type)->with('gender',$gender);
     }
     public function getSaveProduct(Request $request)
     {
@@ -73,15 +58,12 @@ class AdminController extends Controller
        $data['description'] = $request->description;
        $data['sale'] = $request->sale;
        $data['size'] = $request->size;
-       $data['gender'] = $request->gender;
-       
-       $get_image =$request->file('product_image');
-       
+       $data['gender'] = $request->gender;       
+       $get_image =$request->file('product_image');      
        if($get_image){
            $get_name = $get_image->getClientOriginalName();
            $name_image = current(explode('.',$get_name));
-           $new_image = $name_image.rand(0,99).'.'.$get_image->getClientOriginalExtension();
-          // $path = $request->file('product_image')->store('public/assets/img/product');
+           $new_image = $name_image.rand(0,99).'.'.$get_image->getClientOriginalExtension();        
            $get_image->move('assets/img/product/',$new_image);
            $data['image'] = $new_image;
         DB::table('products')->insert($data);
@@ -94,16 +76,11 @@ class AdminController extends Controller
       return Redirect::to('/allproducts');
     }
     public function EditProduct($id)
-    {
-        
+    { 
         $manu =  DB::table("manufactures")->orderBy("id","desc")->get();
         $type =  DB::table("protypes")->orderBy("id","desc")->get();
         $gender =  DB::table("genders")->orderBy("id","desc")->get();
         $edit_product =  DB::table("products")->where('id',$id)->get();
-       // $manager_product = view('admin.layouts.editProduct')->with('editproduct',$edit_product);
-       
-      
-
        return view('admin.layouts.editProduct')->with('editproduct',$edit_product)->with('manu',$manu)->with('type',$type)->with('gender',$gender);
     }
     public function UpdateProduct(Request $request,$id)
@@ -117,8 +94,7 @@ class AdminController extends Controller
         $data['sale'] = $request->sale;
         $data['size'] = $request->size;
         $data['gender'] = $request->gender;
-       // $manager_product = view('admin.layouts.editProduct')->with('editproduct',$edit_product);
-       
+     
        $get_image =$request->file('product_image');
        if($get_image){
         $get_name = $get_image->getClientOriginalName();
@@ -138,7 +114,7 @@ class AdminController extends Controller
     public function DeleteProduct($id)
     {
         DB::table('products')->where('id',$id)->delete();
-       // $manager_product = view('admin.layouts.editProduct')->with('editproduct',$edit_product);
+      
        Session::put('message','xóa sản phẩm thành công');
        return Redirect::to('/allproducts');  
     }
@@ -275,14 +251,6 @@ class AdminController extends Controller
      public function getAllBillInAdmin()
      {
          $order = Bill::orderby('created_at','Desc')->get();
-    //    $allBill = DB::table("bills")
-    // //    ->join('bill__details','bill__details.id','=','bills.bill_id')
-    //    ->join('users','users.id','=','bills.user_id')
-   
-    //   // ->join('shipping_infos','shipping_infos.id','=','bills.shipping_id')
-    //       ->select('bills.*','users.name');
-    //      $allBill = $allBill->orderBy("bills.id","Desc");
-    //      $allBill = $allBill->paginate(15);
          return view('admin.layouts.AllBills')->with(compact('order'));     
      }
      public function DeleteBill($id)
@@ -293,7 +261,7 @@ class AdminController extends Controller
      }
      public function DetailBill($id)
      {
-        $order_detail = Bill_Detail::where('bill_id',$id)->get();
+      
         $order = Bill::where('id',$id)->get();
         foreach($order as $key)
         {
@@ -302,24 +270,8 @@ class AdminController extends Controller
         }
         $user = User::where('id',$user_id)->first();
         $shipping = shipping::where('shipping_id',$shipping_id)->first();
-        $order_detail = Bill_Detail::with('Product')->where('bill_id',$id)->get();
-    //     $detailbill = DB::table("bills")
-    //     ->join('bill__details','bill__details.bill_id','=','bills.id')
-    //     ->join('products','products.id','=','bill__details.product_id')
-    //     ->join('shipping__infos','shipping__infos.shipping_id','=','bills.shipping_id')
-    //     ->join('users','users.id','=','bills.user_id')
-    //     ->where('bills.id',$id)
-    //    // ->join('shipping_infos','shipping_infos.id','=','bills.shipping_id')
-    //        ->select('bills.*',
-    //        'bill__details.bill_id','bill__details.product_id','bill__details.amount','bill__details.total_money',
-    //        'products.product_name', 'products.price',
-    //        'shipping__infos.shipping_name', 'shipping__infos.shipping_email','shipping__infos.shipping_address','shipping__infos.shipping_phone','shipping__infos.shipping_note',
-    //        'users.name','users.email','users.phone')->first();
-
-        //var_dump($order_detail);  
-           // print_r($order_detail);
-       
-        return view('admin.layouts.DetailBill')->with(compact('order_detail' ,'user','shipping','order_detail' ));
+        $order_detail = Bill_Detail::with('product')->where('bill_id',$id)->get();
+        return view('admin.layouts.DetailBill')->with(compact('order_detail' ,'user','shipping' ));
      }
      
 }

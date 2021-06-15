@@ -12,7 +12,7 @@ class Bill_Detail extends Model
     ];
     protected $primaryKey = 'id';
     protected $table = 'bill__details';
-    public function Product(){
+    public function product(){
         return $this->belongsTo('App\Product','product_id');
     }
 }
