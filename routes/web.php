@@ -11,40 +11,40 @@ Auth::routes();
 *******************ROUTE Ở PHẦN GIAO DIỆN ADMIN********************
 ********************************************************************
 */
-Route::get('/admin/tc', 'AdminController@getIndexAdmin')->middleware('auth');
-Route::get('/logout', 'AdminController@LogoutAdmin')->middleware('auth');
-Route::get('/allproducts', 'AdminController@getAllProductsAdmin')->middleware('auth');
-Route::get('/admin/addproduct', 'AdminController@getIndexAddProduct')->middleware('auth');;
-Route::post('/admin/saveproduct', 'AdminController@getSaveProduct')->middleware('auth');;
-Route::get('/admin/editproduct/{id}', 'AdminController@EditProduct')->middleware('auth');;
-Route::post('/admin/updateproduct/{id}', 'AdminController@UpdateProduct')->middleware('auth');;
-Route::get('/admin/deleteproduct/{id}', 'AdminController@DeleteProduct')->middleware('auth');;
+Route::get('/login-checkout', 'CheckoutController@login_checkout');
+Route::get('/admin/tc', 'AdminController@getIndexAdmin');
+
+Route::get('/allproducts', 'AdminController@getAllProductsAdmin');
+Route::get('/admin/addproduct', 'AdminController@getIndexAddProduct');
+Route::post('/admin/saveproduct', 'AdminController@getSaveProduct');
+Route::get('/admin/editproduct/{id}', 'AdminController@EditProduct');
+Route::post('/admin/updateproduct/{id}', 'AdminController@UpdateProduct');
+Route::get('/admin/deleteproduct/{id}', 'AdminController@DeleteProduct');
 //manufacture admin
-Route::get('/allmanufactures', 'AdminController@getAllManufacturesAdmin')->middleware('auth');
-Route::get('/admin/addmanufactures', 'AdminController@getIndexAddManufactures')->middleware('auth');;
-Route::post('/admin/savemanufactures', 'AdminController@getSaveManufactures')->middleware('auth');;
-Route::get('/admin/editmanu/{id}', 'AdminController@EditManu')->middleware('auth');;
-Route::post('/admin/updatemanu/{id}', 'AdminController@UpdateManu')->middleware('auth');;
-Route::get('/admin/deletemanu/{id}', 'AdminController@DeleteManu')->middleware('auth');;
-//protypes admin
-Route::get('/allprotypes', 'AdminController@getAllProtypesAdmin')->middleware('auth');
-Route::get('/admin/addprotypes', 'AdminController@getIndexAddProtypes')->middleware('auth');;
-Route::post('/admin/saveprotypes', 'AdminController@getSaveProtypes')->middleware('auth');;
-Route::get('/admin/editprotype/{id}', 'AdminController@EditProtypes')->middleware('auth');;
-Route::post('/admin/updateprotype/{id}', 'AdminController@UpdateProtypes')->middleware('auth');;
-Route::get('/admin/deleteprotype/{id}', 'AdminController@DeleteProtypes')->middleware('auth');;
+Route::get('/allmanufactures', 'AdminController@getAllManufacturesAdmin');
+Route::get('/admin/addmanufactures', 'AdminController@getIndexAddManufactures');
+Route::post('/admin/savemanufactures', 'AdminController@getSaveManufactures');
+Route::get('/admin/editmanu/{id}', 'AdminController@EditManu');
+Route::post('/admin/updatemanu/{id}', 'AdminController@UpdateManu');
+Route::get('/admin/deletemanu/{id}', 'AdminController@DeleteManu');
+Route::get('/allprotypes', 'AdminController@getAllProtypesAdmin');
+Route::get('/admin/addprotypes', 'AdminController@getIndexAddProtypes');
+Route::post('/admin/saveprotypes', 'AdminController@getSaveProtypes');
+Route::get('/admin/editprotype/{id}', 'AdminController@EditProtypes');
+Route::post('/admin/updateprotype/{id}', 'AdminController@UpdateProtypes');
+Route::get('/admin/deleteprotype/{id}', 'AdminController@DeleteProtypes');
 
 //user admin
-Route::get('/allusers', 'AdminController@getAllUserInAdmin')->middleware('auth');
-Route::get('/admin/deleteuser/{id}', 'AdminController@DeleteUser')->middleware('auth');
-Route::get('/adduser', 'AdminController@AddUser')->middleware('auth');
-Route::post('/saveuser', 'AdminController@SaveUser')->middleware('auth');;
-Route::get('/edituser/{id}', 'AdminController@EditUser')->middleware('auth');;
-Route::post('/updateuser/{id}', 'AdminController@UpdateUser')->middleware('auth');;
+Route::get('/allusers', 'AdminController@getAllUserInAdmin');
+Route::get('/admin/deleteuser/{id}', 'AdminController@DeleteUser');
+Route::get('/adduser', 'AdminController@AddUser');
+Route::post('/saveuser', 'AdminController@SaveUser');
+Route::get('/edituser/{id}', 'AdminController@EditUser');
+Route::post('/updateuser/{id}', 'AdminController@UpdateUser');
 //bill admin
-Route::get('/allbills', 'AdminController@getAllBillInAdmin')->middleware('auth');
-Route::get('/admin/deletebill/{id}', 'AdminController@DeleteBill')->middleware('auth');;
-Route::get('/admin/billdetail/{id}', 'AdminController@DetailBill')->middleware('auth');
+Route::get('/allbills', 'AdminController@getAllBillInAdmin');
+Route::get('/admin/deletebill/{id}', 'AdminController@DeleteBill');
+Route::get('/admin/billdetail/{id}', 'AdminController@DetailBill');
 
 
 /*
@@ -86,6 +86,7 @@ Route::post('/update-cart-quantity', 'CartController@update_cart_quantity' );
 //Checkout register
 Route::get('/show-order', 'CheckoutController@show_order' );
 Route::get('/login-checkout', 'CheckoutController@login_checkout' );
+
 Route::get('/logout-checkout', 'CheckoutController@logout_checkout' );
 Route::post('/add-customer', 'CheckoutController@add_customer' );
 Route::post('/login-account', 'CheckoutController@login_account' );

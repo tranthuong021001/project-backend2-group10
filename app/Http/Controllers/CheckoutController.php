@@ -4,19 +4,39 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
-use Session;
+
 use App\Http\Requests;
 use App\User;
 use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Contracts\Session\Session as SessionSession;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Session as FacadesSession;
+use Symfony\Component\HttpFoundation\Session\Session as HttpFoundationSessionSession;
 
 session_start();
 
 class CheckoutController extends Controller
 {
+    //hàm kiểm tra đăng nhập
+    public function AuthLogin(){
+        $admin_id = Session::get('id');
+        $admin_role = Session::get('role');
+       
+        if($admin_id){
+            if($admin_role == '1'){
+                return Redirect::to('/admin/tc');
+            }
+            else{
+                return Redirect::to('/')->send();
+            }
+            
+        }
+        else{
+            return Redirect::to('/logout-checkout')->send();
+        }
+    }
     //hàm trả về from điền thông tin đơn hàng
     public function show_order()
     {
@@ -107,7 +127,14 @@ class CheckoutController extends Controller
         if ($result) {
             //lưu id người dùng vào session
             Session::put('id', $result->id);
-            return Redirect::to('/');
+            Session::put('role', $result->role);
+            if($result->role == '1'){
+                return Redirect::to('/admin/tc');
+            }
+            else{
+                return Redirect::to('/'); 
+            }
+           
         } else {
             return Redirect::to('/login-checkout');
         }

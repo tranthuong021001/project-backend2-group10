@@ -115,7 +115,7 @@
                         <!-- <td>{{ $loop->index + 1 }}</td> -->
                           <td><img src="assets/img/product/{{$pro->image}}" height="100" width="100" alt=""></td>
                        
-                          <td>{{$pro->product_name}}</td>
+                          <td>{{$pro->name}}</td>
                           <td>{{$pro->price}}</td>
                           <td>{{$pro->type_name}}</td>
                           <td>{{$pro->manu_name}}</td>
