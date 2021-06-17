@@ -1,5 +1,6 @@
 <?php
 
+use Doctrine\DBAL\Driver\Middleware;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,6 +19,57 @@ Auth::routes();
 
 Route::get('/', 'welcomecontroller@getProductClothingFemale');
 
+
+   // Route::match(['get','post'],'/admin',['as' =>'/admin','user' => 'welcomecontroller@getIndexAdmin']);
+//Route::get('/admin', 'welcomecontroller@getIndexAdmin');
+ 
+Route::get('/home', 'HomeController@getAllProductHome')->name('home');
+//product admin
+//Route::get('/addproduct', 'welcomecontroller@getIndexAddProduct');
+Route::get('/admin/tc', 'AdminController@getIndexAdmin')->middleware('auth');
+Route::get('/logout', 'AdminController@LogoutAdmin')->middleware('auth');
+Route::get('/allproducts', 'AdminController@getAllProductsAdmin')->middleware('auth');
+Route::get('/admin/addproduct', 'AdminController@getIndexAddProduct')->middleware('auth');;
+Route::post('/admin/saveproduct', 'AdminController@getSaveProduct')->middleware('auth');;
+Route::get('/admin/editproduct/{id}', 'AdminController@EditProduct')->middleware('auth');;
+Route::post('/admin/updateproduct/{id}', 'AdminController@UpdateProduct')->middleware('auth');;
+Route::get('/admin/deleteproduct/{id}', 'AdminController@DeleteProduct')->middleware('auth');;
+//manufacture admin
+Route::get('/allmanufactures', 'AdminController@getAllManufacturesAdmin')->middleware('auth');
+Route::get('/admin/addmanufactures', 'AdminController@getIndexAddManufactures')->middleware('auth');;
+Route::post('/admin/savemanufactures', 'AdminController@getSaveManufactures')->middleware('auth');;
+Route::get('/admin/editmanu/{id}', 'AdminController@EditManu')->middleware('auth');;
+Route::post('/admin/updatemanu/{id}', 'AdminController@UpdateManu')->middleware('auth');;
+Route::get('/admin/deletemanu/{id}', 'AdminController@DeleteManu')->middleware('auth');;
+//protypes admin
+Route::get('/allprotypes', 'AdminController@getAllProtypesAdmin')->middleware('auth');
+Route::get('/admin/addprotypes', 'AdminController@getIndexAddProtypes')->middleware('auth');;
+Route::post('/admin/saveprotypes', 'AdminController@getSaveProtypes')->middleware('auth');;
+Route::get('/admin/editprotype/{id}', 'AdminController@EditProtypes')->middleware('auth');;
+Route::post('/admin/updateprotype/{id}', 'AdminController@UpdateProtypes')->middleware('auth');;
+Route::get('/admin/deleteprotype/{id}', 'AdminController@DeleteProtypes')->middleware('auth');;
+
+//user admin
+Route::get('/allusers', 'AdminController@getAllUserInAdmin')->middleware('auth');
+Route::get('/admin/deleteuser/{id}', 'AdminController@DeleteUser')->middleware('auth');
+Route::get('/adduser', 'AdminController@AddUser')->middleware('auth');
+Route::post('/saveuser', 'AdminController@SaveUser')->middleware('auth');;
+Route::get('/edituser/{id}', 'AdminController@EditUser')->middleware('auth');;
+Route::post('/updateuser/{id}', 'AdminController@UpdateUser')->middleware('auth');;
+//bill admin
+Route::get('/allbills', 'AdminController@getAllBillInAdmin')->middleware('auth');
+Route::get('/admin/deletebill/{id}', 'AdminController@DeleteBill')->middleware('auth');;
+Route::get('/admin/billdetail/{id}', 'AdminController@DetailBill')->middleware('auth');
+
+
+
+//Route::match(['get','post'],'/admin/addproduct',['as' =>'/admin/addproduct','user' => 'welcomecontroller@getIndexAddProduct'])->middleware('auth') ;
+//route động có tham số dùng để chuyển đến trang Account
+Route::get('/{para}', 'HomeController@index')->name('home');
+
+
+Route::get('/', 'welcomecontroller@getAllProduct');
+Route::get('/index', 'welcomecontroller@getAllProductHome');
 Route::get('/manu', 'welcomecontroller@getAllManufactures');
 
 //lấy sản phâm theo  loại
@@ -63,6 +115,26 @@ Route::get('/checkout', 'CheckoutController@return_checkout_file');
 
 //Rating product
 Route::post('/rating-product', 'CheckoutController@rating_product' );
+
+// Route tĩnh
+// Route::get('/gioithieu', function(){
+//     return view('gioithieu');
+// });
+// Route::get('/sanpham', function(){
+//     return view('sanpham');
+// });
+// Route::get('/lienhe', function(){
+//     return view('lienhe');
+// });
+// Route::get('/trangchu', function(){
+//     return view('trangchu');
+// });
+// Route::get('/table', function(){
+//     return view('sanpham_table');
+// });
+// Route::get('/chair', function(){
+//     return view('sanpham_chair');
+// });
 
 //tim kiem san pham
 Route::get('/seachproduct', 'welcomecontroller@Seach_Product');

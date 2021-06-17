@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     //
-    protected $table = 'products';
     public $timestamps = false;
 
     public function product_image()
@@ -25,5 +24,13 @@ class Product extends Model
     public function rating(){
         return $this->hasMany('App\Rating', 'product_id');
     }
+    protected $fillable = [
+        'name', 'price','type_id','type_name','description','sale','sie','gender','image'
+    ];
+    protected $primaryKey = 'id';
+    protected $table = 'products';
+   
+  
+
 
 }

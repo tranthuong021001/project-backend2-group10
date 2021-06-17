@@ -9,6 +9,7 @@
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         @csrf
 
                         <div class="form-group row">
