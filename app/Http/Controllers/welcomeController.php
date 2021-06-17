@@ -13,7 +13,7 @@ use App\Rating;
 use App\User;
 
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
+
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\UploadedFile;
@@ -98,6 +98,6 @@ class WelcomeController extends Controller
     public function Contact(){
         return view('frontend.contact');
     }
-   
+
 }
 ?>

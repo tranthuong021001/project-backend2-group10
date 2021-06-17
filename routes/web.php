@@ -4,28 +4,13 @@ use Doctrine\DBAL\Driver\Middleware;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-//
 Auth::routes();
 
-Route::get('/', 'welcomecontroller@getProductClothingFemale');
-
-
-   // Route::match(['get','post'],'/admin',['as' =>'/admin','user' => 'welcomecontroller@getIndexAdmin']);
-//Route::get('/admin', 'welcomecontroller@getIndexAdmin');
- 
-Route::get('/home', 'HomeController@getAllProductHome')->name('home');
-//product admin
-//Route::get('/addproduct', 'welcomecontroller@getIndexAddProduct');
+/*
+********************************************************************
+*******************ROUTE Ở PHẦN GIAO DIỆN ADMIN********************
+********************************************************************
+*/
 Route::get('/admin/tc', 'AdminController@getIndexAdmin')->middleware('auth');
 Route::get('/logout', 'AdminController@LogoutAdmin')->middleware('auth');
 Route::get('/allproducts', 'AdminController@getAllProductsAdmin')->middleware('auth');
@@ -62,14 +47,13 @@ Route::get('/admin/deletebill/{id}', 'AdminController@DeleteBill')->middleware('
 Route::get('/admin/billdetail/{id}', 'AdminController@DetailBill')->middleware('auth');
 
 
+/*
+********************************************************************
+*******************ROUTE Ở PHẦN GIAO DIỆN NGƯỜI DÙNG****************
+********************************************************************
+*/
+Route::get('/', 'welcomecontroller@getProductClothingFemale');
 
-//Route::match(['get','post'],'/admin/addproduct',['as' =>'/admin/addproduct','user' => 'welcomecontroller@getIndexAddProduct'])->middleware('auth') ;
-//route động có tham số dùng để chuyển đến trang Account
-Route::get('/{para}', 'HomeController@index')->name('home');
-
-
-Route::get('/', 'welcomecontroller@getAllProduct');
-Route::get('/index', 'welcomecontroller@getAllProductHome');
 Route::get('/manu', 'welcomecontroller@getAllManufactures');
 
 //lấy sản phâm theo  loại
@@ -106,37 +90,14 @@ Route::get('/logout-checkout', 'CheckoutController@logout_checkout' );
 Route::post('/add-customer', 'CheckoutController@add_customer' );
 Route::post('/login-account', 'CheckoutController@login_account' );
 
-
 //Bill
 Route::post('/order', 'CheckoutController@order' );
-
 Route::get('/checkout', 'CheckoutController@return_checkout_file');
-
 
 //Rating product
 Route::post('/rating-product', 'CheckoutController@rating_product' );
 
-// Route tĩnh
-// Route::get('/gioithieu', function(){
-//     return view('gioithieu');
-// });
-// Route::get('/sanpham', function(){
-//     return view('sanpham');
-// });
-// Route::get('/lienhe', function(){
-//     return view('lienhe');
-// });
-// Route::get('/trangchu', function(){
-//     return view('trangchu');
-// });
-// Route::get('/table', function(){
-//     return view('sanpham_table');
-// });
-// Route::get('/chair', function(){
-//     return view('sanpham_chair');
-// });
-
 //tim kiem san pham
 Route::get('/seachproduct', 'welcomecontroller@Seach_Product');
-
 Route::get('/contact', 'welcomecontroller@Contact');
+
