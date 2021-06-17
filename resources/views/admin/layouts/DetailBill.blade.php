@@ -207,7 +207,7 @@
                      
                      @foreach($order_detail as $ord)                  
                         <tr>   
-                          <td>{{$ord->product_name}}</td>
+                          <td>{{$ord->name}}</td>
                           <td>{{$ord->amount}}</td>
                           <td>{{$ord->price}}</td>
                           <td>{{$ord->price* $ord->amount}}</td>
