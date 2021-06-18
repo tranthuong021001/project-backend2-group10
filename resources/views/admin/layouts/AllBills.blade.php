@@ -113,7 +113,7 @@
                         <!-- <td>{{ $loop->index + 1 }}</td> -->
                         
                        
-                          <td>{{$bill->user_id}}</td>
+                          <td>{{$bill->name}}</td>
                           <td>{{$bill->total_money}}</td>
                           
                          

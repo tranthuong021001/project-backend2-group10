@@ -294,7 +294,12 @@ class AdminController extends Controller
      public function getAllBillInAdmin()
      {
       $this->AuthLogin();
-         $order = Bill::orderby('created_at','Desc')->get();
+      $order = DB::table('bills')
+      ->join('users','users.id','=','bills.user_id')
+      ->select('bills.*','users.name');
+      $order = $order->orderBy("bills.id","Desc");
+      $order = $order->paginate(15);
+       //  $order = Bill::orderby('created_at','Desc')->get();
          return view('admin.layouts.AllBills')->with(compact('order'));     
      }
      public function DeleteBill($id)
