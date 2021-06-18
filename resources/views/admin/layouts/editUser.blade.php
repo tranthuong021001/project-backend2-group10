@@ -109,7 +109,22 @@
                                             <label class="col-form-label col-md-3 col-sm-3  label-align">Số điện thoại<span class="required">*</span></label>
                                             <div class="col-md-6 col-sm-6">
                                                 <input class="form-control" value="{{$user->phone}}" type="tel" class='tel' name="phone" required='required' data-validate-length-range="8,20" /></div>
-                                        </div>                                  
+                                        </div>
+                                        <div class="field item form-group">
+                                            <label class="col-form-label col-md-3 col-sm-3  label-align">Quyền<span class="required">*</span></label>
+                                            <div class="col-md-6 col-sm-6">
+                                            <select class="form-control" name="manu" id="cate">
+                                            @foreach($role as $data)
+                                            @if($data->id == $user->role)
+                                            <option selected value="{{$data->id}}">{{$data->name_role}}</option>
+                                            @else
+                                            <option  value="{{$data->id}}">{{$data->name_role}}</option>
+                                            @endif
+                                           @endforeach
+                                           
+                                            </select> *
+                                                </div>
+                                        </div>                                        
                                         <div class="ln_solid">
                                             <div class="form-group">
                                                 <div class="col-md-6 offset-md-3">

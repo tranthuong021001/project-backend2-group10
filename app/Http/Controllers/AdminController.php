@@ -236,6 +236,7 @@ class AdminController extends Controller
      {
       $this->AuthLogin();
        $all_user = DB::table("users")
+      
           ->select('users.*');
          $all_user = $all_user->orderBy("users.id","Desc");
          $all_user = $all_user->paginate(15);
@@ -250,18 +251,20 @@ class AdminController extends Controller
      }
      public function AddUser(Request $request)
    {
-    $this->AuthLogin();     
-            return view('admin.layouts.addUser');
+            $this->AuthLogin(); 
+            $role =  DB::table("role")->orderBy("id","desc")->get();    
+            return view('admin.layouts.addUser')->with('role',$role);
    }
    public function SaveUser(Request $request)
    {
     $this->AuthLogin();
       $data = array();
       $data['username'] = $request->username;
-      $data['password'] = $request->password;
+      $data['password'] = md5($request->password);
       $data['name'] = $request->name;
       $data['email'] = $request->email;
       $data['phone'] = $request->phone;
+      $data['role'] = $request->role;
       DB::table('users')->insert($data);
       Session::put('message','Thêm người dùng thành công');
      return Redirect::to('/allusers');
@@ -269,19 +272,20 @@ class AdminController extends Controller
    public function EditUser($id)
    {
     $this->AuthLogin();
+    $role =  DB::table("role")->orderBy("id","desc")->get();    
        $edit_user =  DB::table("users")->where('id',$id)->get(); 
-      return view('admin.layouts.editUser')->with('edituser',$edit_user);
+      return view('admin.layouts.editUser')->with('edituser',$edit_user)->with('role',$role);
    }
     public function UpdateUser(Request $request,$id)
    {
     $this->AuthLogin();
     $data = array();
     $data['username'] = $request->username;
-    $data['password'] = $request->password;
+    $data['password'] = md5($request->password) ;
     $data['name'] = $request->name;
     $data['email'] = $request->email;
     $data['phone'] = $request->phone;
-    
+    $data['role'] = $request->role;
       DB::table('users')->where('id',$id)->update($data);
       Session::put('message','Cập nhập người dùng thành công');
      return Redirect::to('/allusers');

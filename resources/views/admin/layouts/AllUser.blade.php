@@ -95,7 +95,7 @@
                           <th>Name</th>
                           <th>Email</th>
                           <th>Phone</th>
-                         
+                          <th>Quyền</th>
                           <th style="width:50px;"></th>
                           
                         </tr>
@@ -115,6 +115,19 @@
                           <td>{{$user->name}}</td>
                           <td>{{$user->email}}</td>
                           <td>{{$user->phone}}</td>
+                          @if($user->role == '1')
+                          {
+                            <td>{{'admin'}}</td>
+                          }
+                          @elseif($user->role == '2'){
+                            <td>{{'user'}}</td>
+                          }
+                          @else
+                          {
+                            <td></td>
+                          }
+                          @endif
+                          
                          
                          
                           <td >
