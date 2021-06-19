@@ -127,6 +127,7 @@ class CheckoutController extends Controller
         if ($result) {
             //lưu id người dùng vào session
             Session::put('id', $result->id);
+            Session::put('name', $result->name);
             Session::put('role', $result->role);
             if($result->role == '1'){
                 return Redirect::to('/admin/tc');
