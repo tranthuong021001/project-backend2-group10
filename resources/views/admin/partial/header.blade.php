@@ -10,14 +10,11 @@
 
             <!-- menu profile quick info -->
             <div class="profile clearfix">
-              <div class="profile_pic">
+              <!-- <div class="profile_pic">
                 <img src="images/img.jpg" alt="..." class="img-circle profile_img">
-              </div>
+              </div> -->
               <div class="profile_info">
                 <span>Welcome {{$admin_name->name}}</span>
-               
-                <h2></h2>
-              
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -32,7 +29,7 @@
                   <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="{{asset('allproducts')}}">Dashboard</a></li>
-                     
+
                     </ul>
                   </li>
                   <li><a><i class="fa fa-edit"></i> Quản lí mặt hàng <span class="fa fa-chevron-down"></span></a>
@@ -44,35 +41,35 @@
                       <li><a href="{{asset('allprotypes')}}">Xem tất cả loại hàng</a></li>
                       <li><a href="{{url('admin/addprotypes')}}">Thêm loại hàng</a></li>
                       <li><a href="{{asset('allusers')}}">Quản lí người dùng</a></li>
-                    
-                      
+
+
                     </ul>
                   </li>
-              
-              
+
+
                 <li><a><i class="fa fa-sitemap"></i> Quản lí người dùng <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
                   <li><a href="{{asset('allusers')}}">Danh sách người dùng</a></li>
                   <li><a href="{{asset('adduser')}}">Thêm người dùng</a></li>
-                    
-                     
+
+
                       </li>
                   </ul>
-                </li>   
+                </li>
                 <li><a><i class="fa fa-book"></i> Quản lí mua hàng <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
                   <li><a href="{{asset('allbills')}}">Danh sách đơn hàng</a></li>
-                    
-                     
-                      </li>               
-              
-           
-                
+
+
+                      </li>
+
+
+
                 </ul>
               </div>
               <div class="menu_section">
-              
-              
+
+
               </div>
 
             </div>

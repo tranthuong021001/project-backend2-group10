@@ -19,7 +19,7 @@
     <!-- iCheck -->
     <link href="{{ url('../vendors/iCheck/skins/flat/green.css" rel="stylesheet')}}">
     <!-- Datatables -->
-    
+
     <link href="{{ url('../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{ url('../vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{ url('../vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css')}}" rel="stylesheet">
@@ -27,14 +27,14 @@
     <link href="{{ url('../vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css')}}" rel="stylesheet">
 
     <!-- Custom Theme Style -->
-    
+
     <link href="{{ url('../build/css/custom.min.css')}}" rel="stylesheet">
   </head>
 
   <body class="nav-md">
-    
+
   @include('admin.partial.header')
-           
+
 
         <!-- page content -->
         <div class="right_col" role="main">
@@ -82,35 +82,24 @@
                       <div class="row">
                           <div class="col-sm-12">
                             <div class="card-box table-responsive">
-                    <p class="text-muted font-13 m-b-30">                   
+                    <p class="text-muted font-13 m-b-30">
                     </p>
                     <table id="datatable" class="table table-striped table-bordered" style="width:100%">
                       <thead>
                         <tr>
-                                      
                           <th>Tên khách hàng</th>
                           <th>Email</th>
                           <th>Số điện thoại</th>
-                       
-                                        
                         </tr>
                       </thead>
                       <tbody>
-                     
-                  
                         <tr>
-                      
-                        
                           <td>{{$user->name}}</td>
                           <td>{{$user->email}}</td>
                           <td>{{$user->phone}}</td>
-                          
-                          
                         </tr>
-           
                       </tbody>
                     </table>
-                 
                   </div>
                   </div>
               </div>
@@ -139,16 +128,16 @@
                       <div class="row">
                           <div class="col-sm-12">
                             <div class="card-box table-responsive">
-                    <p class="text-muted font-13 m-b-30">                   
+                    <p class="text-muted font-13 m-b-30">
                     </p>
                     <table id="datatable" class="table table-striped table-bordered" style="width:100%">
                       <thead>
-                        <tr>     
+                        <tr>
                           <th>Tên người nhận</th>
                           <th>Email</th>
                           <th>Địa chỉ </th>
                           <th>Số điện thoai</th>
-                          <th>Ghi chú</th>                 
+                          <th>Ghi chú</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -161,12 +150,12 @@
                         </tr>
                       </tbody>
                     </table>
-                 
+
                   </div>
                   </div>
               </div>
             </div>
-      
+
                 </div>
                 <div class="row">
               <div class="col-md-12 col-sm-12 ">
@@ -192,56 +181,56 @@
                       <div class="row">
                           <div class="col-sm-12">
                             <div class="card-box table-responsive">
-                    <p class="text-muted font-13 m-b-30">                   
+                    <p class="text-muted font-13 m-b-30">
                     </p>
                     <table id="datatable" class="table table-striped table-bordered" style="width:100%">
                       <thead>
-                        <tr>          
+                        <tr>
                           <th>Tên sản phẩm</th>
                           <th>Số lượng</th>
                           <th>Giá</th>
-                          <th>Tổng tiền</th>                    
+                          <th>Tổng tiền</th>
                         </tr>
                       </thead>
                       <tbody>
-                     
-                     @foreach($order_detail as $ord)                  
-                        <tr>   
-                          <td>{{$ord->name}}</td>
+
+                     @foreach($order_detail as $ord)
+                        <tr>
+                          <td>{{$ord->Product->name}}</td>
                           <td>{{$ord->amount}}</td>
-                          <td>{{$ord->price}}</td>
-                          <td>{{$ord->price* $ord->amount}}</td>
-                    
-                         
+                          <td>{{$ord->Product->price}}</td>
+                          <td>{{$ord->Product->price* $ord->amount}}</td>
+
+
                         </tr>
                     @endforeach
                       </tbody>
                     </table>
-                 
+
                   </div>
                   </div>
               </div>
             </div>
               </div>
 
-              
+
             </div>
                 </div>
               </div>
 
-            
+
             </div>
                 </div>
               </div>
 
-              
+
             </div>
                 </div>
               </div>
 
-              
 
-              
+
+
             </div>
                 </div>
               </div>
