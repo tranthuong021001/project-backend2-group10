@@ -81,6 +81,7 @@
                                         $customer_id = Session::get('id');
                                         if ($customer_id != null) {
                                         ?>
+                                            <li><a href="{{route('Purchase_History',['user_id'=>$customer_id])}}" title="My cart">Purchase History</a></li>
                                             <li> <a class="" href="{{ url('/logout-checkout')}}">Logout</a> </li>
                                         <?php
                                         } else {

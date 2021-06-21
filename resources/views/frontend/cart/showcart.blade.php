@@ -17,63 +17,57 @@
 </div>
 <!--breadcrumbs area end-->
 
-
 <!--shopping cart area start -->
 <div class="shopping_cart_area">
 
-        <div class="row">
-            <div class="col-12">
-                <div class="table_desc">
-                    <div class="cart_page table-responsive">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th class="product_remove">Delete</th>
-                                    <th class="product_thumb">Image</th>
-                                    <th class="product_name">Product</th>
-                                    <th class="product-price">Price</th>
-                                    <th class="product_quantity">Quantity</th>
-                                    <th class="product_total">Total</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                    $content = Cart::content();
-                                ?>
-
-                                @foreach ($content as $value)
-                                <tr>
-                                    <td class="product_remove"><a href="{{URL::to('/delete-to-cart/'.$value->rowId)}}"><i class="fa fa-trash-o"></i></a></td>
-                                    <td class="product_thumb"><a href="#"><img src="{{url('assets/img/product/'.$value->options->image.'')}}" alt=""></a></td>
-                                    <td class="product_name"><a href="#">{{$value->name}}</a></td>
-                                    <form action="{{URL::to('/update-cart-quantity')}}" method="post">
-                                        @csrf
-                                        <input type="hidden" name="rowId_cart" value="{{$value->rowId}}">
-                                        <td class="product-price">{{number_format($value->price)}} VNĐ</td>
-                                        <td class="product_quantity"><input min="1" max="100" name="quantity_product" value="{{$value->qty}}" type="number">
-                                            <button class="update-button" type="submit">Update</button>
-                                        </td>
-                                    </form>
-
-                                    <td class="product_total">
-                                        <?php
-                                        $subtotal = $value->price * $value->qty;
-                                        echo number_format($subtotal).' VNĐ';
-                                        ?>
+    <div class="row">
+        <div class="col-12">
+            <div class="table_desc">
+                <div class="cart_page table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="product_remove">Delete</th>
+                                <th class="product_thumb">Image</th>
+                                <th class="product_name">Product</th>
+                                <th class="product-price">Price</th>
+                                <th class="product_quantity">Quantity</th>
+                                <th class="product_total">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $content = Cart::content();
+                            ?>
+                            @foreach ($content as $value)
+                            <tr>
+                                <td class="product_remove"><a href="{{URL::to('/delete-to-cart/'.$value->rowId)}}"><i class="fa fa-trash-o"></i></a></td>
+                                <td class="product_thumb"><a href="{{route('Product_Detail', ['id'=>$value->id])}}"><img src="{{url('assets/img/product/'.$value->options->image.'')}}" alt=""></a></td>
+                                <td class="product_name"><a href="{{route('Product_Detail', ['id'=>$value->id])}}">{{$value->name}}</a></td>
+                                <form action="{{URL::to('/update-cart-quantity')}}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="rowId_cart" value="{{$value->rowId}}">
+                                    <td class="product-price">{{number_format($value->price)}} VNĐ</td>
+                                    <td class="product_quantity"><input min="1" max="100" name="quantity_product" value="{{$value->qty}}" type="number">
+                                        <button class="update-button" type="submit">Update</button>
                                     </td>
-                                </tr>
-                                @endforeach
-
-                            </tbody>
-                        </table>
-                    </div>
+                                </form>
+                                <td class="product_total">
+                                    <?php
+                                    $subtotal = $value->price * $value->qty;
+                                    echo number_format($subtotal) . ' VNĐ';
+                                    ?>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
-
+    </div>
 </div>
 <!--shopping cart area end -->
-
 
 <!--Checkout page section-->
 <div class="Checkout_section">
@@ -102,7 +96,7 @@
                         </div>
                         <div class="col-lg-6 mb-30">
                             <label>Phone<span>*</span></label>
-                            <input type="text"name="shipping_phone" required>
+                            <input type="text" name="shipping_phone" required>
 
                         </div>
                         <div class="col-lg-6 mb-30">
@@ -126,7 +120,6 @@
             </div>
             <div class="col-lg-6 col-md-6">
 
-
                 <h3>Your order</h3>
                 <div class="order_table table-responsive mb-30">
                     <table>
@@ -137,22 +130,18 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php
-
-                            $content = Cart::content();
-                            ?>
+                            <?php $content = Cart::content(); ?>
                             @foreach ($content as $value)
                             <tr>
                                 <td> {{$value->name}} <strong> × {{$value->qty}}</strong></td>
                                 <td>
                                     <?php
                                     $subtotal = $value->price * $value->qty;
-                                    echo (number_format($subtotal)).' VNĐ';
+                                    echo (number_format($subtotal)) . ' VNĐ';
                                     ?>
                                 </td>
                             </tr>
                             @endforeach
-
                         </tbody>
                         <tfoot>
                             <tr>
@@ -199,7 +188,6 @@
     </div>
 </div>
 <!--Checkout page section end-->
-
 </div>
 <!--pos page inner end-->
 </div>

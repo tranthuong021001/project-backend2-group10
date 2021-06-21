@@ -35,7 +35,6 @@
                  </ul>
              </div>
          </div>
-
          <div class="col-9">
              <!--shop toolbar start-->
              <div class="shop_toolbar mb-35">
@@ -69,19 +68,13 @@
                      </form>
                  </div>
              </div>
-
-
-
-
              <!--shop toolbar end-->
-
              <!--shop tab product-->
              <div class="shop_tab_product shop_fullwidth">
                  <div class="tab-content" id="myTabContent">
                      <div class="tab-pane fade show active" id="large" role="tabpanel">
                          <div class="row">
                              <!-- hien thi san pham theo danh muc category -->
-
                              @foreach ($category as $value)
 
                              <div class="col-lg-3 col-md-4 col-sm-6">
@@ -99,7 +92,6 @@
 
                                                  <button class="btn-add-product" type="submit"><i class="fa fa-shopping-cart"></i> add to cart</button>
                                              </form>
-
                                          </div>
                                      </div>
                                      <div class="product_content">
@@ -117,18 +109,11 @@
                              @endforeach
                          </div>
                      </div>
-
-
-
                  </div>
              </div>
              <!--shop tab product end-->
-
-
          </div>
      </div>
-
-
 
      <!--pagination style start-->
      <div class="pagination_style shop_page">
@@ -144,13 +129,6 @@
              </form>
          </div>
          <div class="page_number">
-             <!-- <span>Pages: </span>
-             <ul>
-                 <li>«</li>
-                 <li class="current_number">1</li>
-                 <li><a href="#">2</a></li>
-                 <li>»</li>
-             </ul> -->
              <span>{{ $category->links() }}</span>
          </div>
 

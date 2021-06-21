@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Bill_Detail extends Model
 {
-    
+
     public function bills()
     {
-        return $this->belongsTo('App\Bill');
+        return $this->belongsTo('App\Bill', 'bill_id');
     }
     public $timestamps = false;
     protected $fillable = [

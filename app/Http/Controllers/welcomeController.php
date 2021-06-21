@@ -11,6 +11,7 @@ use App\Gender;
 use App\Manufacture;
 use App\Rating;
 use App\User;
+use App\Bill_Detail;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -99,5 +100,19 @@ class WelcomeController extends Controller
         return view('frontend.contact');
     }
 
+    //hàm xem lịch sử mua hàng của từng user
+    public function Purchase_History($user_id){
+    $bills = DB::table('bills')->join('bill__details', 'bills.id', '=', 'bill__details.bill_id')->join('products', 'bill__details.product_id', '=', 'products.id')->where('user_id', '=', $user_id)->get();
+    $name_user = DB::table('users')->where('id', '=', $user_id)->get();
+
+        return view('frontend.purchase history.purchasehistory', compact('bills', 'name_user'));
+    }
+
+    //hàm xem chi tiết đơn hàng đã mua
+    public function Order_Detail($bill_id){
+        echo $bill_id;
+        $Order_Detail = Bill_Detail::with('Product')->where('bill_id', $bill_id)->get();
+
+        return view('frontend.purchase history.orderdetail', compact('Order_Detail'));
+    }
 }
-?>

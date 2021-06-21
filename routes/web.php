@@ -102,3 +102,5 @@ Route::post('/rating-product', 'CheckoutController@rating_product' );
 Route::get('/seachproduct', 'welcomecontroller@Seach_Product');
 Route::get('/contact', 'welcomecontroller@Contact');
 
+//xem lịch sử mua hàng
+Route::get('/purchase-history/{user_id}', 'welcomecontroller@Purchase_History')->name('Purchase_History');
