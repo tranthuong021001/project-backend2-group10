@@ -136,7 +136,7 @@ class AdminController extends Controller
             $get_name = $get_image->getClientOriginalName();
             $name_image = current(explode('.', $get_name));
             $new_image = $name_image . rand(0, 99) . '.' . $get_image->getClientOriginalExtension();
-            $get_image->move('public/assets/img/product', $new_image);
+            $get_image->move('assets/img/product', $new_image);
             $data['image'] = $new_image;
             DB::table('products')->where('id', $id)->update($data);
             Session::put('message', 'Cập nhập sản phẩm thành công');
