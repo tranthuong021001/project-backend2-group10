@@ -11,14 +11,14 @@
     <title>Sửa người dùng | Pos Coron! </title>
 
     <!-- Bootstrap -->
-    <link href="{{ url('../vendors/bootstrap/dist/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{ url('vendors/bootstrap/dist/css/bootstrap.min.css')}}" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="{{ url('../vendors/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+    <link href="{{ url('vendors/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
     <!-- NProgress -->
-    <link href="{{ url('../vendors/nprogress/nprogress.css')}}" rel="stylesheet">
+    <link href="{{ url('vendors/nprogress/nprogress.css')}}" rel="stylesheet">
 
     <!-- Custom Theme Style -->
-    <link href="{{ url('../build/css/custom.min.css')}}" rel="stylesheet">
+    <link href="{{ url('build/css/custom.min.css')}}" rel="stylesheet">
 </head>
 
 <body class="nav-md">
