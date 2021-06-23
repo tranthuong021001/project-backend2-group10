@@ -280,7 +280,6 @@ class AdminController extends Controller
         $admin_id = Session::get('id');
         $admin_name = DB::table('users')->where('id', $admin_id)->first();
         $all_user = DB::table("users")
-
             ->select('users.*');
         $all_user = $all_user->orderBy("users.id", "Desc");
         $all_user = $all_user->paginate(15);

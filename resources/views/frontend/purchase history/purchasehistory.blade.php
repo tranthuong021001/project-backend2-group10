@@ -35,7 +35,7 @@
                         <tbody>
                             @foreach ($bills as $value)
                             <tr>
-                                <td class="product_thumb"><a href="#"><img src="{{url('assets/img/product/'.$value->image.'')}}" alt=""></a></td>
+                                <td class="product_thumb"><a href="{{route('Product_Detail', ['id'=>$value->id])}}"><img src="{{url('assets/img/product/'.$value->image.'')}}" alt=""></a></td>
                                 <td class="product_remove">
                                     <?php
                                         if($value->gender ==2){
@@ -45,7 +45,7 @@
                                             echo 'Male'
                                     ?>
                                 </td>
-                                <td class="product_name"><a href="#">{{$value->name}}</a></td>
+                                <td class="product_name"><a href="{{route('Product_Detail', ['id'=>$value->id])}}">{{$value->name}}</a></td>
                                 <td class="product-price">{{number_format($value->price)}} VNĐ</td>
                                 <td class="product_quantity">{{$value->amount}}</td>
                                 <td class="product_total">{{number_format($value->total_money)}} VNĐ</td>

@@ -231,12 +231,12 @@ use Carbon\Carbon;
                                     <li><a href="#"><i class="fa fa-star"></i></a></li>
                                     <li><a href="#"><i class="fa fa-star"></i></a></li>
                                 </ul>
-                                <strong>Posthemes</strong>
+                             
                                 <p>
                                     <?php
                                     $date = $value->created_at;
                                     $i = substr($date, 0, -9);
-                                   
+
                                     $newformat = date('d/m/Y', strtotime($i));
                                     echo $newformat;
                                     ?>

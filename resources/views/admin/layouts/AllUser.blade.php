@@ -55,9 +55,7 @@
                     </div>
                 </div>
             </div>
-
             <div class="clearfix"></div>
-
             <div class="row">
                 <div class="col-md-12 col-sm-12 ">
                     <div class="x_panel">
@@ -82,14 +80,10 @@
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="card-box table-responsive">
-                                        <p class="text-muted font-13 m-b-30">
-
-                                        </p>
+                                        <p class="text-muted font-13 m-b-30"></p>
                                         <table id="datatable" class="table table-striped table-bordered" style="width:100%">
                                             <thead>
                                                 <tr>
-
-
                                                     <th>UserName</th>
                                                     <th>Password</th>
                                                     <th>Name</th>
@@ -97,19 +91,14 @@
                                                     <th>Phone</th>
                                                     <th>Quyền</th>
                                                     <th style="width:50px;"></th>
-
                                                 </tr>
                                             </thead>
-
-
                                             <tbody>
                                                 <?php
                                                 $stt = 1;
                                                 ?>
                                                 @foreach($allusers as $user )
                                                 <tr>
-
-
                                                     <td>{{$user->username}}</td>
                                                     <td>{{$user->password}}</td>
                                                     <td>{{$user->name}}</td>
@@ -127,8 +116,6 @@
                                                     <td></td>
                                                     }
                                                     @endif
-
-
 
                                                     <td>
                                                         <div class="fa-hover col-md-3 col-sm-4  "><a href="{{URL::to('/edituser/'.$user->id)}}"><i class="fa fa-wrench"></i></a>
@@ -151,18 +138,12 @@
                         </div>
                     </div>
                 </div>
-
-
             </div>
         </div>
     </div>
-
-
     </div>
     </div>
     </div>
-
-
     </div>
     </div>
     </div>
